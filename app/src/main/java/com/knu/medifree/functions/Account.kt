@@ -1,4 +1,4 @@
-package com.knu.medifree
+package com.knu.medifree.functions
 
 import android.content.Context
 import android.util.Log

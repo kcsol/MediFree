@@ -38,7 +38,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:94227895539:android:bc8de7892b058fe27a9386",
         "android_client_info": {
-          "package_name": "com.medifree.functions"
+          "package_name": "com.knu.medifree"
         }
       },
       "oauth_client": [

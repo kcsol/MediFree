@@ -8,5 +8,5 @@ dependencyResolutionManagement {
         jcenter() // Warning: this repository is going to shut down soon
     }
 }
-rootProject.name = "functions"
+rootProject.name = "medifree"
 include ':app'
