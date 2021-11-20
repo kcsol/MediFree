@@ -15,9 +15,12 @@ class PHomeActivity : AppCompatActivity() {
     lateinit var btn_con: ImageButton
     lateinit var btn_treat: ImageButton
     //lateinit var intent: Intent
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_p_home)
+
+        /*
         var intent = getIntent()
         Log.i("HEESUNG_DHOME", "Welcome" + intent.getStringExtra("user_id"))
 
@@ -55,5 +58,6 @@ class PHomeActivity : AppCompatActivity() {
             //DBManager.startActivityWithReservationReading(this@DHomeActivity, intent)
             // TODO :
         }
+         */
     }
 }
