@@ -9,12 +9,5 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val account = Account(this.applicationContext)
-        var uid = account.signUp("test@abc.com", "password123!@#")
-        Log.i("uid", uid.toString())
-
-        var signIn = account.signIn("test@abc.com", "password123!@#")
-        Log.i("signIn", signIn.toString())
     }
 }

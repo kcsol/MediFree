@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.knu.medifree.functions.Account
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var et_email: EditText
@@ -22,8 +23,8 @@ class LoginActivity : AppCompatActivity() {
 
 
         // Loading
-        val intent = Intent(this, TypeActivity::class.java)
-        startActivity(intent)
+        //val intent = Intent(this, TypeActivity::class.java)
+        //startActivity(intent)
 
 
         //DB
@@ -46,6 +47,8 @@ class LoginActivity : AppCompatActivity() {
             val email = et_email.text.toString()
             val password = et_password.text.toString()
 
+            val account = Account(this.applicationContext)
+            account.signIn(email, password)
             // Go in below method
 //            signin(email, password)
         }

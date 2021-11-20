@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import java.lang.Exception
 import java.util.HashMap
+import com.knu.medifree.functions.Account
 
 class SignupPatientActivity : AppCompatActivity() {
     //    private var mAuth: FirebaseAuth? = null
@@ -36,6 +37,8 @@ class SignupPatientActivity : AppCompatActivity() {
         // 클릭 리스너 할당
         btn_reg.setOnClickListener { // 계정 생성후 PHome으로 이동
 //            createAccount_Patient()
+            val account = Account(this.applicationContext)
+            account.signUp(et_email.text.toString(), et_password.text.toString())
         }
     }
 

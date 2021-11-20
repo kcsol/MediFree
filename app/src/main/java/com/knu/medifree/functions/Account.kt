@@ -25,7 +25,7 @@ class Account(val context: Context) {
      * firebase상에 중복된 email이 존재하면 null을 return합니다.
      * email 혹은 password가 양식이 잘못되면 null을 return합니다.
      */
-    fun signUp(email:String, password:String): String? {
+    fun signUp(type:Int, email:String, password:String, name:String, phone:String): String? {
 
         var uid:String? = null
         // Firebase 계정 생성
@@ -35,7 +35,25 @@ class Account(val context: Context) {
                 if(task.isSuccessful) {
                     Toast.makeText(context, "회원가입에 성공했습니다.", Toast.LENGTH_SHORT).show()
                     Log.i("register", "성공")
+
+                    /*
+                    // DB 저장
                     uid = mAuth.currentUser!!.uid
+                    var user = hashMapOf<String, Any>(
+                        "userType" to type,
+                        "name" to name,
+                        "phone" to phone
+                    )
+
+                    Log.i("uid", uid.toString())
+                    db.collection("Profile").document(uid.toString()).set(user)
+                        .addOnSuccessListener {
+                            Log.i("DB", "계정 저장 성공")
+                        }
+                        .addOnFailureListener {
+                            Log.i("DB", "계정 저장 실패")
+                        }
+                     */
                 }
                 else {
                     Toast.makeText(context, "회원가입에 실패했습니다.", Toast.LENGTH_SHORT).show()
@@ -43,22 +61,7 @@ class Account(val context: Context) {
                 }
             }
 
-        /*
-        // DB 저장
-        var user = mutableMapOf<String, Any>()
-        user.put("userType", userType)
-        user.put("name", name)
-        user.put("phone", phone)
 
-        db.collection("Profile").document(uid).set(user)
-            .addOnSuccessListener {
-                tmp = 0
-            }
-            .addOnFailureListener {
-                tmp = 1
-            }
-
-         */
 
         return uid
     }
