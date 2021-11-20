@@ -26,7 +26,7 @@ class Account(val context: Context) {
      * firebase상에 중복된 email이 존재하면 null을 return합니다.
      * email 혹은 password가 양식이 잘못되면 null을 return합니다.
      */
-    fun signUp(type:Int, email:String, password:String, name:String, phone:String): String? {
+    fun signUp(email:String, password:String): String? {
 
         var uid:String? = null
         // Firebase 계정 생성

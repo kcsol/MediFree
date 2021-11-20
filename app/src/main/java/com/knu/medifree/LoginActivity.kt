@@ -31,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
 //        val mAuth: FirebaseAuth? = null
 
 
-        // Assigning
+        // Assigninge
         btn_signin = findViewById<ImageButton>(R.id.login_btn_signin)
         btn_signup = findViewById<Button>(R.id.login_btn_signup)
         et_email = findViewById<EditText>(R.id.login_et_email)
