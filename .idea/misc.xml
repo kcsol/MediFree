@@ -1,5 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< Updated upstream
+=======
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/kcsol/Desktop/MediFree/app/src/main/res/drawable/border.xml" value="0.22083333333333333" />
+        <entry key="..\:/Users/kcsol/Desktop/MediFree/app/src/main/res/drawable/border2.xml" value="0.22083333333333333" />
+        <entry key="..\:/Users/kcsol/Desktop/MediFree/app/src/main/res/drawable/button_border.xml" value="0.22083333333333333" />
+        <entry key="..\:/Users/kcsol/Desktop/MediFree/app/src/main/res/drawable/button_border2.xml" value="0.22083333333333333" />
+        <entry key="..\:/Users/kcsol/Desktop/MediFree/app/src/main/res/drawable/button_round.xml" value="0.22083333333333333" />
+        <entry key="..\:/Users/kcsol/Desktop/MediFree/app/src/main/res/drawable/button_round2.xml" value="0.22083333333333333" />
+        <entry key="..\:/Users/kcsol/Desktop/MediFree/app/src/main/res/drawable/ic_launcher_background.xml" value="0.22083333333333333" />
+        <entry key="..\:/Users/kcsol/Desktop/MediFree/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.22083333333333333" />
+        <entry key="..\:/Users/kcsol/Desktop/MediFree/app/src/main/res/drawable/mainicon_background.xml" value="0.22083333333333333" />
+        <entry key="..\:/Users/kcsol/Desktop/MediFree/app/src/main/res/drawable/spinner_background.xml" value="0.22083333333333333" />
+        <entry key="..\:/Users/kcsol/Desktop/MediFree/app/src/main/res/drawable/spinner_background2.xml" value="0.22083333333333333" />
+        <entry key="..\:/Users/kcsol/Desktop/MediFree/app/src/main/res/layout/activity_login.xml" value="0.20104166666666667" />
+        <entry key="..\:/Users/kcsol/Desktop/MediFree/app/src/main/res/layout/activity_main.xml" value="0.20104166666666667" />
+        <entry key="..\:/Users/kcsol/Desktop/MediFree/app/src/main/res/layout/activity_signup_doctor.xml" value="0.20104166666666667" />
+        <entry key="..\:/Users/kcsol/Desktop/MediFree/app/src/main/res/layout/activity_signup_doctor_next.xml" value="0.2046875" />
+        <entry key="..\:/Users/kcsol/Desktop/MediFree/app/src/main/res/layout/activity_type.xml" value="0.2046875" />
+      </map>
+    </option>
+  </component>
+>>>>>>> Stashed changes
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
