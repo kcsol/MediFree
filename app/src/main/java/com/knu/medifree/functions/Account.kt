@@ -20,6 +20,7 @@ class Account(val context: Context) {
     val mAuth = FirebaseAuth.getInstance()
     val db = FirebaseFirestore.getInstance()
 
+
     /*
      * account.signUp(emailString, passwordString)
      * firebase상에 중복된 email이 존재하면 null을 return합니다.
@@ -36,7 +37,6 @@ class Account(val context: Context) {
                     Toast.makeText(context, "회원가입에 성공했습니다.", Toast.LENGTH_SHORT).show()
                     Log.i("register", "성공")
 
-                    /*
                     // DB 저장
                     uid = mAuth.currentUser!!.uid
                     var user = hashMapOf<String, Any>(
@@ -53,7 +53,6 @@ class Account(val context: Context) {
                         .addOnFailureListener {
                             Log.i("DB", "계정 저장 실패")
                         }
-                     */
                 }
                 else {
                     Toast.makeText(context, "회원가입에 실패했습니다.", Toast.LENGTH_SHORT).show()
@@ -61,10 +60,9 @@ class Account(val context: Context) {
                 }
             }
 
-
-
         return uid
     }
+
 
     /*
      * account.signIn(emailString, passwordString)

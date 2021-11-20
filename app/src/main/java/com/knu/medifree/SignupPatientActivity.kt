@@ -2,6 +2,7 @@ package com.knu.medifree
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageButton
@@ -38,7 +39,8 @@ class SignupPatientActivity : AppCompatActivity() {
         btn_reg.setOnClickListener { // 계정 생성후 PHome으로 이동
 //            createAccount_Patient()
             val account = Account(this.applicationContext)
-            account.signUp(et_email.text.toString(), et_password.text.toString())
+            var uid = account.signUp(0, et_email.text.toString(), et_password.text.toString(), et_name.text.toString(), et_tel.text.toString())
+            Log.i("uid", uid.toString())
         }
     }
 
