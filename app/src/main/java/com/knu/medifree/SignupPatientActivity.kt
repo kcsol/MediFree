@@ -12,6 +12,10 @@ import androidx.appcompat.app.AppCompatActivity
 import java.lang.Exception
 import java.util.HashMap
 import com.knu.medifree.functions.Account
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 class SignupPatientActivity : AppCompatActivity() {
     //    private var mAuth: FirebaseAuth? = null
@@ -38,9 +42,17 @@ class SignupPatientActivity : AppCompatActivity() {
         // 클릭 리스너 할당
         btn_reg.setOnClickListener { // 계정 생성후 PHome으로 이동
 //            createAccount_Patient()
-            val account = Account(this.applicationContext)
-            var uid = account.signUp(0, et_email.text.toString(), et_password.text.toString(), et_name.text.toString(), et_tel.text.toString())
-            Log.i("uid", uid.toString())
+            CoroutineScope(Dispatchers.IO).launch {
+                var uid:String? = null
+                val signUpMethod = async {
+                    uid = Account.signUp(Account.TYPE_PATIENT,
+                        et_email.text.toString(), et_password.text.toString(),
+                        et_name.text.toString(), et_tel.text.toString(), et_address.text.toString())
+                }
+
+                signUpMethod.await()
+                Log.i("signUp", uid.toString())
+            }
         }
     }
 

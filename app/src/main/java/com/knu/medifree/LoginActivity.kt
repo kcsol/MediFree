@@ -3,6 +3,7 @@ package com.knu.medifree
 import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -10,6 +11,10 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.knu.medifree.functions.Account
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var et_email: EditText
@@ -47,8 +52,12 @@ class LoginActivity : AppCompatActivity() {
             val email = et_email.text.toString()
             val password = et_password.text.toString()
 
-            val account = Account(this.applicationContext)
-            account.signIn(email, password)
+            CoroutineScope(Dispatchers.IO).launch {
+                var pair:Pair<String?, String?> = Pair<String?, String?>(null, null)
+                val signInMethod = async { pair = Account.signIn(email, password) }
+                signInMethod.await()
+                Log.i("signIn", pair.toString())
+            }
             // Go in below method
 //            signin(email, password)
         }
