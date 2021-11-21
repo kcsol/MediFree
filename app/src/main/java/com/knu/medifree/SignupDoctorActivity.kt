@@ -11,6 +11,10 @@ import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import com.knu.medifree.functions.Account
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 
 //import com.google.android.gms.tasks.OnCompleteListener
@@ -52,9 +56,12 @@ class SignupDoctorActivity : AppCompatActivity() /*, View.OnClickListener*/ {
 
         // 클릭 리스너 할당
         btn_next.setOnClickListener {
-            val account = Account(this.applicationContext)
-            var uid = account.signUp(1, et_email.text.toString(), et_password.text.toString(), et_name.text.toString(), et_tel.text.toString())
-            Log.i("uid in doctoractivity", uid.toString())
+            var uid:String? = null
+            CoroutineScope(Dispatchers.IO).launch {
+                val signUpMethod = async { uid = Account.signUp(Account.TYPE_DOCTOR, et_email.text.toString(), et_password.text.toString(), et_name.text.toString(), et_tel.text.toString(), "") }
+                signUpMethod.await()
+                Log.i("signUp", uid.toString())
+            }
             val intent = Intent(applicationContext, SignupDoctor2Activity::class.java)
             intent.putExtra("user_id", uid)
             startActivity(intent)
