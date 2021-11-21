@@ -57,7 +57,7 @@ class Account {
             }
 
             //Toast.makeText(context, "회원가입에 성공했습니다.", Toast.LENGTH_SHORT).show()
-            Log.i("register", "성공")
+            Log.i("Register", "성공")
 
             // DB 저장
             uid = mAuth.currentUser!!.uid
@@ -122,7 +122,7 @@ class Account {
             } catch(e:Exception) {
                 Log.e("Login", "실패")
             }
-            Log.e("uiduid", uid.toString())
+
             var task:Task<DocumentSnapshot?>? = null
             val getDocMethod = CoroutineScope(Dispatchers.IO).async {
                 val docRef = db.collection("Profile").document(uid.toString())

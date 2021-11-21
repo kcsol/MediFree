@@ -49,7 +49,6 @@ class SignupPatientActivity : AppCompatActivity() {
                         et_email.text.toString(), et_password.text.toString(),
                         et_name.text.toString(), et_tel.text.toString(), et_address.text.toString())
                 }
-
                 signUpMethod.await()
                 Log.i("signUp", uid.toString())
             }

@@ -53,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
             val password = et_password.text.toString()
 
             CoroutineScope(Dispatchers.IO).launch {
-                var pair:Pair<String?, String?> = Pair<String?, String?>(null, null)
+                var pair:Pair<String?, Int?> = Pair<String?, Int?>(null, null)
                 val signInMethod = async { pair = Account.signIn(email, password) }
                 signInMethod.await()
                 Log.i("signIn", pair.toString())
