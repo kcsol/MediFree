@@ -60,6 +60,31 @@ class LoginActivity : AppCompatActivity() {
             }
             // Go in below method
 //            signin(email, password)
+            val intent: Intent = getIntent()
+            val type = intent.getIntExtra("type", 2)
+            var name = intent.getStringExtra("name")
+            if(type == 2)//최초 로그인이 아닐 시
+            {
+                startToast("찬솔아 이거 해죠")
+                //Parameter : email, password
+                //return : ID type -> patient : 0
+                //                    doctor : 1
+                //        , name
+            }
+            else if(type == 0)//patient
+            {
+                val intent = Intent(applicationContext, PHomeActivity::class.java)
+                intent.putExtra("name", name)
+                startActivity(intent)
+            }
+            else if(type == 1)//doctor
+            {
+                startToast("doctor!")
+            }
+            else
+            {
+                startToast("type error")
+            }
         }
         btn_signup.setOnClickListener { // Go TypeActivity
             val intent = Intent(applicationContext, TypeActivity::class.java)
