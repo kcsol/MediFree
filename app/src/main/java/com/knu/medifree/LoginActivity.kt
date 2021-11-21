@@ -52,17 +52,21 @@ class LoginActivity : AppCompatActivity() {
             val email = et_email.text.toString()
             val password = et_password.text.toString()
 
+            val intent: Intent = getIntent()
+            var type = intent.getIntExtra("type", 2)
+            var name = intent.getStringExtra("name")
+
             CoroutineScope(Dispatchers.IO).launch {
-                var pair:Pair<String?, String?> = Pair<String?, String?>(null, null)
+                var pair:Pair<String?, Int?> = Pair<String?, Int?>(null, null)
                 val signInMethod = async { pair = Account.signIn(email, password) }
                 signInMethod.await()
                 Log.i("signIn", pair.toString())
+
+                name = pair.first
+                type = pair.second!!
             }
             // Go in below method
 //            signin(email, password)
-            val intent: Intent = getIntent()
-            val type = intent.getIntExtra("type", 2)
-            var name = intent.getStringExtra("name")
             if(type == 2)//최초 로그인이 아닐 시
             {
                 startToast("찬솔아 이거 해죠")
