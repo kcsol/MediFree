@@ -3,6 +3,7 @@ package com.knu.medifree
 import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -48,7 +49,8 @@ class LoginActivity : AppCompatActivity() {
             val password = et_password.text.toString()
 
             val account = Account(this.applicationContext)
-            account.signIn(email, password)
+            val signIn = account.signIn(email, password)
+            Log.i("signIn", signIn.toString())
             // Go in below method
 //            signin(email, password)
         }

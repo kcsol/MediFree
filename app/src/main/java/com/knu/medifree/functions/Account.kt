@@ -86,23 +86,23 @@ class Account(val context: Context) {
                 uid = user!!.uid
                 Toast.makeText(context, "로그인에 성공했습니다.", Toast.LENGTH_SHORT).show()
                 Log.i("login", "성공")
-                /*
-                val docRef = db.collection("Profile").document(uid)
-                docRef.get().addOnCompleteListener {
-                        task->
-                    if(task.isSuccessful) {
+
+                val docRef = db.collection("Profile").document(uid.toString())
+                docRef.get().addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
                         val doc = task.result!!
                         if (doc.exists()) {
-                            val userType = doc.data!!.get("userType").toString()
-                            if (userType == "Patient") {
-                                //DBManager.initDBManager(uid, TYPE_PATIENT)
-                            } else if (userType == "Doctor") {
-                                //DBManager.initDBManager(uid, TYPE_DOCTOR)
+                            val NUserType = doc.data!!["userType"].toString().toInt()
+                            if (NUserType == TYPE_PATIENT) {
+                                Log.i("type", "patient")
+                                userType = "Patient"
+                            } else if (NUserType == TYPE_DOCTOR) {
+                                Log.i("type", "doctor")
+                                userType = "Doctor"
                             }
                         }
                     }
                 }
-                 */
             } else {
                 Toast.makeText(context, "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show()
                 Log.i("login", "실패")
