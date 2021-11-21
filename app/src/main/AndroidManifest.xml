@@ -20,6 +20,17 @@
         </activity>
         <activity android:name="com.knu.medifree.SignupDoctorActivity"/>
         <activity android:name="com.knu.medifree.SignupPatientActivity"/>
+        <activity android:name="com.knu.medifree.SignupDoctor2Activity"/>
+        <activity android:name="com.knu.medifree.ResCheckActivity"/>
+        <activity android:name="com.knu.medifree.PSelmajorActivity"/>
+        <activity android:name="com.knu.medifree.PSelhospActivity"/>
+        <activity android:name="com.knu.medifree.PHomeActivity"/>
         <activity android:name="com.knu.medifree.TypeActivity"/>
+        <activity android:name="com.knu.medifree.PQuestActivity"/>
+        <activity android:name="com.knu.medifree.LoadingActivity"/>
+        <activity android:name="com.knu.medifree.DQuestActivity"/>
+        <activity android:name="com.knu.medifree.DOfficeActivity"/>
+        <activity android:name="com.knu.medifree.DHomeActivity"/>
+        <activity android:name="com.knu.medifree.DAppActivity"/>
     </application>
 </manifest>

@@ -122,7 +122,7 @@ class Account {
             } catch(e:Exception) {
                 Log.e("Login", "실패")
             }
-            Log.e("uiduid", uid.toString())
+
             var task:Task<DocumentSnapshot?>? = null
             val getDocMethod = CoroutineScope(Dispatchers.IO).async {
                 val docRef = db.collection("Profile").document(uid.toString())

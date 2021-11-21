@@ -55,6 +55,7 @@ class LoginActivity : AppCompatActivity() {
             var type:Int? = null
             var name:String? = null
 
+            var isCompleted = false
             val login = CoroutineScope(Dispatchers.IO).async {
                 var pair:Pair<String?, Int?> = Pair<String?, Int?>(null, null)
                 val signInMethod = async { pair = Account.signIn(email, password) }
@@ -64,34 +65,38 @@ class LoginActivity : AppCompatActivity() {
                 name = pair.first
                 type = pair.second!!
 
+                isCompleted = true
                 // Go in below method
 //            signin(email, password)
-                Log.i("type", type.toString())
-                if(type == 2)//최초 로그인이 아닐 시
-                {
-                    startToast("찬솔아 이거 해죠")
-                    //Parameter : email, password
-                    //return : ID type -> patient : 0
-                    //                    doctor : 1
-                    //        , name
-                }
-                else if(type == 0)//patient
-                {
-                    Log.i("where", "type0")
-                    val intent = Intent(applicationContext, PHomeActivity::class.java)
-                    intent.putExtra("name", name)
-                    startActivity(intent)
-                }
-                else if(type == 1)//doctor
-                {
-                    startToast("doctor!")
-                }
-                else
-                {
-                    startToast("type error")
-                }
+
             }
 
+            while(!isCompleted) {
+
+            }
+            if(type == 2)//최초 로그인이 아닐 시
+            {
+                startToast("찬솔아 이거 해죠")
+                //Parameter : email, password
+                //return : ID type -> patient : 0
+                //                    doctor : 1
+                //        , name
+            }
+            else if(type == 0)//patient
+            {
+                Log.i("123", "123123")
+                val intent = Intent(this@LoginActivity.applicationContext, PHomeActivity::class.java)
+                intent.putExtra("name", name)
+                startActivity(intent)
+            }
+            else if(type == 1)//doctor
+            {
+                startToast("doctor!")
+            }
+            else
+            {
+                startToast("type error")
+            }
 
         }
         btn_signup.setOnClickListener { // Go TypeActivity
