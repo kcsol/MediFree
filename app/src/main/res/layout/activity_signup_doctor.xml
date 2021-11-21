@@ -30,7 +30,7 @@
 
 
         <EditText
-            android:id="@+id/email_D"
+            android:id="@+id/signup_doctor_email"
             android:layout_width="270dp"
             android:layout_height="38dp"
             android:layout_marginTop="40dp"
@@ -38,14 +38,14 @@
             android:ems="10"
             android:hint="  E-mail"
             android:inputType="textEmailAddress"
-            app:layout_constraintBottom_toTopOf="@id/password_D"
+            app:layout_constraintBottom_toTopOf="@id/signup_doctor_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/password_D"
+            android:id="@+id/signup_doctor_password"
             android:layout_width="270dp"
             android:layout_height="38dp"
             android:layout_marginTop="10dp"
@@ -53,14 +53,14 @@
             android:ems="10"
             android:hint="  Password"
             android:inputType="textPassword"
-            app:layout_constraintBottom_toTopOf="@id/passwordCheck_D"
+            app:layout_constraintBottom_toTopOf="@id/signup_doctor_password_again"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email_D" />
+            app:layout_constraintTop_toBottomOf="@+id/signup_doctor_email" />
 
         <EditText
-            android:id="@+id/passwordCheck_D"
+            android:id="@+id/signup_doctor_password_again"
             android:layout_width="270dp"
             android:layout_height="38dp"
             android:layout_marginTop="10dp"
@@ -75,21 +75,21 @@
             app:layout_constraintTop_toBottomOf="@+id/password_D" />
 
         <EditText
-            android:id="@+id/name_D"
+            android:id="@+id/signup_doctor_name"
             android:layout_width="270dp"
             android:layout_height="38dp"
             android:layout_marginTop="10dp"
             android:background="#F2F2F2"
             android:ems="10"
             android:hint="  Name"
-            app:layout_constraintBottom_toTopOf="@+id/email_D"
+            app:layout_constraintBottom_toTopOf="@+id/signup_doctor_email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
         <EditText
-            android:id="@+id/phone_D"
+            android:id="@+id/signup_doctor_tel"
             android:layout_width="270dp"
             android:layout_height="38dp"
             android:layout_marginTop="10dp"
@@ -97,10 +97,10 @@
             android:ems="10"
             android:hint="  Tel."
             android:inputType="phone"
-            app:layout_constraintBottom_toTopOf="@+id/password_D"
+            app:layout_constraintBottom_toTopOf="@+id/signup_doctor_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email_D" />
+            app:layout_constraintTop_toBottomOf="@+id/signup_doctor_email" />
 
 
         <ImageButton
