@@ -23,7 +23,7 @@ class Account {
          * email 혹은 password 양식이 잘못되면 null을 반환합니다.
          * TYPE_PATIENT일 때, address가 없으면 null을 반환합니다.
          */
-        suspend fun signUp(userType:Int, email:String, password:String, name:String, phone:String, address:String): String? {
+        fun signUp(userType:Int, email:String, password:String, name:String, phone:String, address:String): String? {
 
             if(userType == PATIENT && address == "") {
                 Log.w("Account.signUp", "Patient 정보에 Address가 빈 값입니다.")
@@ -38,19 +38,9 @@ class Account {
                 return null
             }
             val uid = createuserTask.result!!.user!!.uid
-
-<<<<<<< Updated upstream
-            //Toast.makeText(context, "회원가입에 성공했습니다.", Toast.LENGTH_SHORT).show()
-            Log.i("Register", "성공")
-
-            // DB 저장
-            uid = mAuth.currentUser!!.uid
-            var user = hashMapOf<String, Any>(
-                "userType" to type,
-=======
+            
             val user = hashMapOf<String, Any?>(
                 "userType" to userType,
->>>>>>> Stashed changes
                 "name" to name,
                 "phone" to phone,
                 "address" to address

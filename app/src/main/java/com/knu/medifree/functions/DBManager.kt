@@ -1,11 +1,7 @@
 package com.knu.medifree.functions
 
-<<<<<<< Updated upstream
-class DBManager {
-=======
 import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
-import java.lang.Exception
 
 
 class DBManager {
@@ -87,6 +83,4 @@ class DBManager {
         }
 
     }
-
->>>>>>> Stashed changes
 }
