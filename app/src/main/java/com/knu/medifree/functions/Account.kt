@@ -1,61 +1,45 @@
 package com.knu.medifree.functions
 
-import android.content.Context
 import android.util.Log
-import android.widget.Toast
-import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
+
 
 class Account {
+
     companion object {
-        val TYPE_PATIENT = 0
-        val TYPE_DOCTOR = 1
+
+        val PATIENT = 0
+        val DOCTOR = 1
 
         val mAuth = FirebaseAuth.getInstance()
-        val db = FirebaseFirestore.getInstance()
 
 
         /*
          * Usage:
-         CoroutineScope(Dispatchers.IO).launch {
-                    var uid:String? = null
-                    val signUpMethod = async { uid = Account.signUp(Account.TYPE_?, email, password, name, phone, address) }
-                    signUpMethod.await()
-                    Log.i("signUp", uid.toString())
-                }
-         * 모든 작업이 성공적으로 수행되면 uid:String을 반환합니다.
-         * firebase상에 중복된 email이 존재하면 null을 반환합니다.
-         * email 혹은 password가 양식이 잘못되면 null을 반환합니다.
+            signUp(Account.PATIENT, email, password, name, phone, address)
+            signUp(Account.DOCTOR, email, password, name, phone, "")
+         * 모든 작업이 성공적으로 수행되면 uid를 반환합니다.
+         * 중복된 email로 signUp을 시도하면 null을 반환합니다.
+         * email 혹은 password 양식이 잘못되면 null을 반환합니다.
          * TYPE_PATIENT일 때, address가 없으면 null을 반환합니다.
          */
-        suspend fun signUp(type:Int, email:String, password:String, name:String, phone:String, address:String): String? {
+        suspend fun signUp(userType:Int, email:String, password:String, name:String, phone:String, address:String): String? {
 
-            if(type == TYPE_PATIENT && address == null) {
+            if(userType == PATIENT && address == "") {
+                Log.w("Account.signUp", "Patient 정보에 Address가 빈 값입니다.")
                 return null
             }
 
-            var uid:String? = null
 
-            // Firebase 계정 생성
-            var task: Task<AuthResult?>? = null
-            val createUserMethod = CoroutineScope(Dispatchers.IO).async {
-                task = mAuth.createUserWithEmailAndPassword(email, password)
-                while (!task!!.isSuccessful) {}
-            }
-            createUserMethod.await()
-
-            if(task!!.result!!.user == null) {
-                Log.w("Register", "실패")
+            var createuserTask = mAuth.createUserWithEmailAndPassword(email, password)
+            while (!createuserTask.isComplete) {}
+            if (!createuserTask.isSuccessful) {
+                Log.w("Account.signUp", "중복된 email 혹은 잘못된 양식의 email/password 입니다.")
                 return null
             }
+            val uid = createuserTask.result!!.user!!.uid
 
+<<<<<<< Updated upstream
             //Toast.makeText(context, "회원가입에 성공했습니다.", Toast.LENGTH_SHORT).show()
             Log.i("Register", "성공")
 
@@ -63,18 +47,15 @@ class Account {
             uid = mAuth.currentUser!!.uid
             var user = hashMapOf<String, Any>(
                 "userType" to type,
+=======
+            val user = hashMapOf<String, Any?>(
+                "userType" to userType,
+>>>>>>> Stashed changes
                 "name" to name,
                 "phone" to phone,
                 "address" to address
             )
-
-            Log.i("uid", uid.toString())
-            val setDocMethod = CoroutineScope(Dispatchers.IO).async {
-                db.collection("Profile").document(uid.toString()).set(user)
-            }
-            setDocMethod.await()
-
-            Log.i("DB", "계정 저장 성공")
+            DBManager.save(DBManager.PROFILE, uid, user)
 
 
             return uid
@@ -82,81 +63,36 @@ class Account {
 
 
         /*
-         * Usage:
-         CoroutineScope(Dispatchers.IO).launch {
-                    var pair:Pair<String?, Int?> = Pair<String?, Int?>(null, null)
-                    val signInMethod = async { pair = Account.signIn(email, password) }
-                    signInMethod.await()
-                    Log.i("signIn", pair.toString())
-                }
          * 로그인이 성공하면 Pair(uid, userType)을 반환합니다.
          * 로그인이 실패하면 Pair(null, null)을 반환합니다.
          */
-        suspend fun signIn(email:String, password:String): Pair<String?, Int?> {
+        fun signIn(email:String, password:String): Pair<String?, Int?>? {
 
             if (email.length <= 0 || password.length <= 0) {
-                return Pair(null, null)
+                Log.e("Account.signIn", "잘못된 email 혹은 password가 전달되었습니다.")
+                return null
             }
 
-            var uid: String? = null
-            var userType: Int? = null
 
-            try {
-                var task: Task<AuthResult?>? = null
-                val signInMethod = CoroutineScope(Dispatchers.IO).async {
-                    task = mAuth.signInWithEmailAndPassword(email, password)
-                    while (!task!!.isSuccessful) {}
-                }
-                signInMethod.await()
-
-                if (task == null || task!!.result!!.user == null) {
-                    Log.w("Login", "실패")
-                    return Pair(null, null)
-                }
-
-                val auth = task!!.result!!
-                var user = auth.user
-                uid = user!!.uid
-                //Toast.makeText(context, "로그인에 성공했습니다.", Toast.LENGTH_SHORT).show()
-                Log.i("Login", "성공")
-            } catch(e:Exception) {
-                Log.e("Login", "실패")
+            var signinTask = mAuth.signInWithEmailAndPassword(email, password)
+            while (!signinTask.isComplete) {}
+            if(!signinTask.isSuccessful) {
+                Log.w("Account.signIn", "로그인 실패")
+                return null
             }
+            val uid = signinTask.result!!.user!!.uid
 
-            var task:Task<DocumentSnapshot?>? = null
-            val getDocMethod = CoroutineScope(Dispatchers.IO).async {
-                val docRef = db.collection("Profile").document(uid.toString())
-                task = docRef.get()
-                while (!task!!.isSuccessful) {}
+            val profile = DBManager.load(DBManager.PROFILE, uid)
+            if(profile == null) {
+                Log.e("Account.signIn", "해당 계정의 프로필이 DB에 존재하지 않습니다.")
+                return null
             }
-            getDocMethod.await()
-
-            if(task == null || !task!!.isSuccessful) {
-                Log.w("DB", "docRef.get() 실패")
-                return Pair(null, null)
-            }
-
-            val doc = task!!.result!!
-            if (doc.exists()) {
-                val NUserType = doc.data!!["userType"].toString().toInt()
-                if (NUserType == TYPE_PATIENT) {
-                    Log.i("type", "patient")
-                    userType = TYPE_PATIENT
-                } else if (NUserType == TYPE_DOCTOR) {
-                    Log.i("type", "doctor")
-                    userType = TYPE_DOCTOR
-                }
-            } else {
-                Log.w("DB", "docRef.get() 실패")
-                return Pair(null, null)
-            }
+            val userType = profile!!["userType"].toString().toInt()
 
 
             return Pair(uid, userType)
         }
+
     }
-
-
-
 
 }

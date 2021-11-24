@@ -11,6 +11,7 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.knu.medifree.functions.Account
+import com.knu.medifree.functions.Patient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -47,16 +48,47 @@ class LoginActivity : AppCompatActivity() {
 
         // Listeners
         btn_signin.setOnClickListener { /* Go PHomeActivity */
+            val test = Patient("XTD60BD4ZVTGQN7SEphkEiZmH3n1")
+            test.searchDoctorSchedule("김찬솔", "20211122")
 
             // get string values
             val email = et_email.text.toString()
             val password = et_password.text.toString()
 
+<<<<<<< Updated upstream
             CoroutineScope(Dispatchers.IO).launch {
                 var pair:Pair<String?, Int?> = Pair<String?, Int?>(null, null)
                 val signInMethod = async { pair = Account.signIn(email, password) }
                 signInMethod.await()
                 Log.i("signIn", pair.toString())
+=======
+            var type:Int? = null
+            var name:String? = null
+
+            var isCompleted = false
+            var result = Account.signIn(email, password)!!
+            name = result.first
+            type = result.second
+
+            if(type == 2)//최초 로그인이 아닐 시
+            {
+                startToast("찬솔아 이거 해죠")
+                //Parameter : email, password
+                //return : ID type -> patient : 0
+                //                    doctor : 1
+                //        , name
+            }
+            else if(type == 0)//patient
+            {
+                Log.i("123", "123123")
+                val intent = Intent(this@LoginActivity.applicationContext, PHomeActivity::class.java)
+                intent.putExtra("name", name)
+                startActivity(intent)
+            }
+            else if(type == 1)//doctor
+            {
+                startToast("doctor!")
+>>>>>>> Stashed changes
             }
             // Go in below method
 //            signin(email, password)
