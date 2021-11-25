@@ -37,16 +37,16 @@ class Patient(val uid:String) {
 
     fun searchHospital(majorType:Int): List<String>? {
         val major = convertMajor(majorType)
-        val hospitals = DBManager.load(DBManager.MAJOR, major!!)
+        val hospitals = DBManager.load(DBManager.MAJOR, major!!)!!["병원명"] as List<String>
 
-        return null
+        return hospitals
     }
 
     fun searchDoctorInHospital(hospital:String, majorType:Int): List<String>? {
         val major = convertMajor(majorType)
-        val majors = DBManager.load(DBManager.HOSPITAL, hospital)
+        val doctors = DBManager.load(DBManager.HOSPITAL, hospital)!![major] as List<String>
 
-        return null
+        return doctors
     }
 
     fun searchDoctorSchedule(doctor:String, date:String): List<Boolean>? {
@@ -59,7 +59,6 @@ class Patient(val uid:String) {
             if(schedule[i] == null)
                 selectable[i] = true
         }
-        Log.e("selectable", selectable.toString())
 
 
         return selectable
@@ -70,7 +69,7 @@ class Patient(val uid:String) {
     }
 
     fun addNewReservation(doctorName:String, date:String, time:Int) {
-        val reservNum = "testabcdefgsomethingcomplexstringarray"
+        val reservNum = "testabcdefgsomethingcomplexstringarray22"
 
         val reservation = hashMapOf(
             "diagnosis_date" to date,
@@ -91,6 +90,16 @@ class Patient(val uid:String) {
         DBManager.update(DBManager.DOCTOR, doctorName, date, dReservList)
         DBManager.add(DBManager.DOCTOR, doctorName, "작성할것", reservNum)
         DBManager.add(DBManager.PROFILE, uid, "예약번호", reservNum)
+    }
+
+    fun searchReservationInfo(reservNum:String): Map<String, Any?>? {
+        return DBManager.load(DBManager.RESERVATION, reservNum)
+    }
+
+    fun addAnswer(reservNum:String, doctorName:String, answers:List<String>) {
+        DBManager.update(DBManager.RESERVATION, reservNum, "답변", answers)
+        DBManager.update(DBManager.RESERVATION, reservNum, "is_completed", 2)
+        DBManager.add(DBManager.DOCTOR, doctorName, "확인할것", reservNum)
     }
 
 }

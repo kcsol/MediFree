@@ -22,7 +22,7 @@ class DBManager {
             var collection:String
             when(objectType) {
                 PROFILE -> collection = "Profile"
-                HOSPITAL -> collection = "Hospital"
+                HOSPITAL -> collection = "hospital"
                 DOCTOR -> collection = "doctor"
                 MAJOR -> collection = "Major"
                 RESERVATION -> collection = "Reservation"

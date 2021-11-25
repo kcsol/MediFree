@@ -40,10 +40,9 @@ class SignupDoctorActivity : AppCompatActivity() /*, View.OnClickListener*/ {
         pwChkEditView = findViewById<EditText>(R.id.passwordCheck_D)
 
         // 클릭 리스너 할당
-<<<<<<< Updated upstream
 //        btn_next.setOnClickListener(this)
-=======
         btn_next.setOnClickListener {
+            /*
             var uid:String? = null
             CoroutineScope(Dispatchers.IO).launch {
                 val signUpMethod = async { uid = Account.signUp(Account.DOCTOR, et_email.text.toString(), et_password.text.toString(), et_name.text.toString(), et_tel.text.toString(), "") }
@@ -53,8 +52,8 @@ class SignupDoctorActivity : AppCompatActivity() /*, View.OnClickListener*/ {
             val intent = Intent(applicationContext, SignupDoctor2Activity::class.java)
             intent.putExtra("user_id", uid)
             startActivity(intent)
+            */
         }
->>>>>>> Stashed changes
     }
 
     //알림을 출력하는 method

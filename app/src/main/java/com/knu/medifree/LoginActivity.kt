@@ -48,20 +48,20 @@ class LoginActivity : AppCompatActivity() {
 
         // Listeners
         btn_signin.setOnClickListener { /* Go PHomeActivity */
-            val test = Patient("XTD60BD4ZVTGQN7SEphkEiZmH3n1")
-            test.searchDoctorSchedule("김찬솔", "20211122")
+            val test = Patient("qzngwoSZNafRWnnH4QaCy9nz3ft1")
+            Log.e("", test.searchDoctorSchedule("김찬솔", "20211122").toString())
+            Log.e("", test.searchHospital(Patient.MAJOR_0).toString())
+            Log.e("", test.searchDoctorInHospital("경북대병원", Patient.MAJOR_0).toString())
+            Log.e("", test.searchPatientReservationList().toString())
+            Log.e("", test.searchReservationInfo("reservnum1").toString())
+            //test.addNewReservation("김찬솔", "20211122", 3)
+            test.addAnswer("reservnum1", "김찬솔", listOf("첫번째", "두번째", "", "답변"))
 
+            /*
             // get string values
             val email = et_email.text.toString()
             val password = et_password.text.toString()
 
-<<<<<<< Updated upstream
-            CoroutineScope(Dispatchers.IO).launch {
-                var pair:Pair<String?, Int?> = Pair<String?, Int?>(null, null)
-                val signInMethod = async { pair = Account.signIn(email, password) }
-                signInMethod.await()
-                Log.i("signIn", pair.toString())
-=======
             var type:Int? = null
             var name:String? = null
 
@@ -88,10 +88,11 @@ class LoginActivity : AppCompatActivity() {
             else if(type == 1)//doctor
             {
                 startToast("doctor!")
->>>>>>> Stashed changes
             }
             // Go in below method
 //            signin(email, password)
+
+             */
         }
         btn_signup.setOnClickListener { // Go TypeActivity
             val intent = Intent(applicationContext, TypeActivity::class.java)
