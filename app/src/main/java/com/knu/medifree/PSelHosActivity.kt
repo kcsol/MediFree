@@ -25,7 +25,7 @@ class PSelhospActivity : Activity() {
     private lateinit var major_name: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_p_sel_major)
+        setContentView(R.layout.activity_p_sel_hos)
 
         /* PSelmajorActivity 설명
      *       - activity_p_sel_doc.xml 참조.
@@ -40,9 +40,10 @@ class PSelhospActivity : Activity() {
 //            Log.e("hos name :", hospital_name!!)
 
         // 현재 uid 가져오기.
-        mAuth = FirebaseAuth.getInstance()
-        var intent = getIntent()
-        val major_name = intent.getStringExtra("major")
+//        mAuth = FirebaseAuth.getInstance()
+//        var intent = getIntent()
+//        major_name = intent.getStringExtra("major")!!
+
 
 
         // Major_list
@@ -71,15 +72,19 @@ class PSelhospActivity : Activity() {
 
         // Attach the adapter to a ListView
         // Attach the adapter to a ListView
-        val listView = findViewById<ListView>(R.id.listView_hos)
+        val listView = findViewById<ListView>(R.id.listview_hospital)
         listView.adapter = adapter
         listView.onItemClickListener =
             OnItemClickListener { parent: AdapterView<*>?, view: View?, position: Int, id: Long ->
                 hospital_name = adapter.getItem(position).toString()
 //                Log.d("TAG", "onCreate: majorname $major_name")
-                val intent = Intent(applicationContext, PSelDocActivity::class.java)
-                intent.putExtra("major", major_name)
-                startActivity(intent)
+                val intent = getIntent()
+                major_name = intent.getStringExtra("major").toString()
+
+                val intent2 = Intent(applicationContext, PSeldocActivity::class.java)
+                intent2.putExtra("major", major_name)
+                intent2.putExtra("hospital", hospital_name)
+                startActivity(intent2)
             }
     }
 }

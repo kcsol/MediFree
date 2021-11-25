@@ -20,6 +20,8 @@ class PSelmajorActivity : Activity() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var hospital_name: String
     private lateinit var major_name: String
+
+    lateinit var btn_test : Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_p_sel_major)
@@ -74,9 +76,9 @@ class PSelmajorActivity : Activity() {
             OnItemClickListener { parent: AdapterView<*>?, view: View?, position: Int, id: Long ->
                 major_name = adapter.getItem(position).toString()
 //                Log.d("TAG", "onCreate: majorname $major_name")
-                val intent = Intent(applicationContext, PSelhospActivity::class.java)
+                val intent2 = Intent(applicationContext, PSelhospActivity::class.java)
                 intent.putExtra("major", major_name)
-                startActivity(intent)
+                startActivity(intent2)
             }
 
         /*
