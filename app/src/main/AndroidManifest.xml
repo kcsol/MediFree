@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.knu.medifree">
+    <!-- webrtc 관련 권한 설정 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
 
     <application
         android:allowBackup="true"
@@ -10,29 +15,43 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Functions">
+
         <activity
-            android:name="com.knu.medifree.LoginActivity"
-            android:exported="true">
+            android:name=".LoginActivity"
+            android:exported="true"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.knu.medifree.SignupDoctorActivity"/>
-        <activity android:name="com.knu.medifree.SignupPatientActivity"/>
-        <activity android:name="com.knu.medifree.SignupDoctor2Activity"/>
-        <activity android:name="com.knu.medifree.ResCheckActivity"/>
-        <activity android:name="com.knu.medifree.PSelmajorActivity"/>
-        <activity android:name="com.knu.medifree.PSelhospActivity"/>
-        <activity android:name="com.knu.medifree.PHomeActivity"/>
-        <activity android:name="com.knu.medifree.TypeActivity"/>
-        <activity android:name="com.knu.medifree.PQuestActivity"/>
-        <activity android:name="com.knu.medifree.LoadingActivity"/>
-        <activity android:name="com.knu.medifree.DQuestActivity"/>
-        <activity android:name="com.knu.medifree.DOfficeActivity"/>
-        <activity android:name="com.knu.medifree.DHomeActivity"/>
-        <activity android:name="com.knu.medifree.DAppActivity"/>
-        <activity android:name="com.knu.medifree.PSeldocActivity"/>
-        <activity android:name="com.knu.medifree.PSeltimeActivity"/>
+        <activity android:name=".SignupDoctorActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.FullScreen"
+            ></activity>
+        <!-- webrtc  -->
+        <activity android:name=".CallingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.FullScreen"
+            >
+
+        </activity>
+        <!-- webrtc  -->
+        <activity android:name=".RTCActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.FullScreen"/>
+        <activity android:name=".SignupPatientActivity" />
+        <activity android:name=".SignupDoctor2Activity" />
+        <activity android:name=".ResCheckActivity" />
+        <activity android:name=".PSelmajorActivity" />
+        <activity android:name=".PSelhospActivity" />
+        <activity android:name=".PHomeActivity" />
+        <activity android:name=".TypeActivity" />
+        <activity android:name=".PQuestActivity" />
+        <activity android:name=".LoadingActivity" />
+        <activity android:name=".DQuestActivity" />
+        <activity android:name=".DOfficeActivity" />
+        <activity android:name=".DHomeActivity" />
+        <activity android:name=".DAppActivity" />
     </application>
 </manifest>
