@@ -58,7 +58,8 @@ class SignupDoctorActivity : AppCompatActivity() /*, View.OnClickListener*/ {
         btn_next.setOnClickListener {
             var uid:String? = null
             CoroutineScope(Dispatchers.IO).launch {
-                val signUpMethod = async { uid = Account.signUp(Account.TYPE_DOCTOR, et_email.text.toString(), et_password.text.toString(), et_name.text.toString(), et_tel.text.toString(), "") }
+                val signUpMethod = async { uid = Account.signUp(Account.TYPE_DOCTOR, et_email.text.toString(),
+                    et_password.text.toString(), et_name.text.toString(), et_tel.text.toString(), "") }
                 signUpMethod.await()
                 Log.i("signUp", uid.toString())
             }
