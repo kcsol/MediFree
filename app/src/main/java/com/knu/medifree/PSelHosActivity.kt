@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.ListView
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -23,10 +24,13 @@ class PSelhospActivity : Activity() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var hospital_name: String
     private lateinit var major_name: String
+    lateinit var tv : TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_p_sel_hos)
 
+//        var intent = getIntent()
+//        Toast.makeText(this, intent.getStringExtra("major"), Toast.LENGTH_SHORT).show()
         /* PSelmajorActivity 설명
      *       - activity_p_sel_doc.xml 참조.
      *       - PSelhospaActivity에서 hospital name을 선택해서 희성이가 구현한 startmajor~~~로 major Arraylist를 가져왔음.
@@ -41,7 +45,6 @@ class PSelhospActivity : Activity() {
 
         // 현재 uid 가져오기.
 //        mAuth = FirebaseAuth.getInstance()
-//        var intent = getIntent()
 //        major_name = intent.getStringExtra("major")!!
 
 
@@ -64,7 +67,6 @@ class PSelhospActivity : Activity() {
         tmp.add("병원5")
         // dunp majors 만들어서 사용하는 부분임.
 
-
 //        tmp.add("123");
 //        tmp.add("123");tmp.add("123");tmp.add("123");tmp.add("123");tmp.add("123");
         // tmp부분 지우고 넣으면 됨
@@ -78,12 +80,10 @@ class PSelhospActivity : Activity() {
             OnItemClickListener { parent: AdapterView<*>?, view: View?, position: Int, id: Long ->
                 hospital_name = adapter.getItem(position).toString()
 //                Log.d("TAG", "onCreate: majorname $major_name")
-                val intent = getIntent()
-                major_name = intent.getStringExtra("major").toString()
 
-                val intent2 = Intent(applicationContext, PSeldocActivity::class.java)
-                intent2.putExtra("major", major_name)
-                intent2.putExtra("hospital", hospital_name)
+                var intent2 = Intent(applicationContext, PSeldocActivity::class.java)
+//                intent2.putExtra("major", major_name)
+//                intent2.putExtra("hospital", hospital_name)
                 startActivity(intent2)
             }
     }

@@ -32,12 +32,12 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/who_select"
+        android:id="@+id/p_time_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="left"
         android:paddingStart="40dp"
-        android:text="김동희 is selected"
+        android:text="null"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@id/p_res_date2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +61,7 @@
         app:layout_constraintBottom_toTopOf="@id/time_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/who_select" />
+        app:layout_constraintTop_toBottomOf="@+id/p_time_data" />
 
     <RadioGroup
         android:id="@+id/time_list"

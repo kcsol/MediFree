@@ -77,7 +77,7 @@ class PSelmajorActivity : Activity() {
                 major_name = adapter.getItem(position).toString()
 //                Log.d("TAG", "onCreate: majorname $major_name")
                 val intent2 = Intent(applicationContext, PSelhospActivity::class.java)
-                intent.putExtra("major", major_name)
+                intent2.putExtra("major", major_name)
                 startActivity(intent2)
             }
 

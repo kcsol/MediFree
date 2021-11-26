@@ -3,7 +3,6 @@ package com.knu.medifree
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 //import com.knu.medifree.util.DBManager
@@ -40,7 +39,8 @@ class PHomeActivity : AppCompatActivity() {
         btn_quest.setOnClickListener {
             // 문진표 버튼을 눌렀을 때
             // 현재 상황 : PCheckStatus로 이동
-            val intent = Intent(applicationContext, PQuestActivity::class.java)
+            val intent = Intent(applicationContext, PQuestionnaireActivity::class.java)
+            startActivity(intent)
             //DBManager.startActivityWithReservationReading(this@DHomeActivity, intent)
             // TODO :
         }
@@ -53,8 +53,8 @@ class PHomeActivity : AppCompatActivity() {
         }
         btn_treat.setOnClickListener {
             // PTreat 버튼을 눌렀을 때
-            // 현재 상황 :PTreat로 이동
-            val intent = Intent(applicationContext, POfficeActivity::class.java)
+            // 현재 상황 :Office로 이동
+            val intent = Intent(applicationContext, RTCActivity::class.java)
             //DBManager.startActivityWithReservationReading(this@DHomeActivity, intent)
             // TODO :
         }

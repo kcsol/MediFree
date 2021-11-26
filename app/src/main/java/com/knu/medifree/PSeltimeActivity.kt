@@ -37,8 +37,9 @@ class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
         check1 = false
         check2 = false
         val intent = getIntent()
-        val textView = findViewById<TextView>(R.id.who_select)
-        textView.text = "none"
+        val textView = findViewById<TextView>(R.id.p_time_data)
+//        textView.text = "none"
+//        Toast.makeText(this, intent.getStringExtra("doctor"), Toast.LENGTH_SHORT).show()
 //            intent.getStringExtra("hospital_name") + " " + intent.getStringExtra("name") + " is selected"
 
         //intent를 통해 정보 받아오기

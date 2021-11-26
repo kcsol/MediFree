@@ -73,11 +73,11 @@
             tools:ignore="MissingConstraints">
 
             <TextView
-                android:id="@+id/p_sel_hos_name"
+                android:id="@+id/p_hos_data"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="115dp"
-                android:text="병원 is selected"
+                android:text="null"
                 android:layout_marginBottom="25dp"
                 android:paddingStart="40dp"
                 android:textSize="18sp" />

@@ -45,9 +45,15 @@
         <activity android:name=".DResCheckActivity" />
         <activity android:name=".PSelmajorActivity" />
         <activity android:name=".PSelhospActivity" />
+        <activity android:name=".PSeldocActivity"/>
+        <activity android:name=".PSeltimeActivity"/>
         <activity android:name=".PHomeActivity" />
         <activity android:name=".TypeActivity" />
-        <activity android:name=".PQuestActivity" />
+        <activity android:name=".PQuestionnaireActivity" />
+        <activity android:name=".PQuestActivity"
+            android:windowSoftInputMode="adjustPan"
+            >
+        </activity>
         <activity android:name=".LoadingActivity" />
         <activity android:name=".DQuestActivity" />
         <activity android:name=".DOfficeActivity" />
