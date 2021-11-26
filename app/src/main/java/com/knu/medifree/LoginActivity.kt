@@ -88,6 +88,10 @@ class LoginActivity : AppCompatActivity() {
             }
             else if(type == 1)//doctor
             {
+                Log.i("doctor", "doctor")
+                val intent = Intent(this@LoginActivity.applicationContext, DHomeActivity::class.java)
+                intent.putExtra("name", name)
+                startActivity(intent)
                 startToast("doctor!")
             }
             else
