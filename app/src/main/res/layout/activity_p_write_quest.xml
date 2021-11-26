@@ -25,7 +25,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,37 +33,149 @@
         tools:ignore="MissingConstraints">
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:ignore="MissingConstraints">
 
-            <TextView
-                android:id="@+id/p_hos_data"
+
+<!--            <ListView-->
+<!--                android:id="@+id/listview_question"-->
+<!--                android:layout_width="330dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:descendantFocusability="beforeDescendants">-->
+<!--            </ListView>-->
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="200dp"
-                android:text="null"
-                android:layout_marginBottom="25dp"
-                android:paddingStart="40dp"
-                android:textSize="18sp" />
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/border"
+                android:orientation="vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_weight="1"
+                >
 
-            <ListView
-                android:id="@+id/listview_question"
-                android:layout_width="330dp"
+                <TextView
+                    android:id="@+id/tv_quest_item1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="문진표 내용"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/et_quest_item1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="작성내역"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:descendantFocusability="beforeDescendants">
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/border"
+                android:orientation="vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_weight="1"
+                >
 
-            </ListView>
+                <TextView
+                    android:id="@+id/tv_quest_item2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="문진표 내용"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
+                <EditText
+                    android:id="@+id/et_quest_item2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="작성내역"
+                    android:textSize="15dp" />
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/border"
+                android:orientation="vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:id="@+id/tv_quest_item3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="문진표 내용"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/et_quest_item3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="작성내역"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/border"
+                android:orientation="vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_weight="1"
+                >
+
+                <TextView
+                    android:id="@+id/tv_quest_item4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="문진표 내용"
+                    android:textColor="#000000"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/et_quest_item4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="작성내역"
+                    android:textSize="15dp" />
+            </LinearLayout>
+            <Button
+                android:id="@+id/p_quest_submit_btn"
+                android:layout_width="match_parent"
+                android:layout_height="67dp"
+                android:background="#0070C0"
+                android:text="예약"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                tools:layout_editor_absoluteX="0dp" />
         </LinearLayout>
 
-
-
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

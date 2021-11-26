@@ -41,8 +41,8 @@ data class Quest(var tv_quest: String, var et_quest: EditText?) {
         return view
     }
 
-    fun focus(position : Int){
-        sample[position].et_quest?.requestFocus()
+    fun getET(position : Int): EditText? {
+        return sample[position].et_quest
     }
 
     init {
