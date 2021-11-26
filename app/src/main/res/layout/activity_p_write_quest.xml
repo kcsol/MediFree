@@ -53,9 +53,10 @@
                 android:textSize="18sp" />
 
             <ListView
-                android:id="@+id/listview_questionnaire"
+                android:id="@+id/listview_question"
                 android:layout_width="330dp"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:descendantFocusability="beforeDescendants">
 
             </ListView>
 

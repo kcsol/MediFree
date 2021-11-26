@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.ListView
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.knu.medifree.adapter.DoctorAdapter
@@ -29,6 +30,9 @@ class PSeldocActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_p_sel_doc)
+
+//        var intent = getIntent()
+//        Toast.makeText(this, intent.getStringExtra("hospital"), Toast.LENGTH_SHORT).show()
         /*
            layout : activity_p_sel_doc_again.xml과 연결되어있음.
            목적 :  major을 통해서 해당 전공의를 ListView로 구현하여 전공의를 선택하는 부분을 구현
@@ -83,7 +87,7 @@ class PSeldocActivity : Activity() {
 //                Log.d("TAG", "onCreate: majorname $major_name")
                 val intent2 = Intent(applicationContext, PSeltimeActivity::class.java)
 //                intent2.putExtra("major", major_name)
-//                intent2.putExtra("hospital", hospital_name)
+                intent2.putExtra("doctor", Doctor_name)
                 startActivity(intent2)
             }
 
