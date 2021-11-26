@@ -7,7 +7,6 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import org.w3c.dom.Text
 
 //import com.knu.medifree.util.DBManager
 
@@ -42,7 +41,7 @@ class DAppActivity : AppCompatActivity() {
         btn_check.setOnClickListener {
             // 예약하기 버튼을 눌렀을 때
             // 현재 상황 : ResCheckActivity로 이동
-            val intent = Intent(applicationContext, ResCheckActivity::class.java)
+            val intent = Intent(applicationContext, DResCheckActivity::class.java)
             startActivity(intent)
             //DBManager.startActivityWithReservationReading(this@DAppActivity, intent)
             //finish(); 일단 뒤로 버튼을 눌러서 의사 홈으로 돌아올 수 있게 해둠.
@@ -61,8 +60,9 @@ class DAppActivity : AppCompatActivity() {
     }
 
     var time = View.OnClickListener { v ->
-        //val intent = Intent(applicationContext, DetailAppActivity::class.java)
+        val intent = Intent(applicationContext, DetailAppActivity::class.java)
         intent.putExtra("time", v.tag.toString())
+        startActivity(intent)
         //DBManager.startActivityWithReservationReading(this@DAppActivity, intent)
     }
 }

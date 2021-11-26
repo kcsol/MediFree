@@ -42,7 +42,7 @@
             android:theme="@style/Theme.FullScreen"/>
         <activity android:name=".SignupPatientActivity" />
         <activity android:name=".SignupDoctor2Activity" />
-        <activity android:name=".ResCheckActivity" />
+        <activity android:name=".DResCheckActivity" />
         <activity android:name=".PSelmajorActivity" />
         <activity android:name=".PSelhospActivity" />
         <activity android:name=".PSeldocActivity"/>

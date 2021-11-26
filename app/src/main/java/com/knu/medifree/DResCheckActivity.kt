@@ -1,11 +1,12 @@
 package com.knu.medifree
 
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
+import com.knu.medifree.adapter.PatientAdapter
+
 //
 //package com.knu.medifree
 //import com.knu.medifree.model.Doctor
@@ -18,7 +19,7 @@ import androidx.appcompat.app.AppCompatActivity
 //import com.knu.medifree.util.DBManager
 //import org.webrtc.ContextUtils.getApplicationContext
 
-class ResCheckActivity : AppCompatActivity() {
+class DResCheckActivity : AppCompatActivity() {
 //    var first_btn: Button? = null
 //    var origin_btn: Button? = null
 //    var dhome_btn: ImageButton? = null
@@ -29,10 +30,24 @@ class ResCheckActivity : AppCompatActivity() {
     private lateinit var dhome_btn : ImageButton
     private lateinit var btn_true : Button
     private lateinit var btn_false : Button
+    private lateinit var list_reservations : ArrayList<String>
+    private lateinit var listView : ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_d_res_check)
+
+        dhome_btn = findViewById<ImageButton>(R.id.backtodhome)
+        dhome_btn.setOnClickListener{
+            onBackPressed()
+            finish()
+        }
+        //reservation 갖고오는 함수 필요
+        val test = arrayListOf("아이유", "수지", "박보영")
+        var adapter : PatientAdapter = PatientAdapter(this, test)
+        listView = findViewById<ListView>(R.id.listview_patientrequest)
+        listView.adapter = adapter
+
     //    populatePatientsList()
 //        first_btn = findViewById<Button>(R.id.d_req_first)
 //        dhome_btn = findViewById<ImageButton>(R.id.backtodhome)
