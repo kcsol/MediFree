@@ -11,6 +11,7 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.knu.medifree.functions.Account
+import com.knu.medifree.functions.Doctor
 import com.knu.medifree.functions.Patient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -48,6 +49,7 @@ class LoginActivity : AppCompatActivity() {
 
         // Listeners
         btn_signin.setOnClickListener { /* Go PHomeActivity */
+            /*
             val test = Patient("qzngwoSZNafRWnnH4QaCy9nz3ft1")
             Log.e("", test.searchDoctorSchedule("김찬솔", "20211122").toString())
             Log.e("", test.searchHospital(Patient.MAJOR_0).toString())
@@ -56,6 +58,15 @@ class LoginActivity : AppCompatActivity() {
             Log.e("", test.searchReservationInfo("reservnum1").toString())
             //test.addNewReservation("김찬솔", "20211122", 3)
             test.addAnswer("reservnum1", "김찬솔", listOf("첫번째", "두번째", "", "답변"))
+            */
+
+            val test = Doctor("ptLMviyveJQrgljp8nmJLc5rOvC2")
+            Log.e("", test.searchToWrite().toString())
+            Log.e("", test.searchToConfirm().toString())
+            Log.e("", test.searchSchedule("20211122").toString())
+            Log.e("", test.searchReservationInfo("reservnum1").toString())
+            test.addQuestion("reservnum1", "김찬솔", listOf("첫번째", "", "세번째", "질문"))
+            test.addDiagnosisType("reservnum1", 3)
 
             /*
             // get string values

@@ -82,5 +82,11 @@ class DBManager {
             }
         }
 
+        fun delete(objectType:Int, id:String) {
+            val collection = convertType(objectType)
+
+            DB.collection(collection!!).document(id).delete()
+        }
+
     }
 }
