@@ -69,7 +69,7 @@ class Patient {
 
         fun searchPatientReservationList(): List<String> {
             try {
-                return patient!!["예약번호"] as List<String>
+                return DBManager.load(DBManager.PROFILE, uid)!!["예약번호"] as List<String>
             } catch(e:Exception) {
                 return listOf<String>()
             }
