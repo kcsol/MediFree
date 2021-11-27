@@ -2,6 +2,7 @@ package com.knu.medifree
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.ImageButton
@@ -25,22 +26,24 @@ import java.util.HashMap
 //import com.knu.medifree.util.DBManager
 
 class SignupDoctor2Activity<database> : AppCompatActivity() {
-    var btn_reg: ImageButton? = null
+    private lateinit var btn_reg: ImageButton
     //private var mAuth: FirebaseAuth? = null
-    private val hospitalNameSpinner: Spinner? = null
-    private val majorSpinner: Spinner? = null
-    private var arrayAdapter: ArrayAdapter<String>? = null
+    private lateinit var hospitalNameSpinner: Spinner
+    private lateinit var majorSpinner: Spinner
+    private lateinit var arrayAdapter: ArrayAdapter<String>
+    private lateinit var hospital_name : String
+    private lateinit var major : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup_doctor_next)
         //mAuth = FirebaseAuth.getInstance()
 
         // Hospital Name Spinner
-        val hospitalNameSpinner = findViewById<View>(R.id.hospital_Name) as Spinner
+        val hospitalNameSpinner = findViewById<Spinner>(R.id.hospital_Name)
         arrayAdapter = ArrayAdapter(
             this,
             android.R.layout.simple_spinner_item,
-            //resources.getStringArray(R.array.spinner_hospital) as Array<String>
+            resources.getStringArray(R.array.spinner_hospital) as Array<String>
         )
         arrayAdapter!!.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         hospitalNameSpinner.adapter = arrayAdapter
@@ -51,7 +54,7 @@ class SignupDoctor2Activity<database> : AppCompatActivity() {
         arrayAdapter = ArrayAdapter(
             this,
             android.R.layout.simple_spinner_item,
-            //resources.getStringArray(R.array.spinner_major) as Array<String>
+            resources.getStringArray(R.array.spinner_major) as Array<String>
         )
         arrayAdapter!!.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         majorSpinner.adapter = arrayAdapter
@@ -59,7 +62,18 @@ class SignupDoctor2Activity<database> : AppCompatActivity() {
 
 
         // 병원_메이저 보내주는 버튼 객체 할당
-        btn_reg = findViewById<View>(R.id.d_reg_btn_reg) as ImageButton
+        btn_reg = findViewById<ImageButton>(R.id.d_reg_btn_reg)
+
+        btn_reg.setOnClickListener {
+            hospital_name = hospitalNameSpinner.selectedItem.toString()
+            major = majorSpinner.selectedItem.toString()
+            val uid = intent.getStringExtra("uid")
+
+            //병원정보 저장 해야함
+            Log.i("병원 정보저장 성공", hospital_name + ", " + major)
+            val intent = Intent(applicationContext, LoginActivity::class.java)
+            startActivity(intent)
+        }
 
         // 클릭 리스너 할당
 //        btn_reg!!.setOnClickListener { // 회원 가입 버튼을 눌렀을 때

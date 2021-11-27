@@ -2,21 +2,16 @@ package com.knu.medifree
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.knu.medifree.functions.Account
-import com.knu.medifree.functions.Doctor
-import com.knu.medifree.functions.Patient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var et_email: EditText
@@ -49,26 +44,7 @@ class LoginActivity : AppCompatActivity() {
 
         // Listeners
         btn_signin.setOnClickListener { /* Go PHomeActivity */
-            /*
-            val test = Patient("qzngwoSZNafRWnnH4QaCy9nz3ft1")
-            Log.e("", test.searchDoctorSchedule("김찬솔", "20211122").toString())
-            Log.e("", test.searchHospital(Patient.MAJOR_0).toString())
-            Log.e("", test.searchDoctorInHospital("경북대병원", Patient.MAJOR_0).toString())
-            Log.e("", test.searchPatientReservationList().toString())
-            Log.e("", test.searchReservationInfo("reservnum1").toString())
-            //test.addNewReservation("김찬솔", "20211122", 3)
-            test.addAnswer("reservnum1", "김찬솔", listOf("첫번째", "두번째", "", "답변"))
-            */
 
-            val test = Doctor("ptLMviyveJQrgljp8nmJLc5rOvC2")
-            Log.e("", test.searchToWrite().toString())
-            Log.e("", test.searchToConfirm().toString())
-            Log.e("", test.searchSchedule("20211122").toString())
-            Log.e("", test.searchReservationInfo("reservnum1").toString())
-            test.addQuestion("reservnum1", "김찬솔", listOf("첫번째", "", "세번째", "질문"))
-            test.addDiagnosisType("reservnum1", 3)
-
-            /*
             // get string values
             val email = et_email.text.toString()
             val password = et_password.text.toString()
@@ -77,10 +53,24 @@ class LoginActivity : AppCompatActivity() {
             var name:String? = null
 
             var isCompleted = false
-            var result = Account.signIn(email, password)!!
-            name = result.first
-            type = result.second
+            val login = CoroutineScope(Dispatchers.IO).async {
+                var pair:Pair<String?, Int?> = Pair<String?, Int?>(null, null)
+                val signInMethod = async { pair = Account.signIn(email, password) }
+                signInMethod.await()
+                Log.i("signIn", pair.toString())
 
+                name = pair.first
+                type = pair.second!!
+
+                isCompleted = true
+                // Go in below method
+//            signin(email, password)
+
+            }
+
+            while(!isCompleted) {
+
+            }
             if(type == 2)//최초 로그인이 아닐 시
             {
                 startToast("찬솔아 이거 해죠")
@@ -98,15 +88,20 @@ class LoginActivity : AppCompatActivity() {
             }
             else if(type == 1)//doctor
             {
+                Log.i("doctor", "doctor")
+                val intent = Intent(this@LoginActivity.applicationContext, DHomeActivity::class.java)
+                intent.putExtra("name", name)
+                startActivity(intent)
                 startToast("doctor!")
             }
-            // Go in below method
-//            signin(email, password)
+            else
+            {
+                startToast("type error")
+            }
 
-             */
         }
         btn_signup.setOnClickListener { // Go TypeActivity
-            val intent = Intent(applicationContext, TypeActivity::class.java)
+            val intent = Intent(applicationContext, PHomeActivity::class.java)
             startActivity(intent)
         }
     }

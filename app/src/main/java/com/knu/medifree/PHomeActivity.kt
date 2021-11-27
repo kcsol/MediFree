@@ -3,7 +3,6 @@ package com.knu.medifree
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 //import com.knu.medifree.util.DBManager
@@ -20,9 +19,11 @@ class PHomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_p_home)
 
-        /*
+
         var intent = getIntent()
         Log.i("HEESUNG_DHOME", "Welcome" + intent.getStringExtra("user_id"))
+
+        var name : String = "조성민"
 
         // 객체 할당
         btn_app = findViewById<ImageButton>(R.id.p_appoint)
@@ -33,31 +34,35 @@ class PHomeActivity : AppCompatActivity() {
         btn_app.setOnClickListener {
             // 예약하기 버튼을 눌렀을 때
             // 현재 상황 : PReserveActivity로 이동
-            val intent = Intent(applicationContext, PReserveActivity::class.java)
+            val intent = Intent(applicationContext, PSelmajorActivity::class.java)
+            intent.putExtra("name",name)
             startActivity(intent)
             //finish(); 일단 뒤로 버튼을 눌러서 의사 홈으로 돌아올 수 있게 해둠.
         }
         btn_quest.setOnClickListener {
             // 문진표 버튼을 눌렀을 때
             // 현재 상황 : PCheckStatus로 이동
-            val intent = Intent(applicationContext, PQuestionaire::class.java)
+            val intent = Intent(applicationContext, PQuestionnaireActivity::class.java)
+            startActivity(intent)
             //DBManager.startActivityWithReservationReading(this@DHomeActivity, intent)
             // TODO :
         }
         btn_con.setOnClickListener {
             // 예약확인 버튼을 눌렀을 때
             // 현재 상황 :PConfirm로 이동
-            val intent = Intent(applicationContext, PConfirm::class.java)
+            val intent = Intent(applicationContext, PConfirmActivity::class.java)
+            startActivity(intent)
             //DBManager.startActivityWithReservationReading(this@DHomeActivity, intent)
             // TODO :
         }
         btn_treat.setOnClickListener {
             // PTreat 버튼을 눌렀을 때
-            // 현재 상황 :PTreat로 이동
-            val intent = Intent(applicationContext, PTreat::class.java)
+            // 현재 상황 :Office로 이동
+            val intent = Intent(applicationContext, POfficeActivity::class.java)
+            startActivity(intent)
             //DBManager.startActivityWithReservationReading(this@DHomeActivity, intent)
             // TODO :
         }
-         */
+
     }
 }
