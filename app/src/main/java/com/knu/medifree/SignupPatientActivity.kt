@@ -43,6 +43,8 @@ class SignupPatientActivity : AppCompatActivity() {
         btn_reg.setOnClickListener { // 계정 생성후 PHome으로 이동
 //            createAccount_Patient()
             val uid = Account.signUp(Account.PATIENT, et_email.text.toString(), et_password.text.toString(), et_name.text.toString(), et_tel.text.toString(), et_address.text.toString())
+            val intent = Intent(applicationContext, LoginActivity::class.java)
+            startActivity(intent)
         }
     }
 

@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.knu.medifree.adapter.HospitalAdapter
 import com.knu.medifree.adapter.MajorAdapter
+import com.knu.medifree.functions.Patient
 import java.util.ArrayList
 
 //        import com.example.promise_lab.R;
@@ -33,9 +34,9 @@ class PSelhospActivity : Activity() {
 
         var intent = getIntent()
         val user_name = intent.getStringExtra("name")
-        val major = intent.getStringExtra("major")
+        val major = intent.getIntExtra("major",-1)
         user_data = findViewById<TextView>(R.id.p_hos_data)
-        user_data.text = user_name +">" + major
+        user_data.text = user_name +">" + Patient.convertMajor(major)
 //        var intent = getIntent()
 //        Toast.makeText(this, intent.getStringExtra("major"), Toast.LENGTH_SHORT).show()
         /* PSelmajorActivity 설명
@@ -66,12 +67,9 @@ class PSelhospActivity : Activity() {
 //                    break
 //                }
 //            }
-        val tmp = ArrayList<String>()
-        tmp.add("병원1")
-        tmp.add("병원2")
-        tmp.add("병원3")
-        tmp.add("병원4")
-        tmp.add("병원5")
+        var tmp = ArrayList<String>()
+        tmp = Patient.searchHospital(major) as ArrayList<String>
+
         // dunp majors 만들어서 사용하는 부분임.
 
 //        tmp.add("123");

@@ -9,6 +9,8 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.knu.medifree.functions.Account
+import com.knu.medifree.functions.Doctor
+import com.knu.medifree.functions.Patient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -67,6 +69,7 @@ class LoginActivity : AppCompatActivity() {
                     val intent =
                         Intent(this@LoginActivity.applicationContext, PHomeActivity::class.java)
                     intent.putExtra("user_id", uid)
+                    Patient.setPatient(uid!!)
                     startActivity(intent)
                 } else if (type == 1)//doctor
                 {
@@ -74,6 +77,7 @@ class LoginActivity : AppCompatActivity() {
                     val intent =
                         Intent(this@LoginActivity.applicationContext, DHomeActivity::class.java)
                     intent.putExtra("user_id", uid)
+                    Doctor.setDoctor(uid!!)
                     startActivity(intent)
                     startToast("doctor!")
                 } else {

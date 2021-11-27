@@ -11,6 +11,7 @@ import android.widget.AdapterView.OnItemClickListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.knu.medifree.adapter.MajorAdapter
+import com.knu.medifree.functions.Patient
 import org.w3c.dom.Text
 import java.util.ArrayList
 
@@ -57,11 +58,10 @@ class PSelmajorActivity : Activity() {
 //                }
 //            }
         val tmp = ArrayList<String>()
-        tmp.add("피부과")
-        tmp.add("정형외과")
-        tmp.add("비뇨기과")
-        tmp.add("정신과")
-        tmp.add("내과")
+        tmp.add(Patient.convertMajor(0)!!)
+        tmp.add(Patient.convertMajor(1)!!)
+        tmp.add(Patient.convertMajor(2)!!)
+        tmp.add(Patient.convertMajor(3)!!)
         // dunp majors 만들어서 사용하는 부분임.
 
 
@@ -78,9 +78,26 @@ class PSelmajorActivity : Activity() {
             OnItemClickListener { parent: AdapterView<*>?, view: View?, position: Int, id: Long ->
                 major_name = adapter.getItem(position).toString()
 //                Log.d("TAG", "onCreate: majorname $major_name")
+                var major_type : Int = -1
+                if(major_name == "내과")
+                {
+                    major_type = Patient.MAJOR_INNER
+                }
+                else if(major_name == "이비인후과")
+                {
+                    major_type = Patient.MAJOR_EARNOSE
+                }
+                else if(major_name == "정신과")
+                {
+                    major_type = Patient.MAJOR_MENTAL
+                }
+                else if(major_name == "피부과")
+                {
+                    major_type = Patient.MAJOR_SKIN
+                }
                 val intent2 = Intent(applicationContext, PSelhospActivity::class.java)
                 intent2.putExtra("name", user_name)
-                intent2.putExtra("major", major_name)
+                intent2.putExtra("major", major_type)
                 startActivity(intent2)
             }
 

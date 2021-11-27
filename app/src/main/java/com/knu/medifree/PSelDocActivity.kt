@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.knu.medifree.adapter.DoctorAdapter
 import com.knu.medifree.adapter.HospitalAdapter
+import com.knu.medifree.functions.Patient
 import kotlin.String
 
 
@@ -52,18 +53,15 @@ class PSeldocActivity : Activity() {
 
         var intent = getIntent()
         val user_name = intent.getStringExtra("name")
-        val major = intent.getStringExtra("major")
+        val major = intent.getIntExtra("major",-1)
         val hos = intent.getStringExtra("hospital")
         user_data = findViewById<TextView>(R.id.p_sel_doc_data)
-        user_data.text = user_name +">" + major + ">" + hos
+        user_data.text = user_name +">" + Patient.convertMajor(major) + ">" + hos
 
-        val tmp = java.util.ArrayList<String>()
-        tmp.add("의사1")
-        tmp.add("의사2")
-        tmp.add("의사3")
-        tmp.add("의사4")
-        tmp.add("의사5")
-
+        var tmp = ArrayList<String>()
+        tmp = Patient.searchDoctorInHospital(hos!!,major) as ArrayList<String>
+//        Log.e("", Patient.searchDoctorInHospital(hos!!, major).toString())
+//        Toast.makeText(this, tmp[0], Toast.LENGTH_SHORT).show()
 //        var intent = getIntent()
 //        Major = intent.getStringExtra("major")!!
 //        Hospital = intent.getStringExtra("hospital")!!
@@ -87,6 +85,8 @@ class PSeldocActivity : Activity() {
 ////                DBManager.startActivityWithPatientReading(cur_uid, this@PSeldocActivity, intent2)
 //                finish()
 //            }
+
+
         val adapter = HospitalAdapter(this, tmp) //tmp에 list_majors넣으면 됨
         val listView = findViewById<ListView>(R.id.listview_doctor)
         listView.adapter = adapter
