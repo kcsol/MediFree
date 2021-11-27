@@ -15,21 +15,16 @@ class Account {
 
 
         /*
-         * Usage:
-            signUp(Account.PATIENT, email, password, name, phone, address)
-            signUp(Account.DOCTOR, email, password, name, phone, "")
          * 모든 작업이 성공적으로 수행되면 uid를 반환합니다.
          * 중복된 email로 signUp을 시도하면 null을 반환합니다.
          * email 혹은 password 양식이 잘못되면 null을 반환합니다.
          * TYPE_PATIENT일 때, address가 없으면 null을 반환합니다.
          */
         fun signUp(userType:Int, email:String, password:String, name:String, phone:String, address:String): String? {
-
-            if(userType == PATIENT && address == "") {
-                Log.w("Account.signUp", "Patient 정보에 Address가 빈 값입니다.")
+            if (userType == PATIENT && address == "") {
+                Log.e("Account.signUp", "환자의 정보에 Address가 빈 값입니다.")
                 return null
             }
-
 
             var createuserTask = mAuth.createUserWithEmailAndPassword(email, password)
             while (!createuserTask.isComplete) {}
@@ -40,17 +35,27 @@ class Account {
             val uid = createuserTask.result!!.user!!.uid
             
             val user = hashMapOf<String, Any?>(
-                "userType" to userType,
+                "userType" to PATIENT,
                 "name" to name,
                 "phone" to phone,
-                "address" to address
+                "address" to address,
+                "예약번호" to listOf("")
             )
             DBManager.save(DBManager.PROFILE, uid, user)
 
 
             return uid
         }
+        fun signUpDoctor(name:String, hospital:String, major:String) {
+            val doctor = hashMapOf<String, Any?>(
+                "예약할것" to listOf(""),
+                "작성할것" to listOf("")
+            )
+            DBManager.save(DBManager.DOCTOR, name, doctor)
 
+            DBManager.add(DBManager.HOSPITAL, hospital, major, name)
+            DBManager.add(DBManager.MAJOR, major, "병원명", hospital)
+        }
 
         /*
          * 로그인이 성공하면 Pair(uid, userType)을 반환합니다.
