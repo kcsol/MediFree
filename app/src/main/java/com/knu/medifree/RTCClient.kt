@@ -34,7 +34,8 @@ class RTCClient(
 
     private val iceServer = listOf(
             PeerConnection.IceServer.builder("stun:stun.l.google.com:19302")
-                    .createIceServer()
+                    .createIceServer(),
+            PeerConnection.IceServer.builder("turn:numb.viagenie.ca").setUsername("werbrtc@live.com").setPassword("muazkh").createIceServer()
     )
 
     private val peerConnectionFactory by lazy { buildPeerConnectionFactory() }
