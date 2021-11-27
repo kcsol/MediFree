@@ -6,8 +6,10 @@ import android.util.Log
 class Patient {
 
     companion object {
-        val MAJOR_0 = 0
-        val MAJOR_1 = 1
+        val MAJOR_INNER = 0
+        val MAJOR_EARNOSE = 1
+        val MAJOR_MENTAL = 2
+        val MAJOR_SKIN = 3
         // 필요한 MAJOR 추가, naming
 
 
@@ -22,8 +24,10 @@ class Patient {
         fun convertMajor(majorType:Int): String? {
             var major:String
             when(majorType) {
-                MAJOR_0 -> major = "내과"
-                MAJOR_1 -> major = "이비인후과"
+                MAJOR_INNER -> major = "내과"
+                MAJOR_EARNOSE -> major = "이비인후과"
+                MAJOR_MENTAL -> major = "정신과"
+                MAJOR_SKIN -> major = "피부과"
                 // 필요한 MAJOR 추가, naming
 
                 else -> {
@@ -68,8 +72,6 @@ class Patient {
         }
 
         fun addNewReservation(doctorName:String, date:String, time:Int) {
-            val reservNum = "testabcdefgsomethingcomplexstringarray22"
-
             val reservation = hashMapOf(
                 "diagnosis_date" to date,
                 "diagnosis_time" to time,
@@ -81,11 +83,17 @@ class Patient {
                 "질문" to listOf("", "", "", ""),
                 "답변" to listOf("", "", "", "")
             )
-            DBManager.save(DBManager.RESERVATION, reservNum, reservation)
+            val reservNum = DBManager.saveWithoutID(DBManager.RESERVATION, reservation)!!
 
             val doctor = DBManager.load(DBManager.DOCTOR, doctorName)
-            val dReservList = doctor!![date] as MutableList<String>
+            var dReservList:MutableList<String>
+            try {
+                dReservList = doctor!![date] as MutableList<String>
+            } catch (e:Exception) {
+                dReservList = mutableListOf<String>("", "", "", "")
+            }
             dReservList[time] = reservNum
+
             DBManager.update(DBManager.DOCTOR, doctorName, date, dReservList)
             DBManager.add(DBManager.DOCTOR, doctorName, "작성할것", reservNum)
             DBManager.add(DBManager.PROFILE, uid, "예약번호", reservNum)

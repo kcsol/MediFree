@@ -43,6 +43,22 @@ class DBManager {
             DB.collection(collection!!).document(id).set(obj)
         }
 
+        fun saveWithoutID(objectType:Int, obj:HashMap<String, Any?>): String? {
+            val collection = convertType(objectType)
+
+            val docRef = DB.collection(collection!!).document()
+            var task = docRef.set(obj)
+            while (!task.isComplete) {}
+            if(!task.isSuccessful) {
+                Log.e("DBManager.saveWithoutID", "문서 생성에 실패했습니다.")
+                return null
+            }
+            val id = docRef.id
+
+
+            return id
+        }
+
         fun load(objectType:Int, id:String): Map<String, Any>? {
             val collection = convertType(objectType)
 
