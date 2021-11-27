@@ -42,17 +42,9 @@ class SignupPatientActivity : AppCompatActivity() {
         // 클릭 리스너 할당
         btn_reg.setOnClickListener { // 계정 생성후 PHome으로 이동
 //            createAccount_Patient()
-            CoroutineScope(Dispatchers.IO).launch {
-                var uid:String? = null
-                val signUpMethod = async {
-                    uid = Account.signUp(Account.TYPE_PATIENT,
-                        et_email.text.toString(), et_password.text.toString(),
-                        et_name.text.toString(), et_tel.text.toString(), et_address.text.toString())
-                }
-
-                signUpMethod.await()
-                Log.i("signUp", uid.toString())
-            }
+            val uid = Account.signUp(Account.PATIENT, et_email.text.toString(), et_password.text.toString(), et_name.text.toString(), et_tel.text.toString(), et_address.text.toString())
+            val intent = Intent(applicationContext, LoginActivity::class.java)
+            startActivity(intent)
         }
     }
 

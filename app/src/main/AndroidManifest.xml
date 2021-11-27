@@ -60,5 +60,7 @@
         <activity android:name=".DAppActivity" />
         <activity android:name=".PConfirmActivity"/>
         <activity android:name=".POfficeActivity"/>
+        <activity android:name=".DQuestWriteActivity"/>
+        <activity android:name=".DQuestConfActivity"/>
     </application>
 </manifest>

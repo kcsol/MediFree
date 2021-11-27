@@ -1,6 +1,7 @@
 package com.knu.medifree.adapter
 
 
+import android.app.DatePickerDialog
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,11 +14,12 @@ import com.knu.medifree.functions.Patient
 import java.util.ArrayList
 
 
-class QuestionnaireAdapter(context: Context?, data: ArrayList<String>) :
+class ConfAdapter(context: Context?, reservations: ArrayList<String>) :
     BaseAdapter() {
     var mContext: Context? = null
     var mLayoutInflater: LayoutInflater? = null
     var sample: ArrayList<String>
+
     override fun getCount(): Int {
         return sample.size
     }
@@ -31,16 +33,20 @@ class QuestionnaireAdapter(context: Context?, data: ArrayList<String>) :
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val view: View = mLayoutInflater!!.inflate(R.layout.questionnaire_item, null)
-        val major = view.findViewById<TextView>(R.id.questionnaire)
+        val view: View = mLayoutInflater!!.inflate(R.layout.conf_item, null)
+        val date = view.findViewById<TextView>(R.id.office_p_date)
+        val time = view.findViewById<TextView>(R.id.office_p_time)
+        val type = view.findViewById<TextView>(R.id.office_p_diag_type)
+
+        //DB에서 각 reservation에 대한 환자이름, 시간 load
         val test : Map<String, Any?>
 //        val patient = Patient("qzngwoSZNafRWnnH4QaCy9nz3ft1") // -> reservation으로 변경해야함
 //        Log.e("laod", "DBLoad")
 //        test = patient.searchReservationInfo(sample[position])!!
         test = Patient.searchReservationInfo(sample[position])!!
-        var date : String
+
         Log.e("환자이름", test["patient_name"].toString())
-        date = test["diagnosis_date"].toString()
+        date.text = test["diagnosis_date"].toString()
         var contime = test["diagnosis_time"].toString()
         if(contime.toInt() == 0)
         {
@@ -58,14 +64,20 @@ class QuestionnaireAdapter(context: Context?, data: ArrayList<String>) :
         {
             contime = "16:00"
         }
+        time.text = contime
+        when(test["diagnosis_type"].toString()) {
+            "1" -> type.setText("대면")
+            "2" -> type.setText("비대면")
+            else -> type.setText("미결정")
+        }
 
-        major.text = date + " / " + contime
+
         return view
     }
 
     init {
         mContext = context
-        sample = data
+        sample = reservations
         mLayoutInflater = LayoutInflater.from(mContext)
     }
 }

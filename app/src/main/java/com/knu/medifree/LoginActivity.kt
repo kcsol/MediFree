@@ -9,6 +9,8 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.knu.medifree.functions.Account
+import com.knu.medifree.functions.Doctor
+import com.knu.medifree.functions.Patient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -49,59 +51,42 @@ class LoginActivity : AppCompatActivity() {
             val email = et_email.text.toString()
             val password = et_password.text.toString()
 
-            var type:Int? = null
-            var name:String? = null
-
             var isCompleted = false
-            val login = CoroutineScope(Dispatchers.IO).async {
-                var pair:Pair<String?, Int?> = Pair<String?, Int?>(null, null)
-                val signInMethod = async { pair = Account.signIn(email, password) }
-                signInMethod.await()
-                Log.i("signIn", pair.toString())
+            val login = Account.signIn(email, password)
+            if(login != null) {
+                val uid = login.first
+                val type = login.second
 
-                name = pair.first
-                type = pair.second!!
-
-                isCompleted = true
-                // Go in below method
-//            signin(email, password)
-
+                if (type == 2)//최초 로그인이 아닐 시
+                {
+                    startToast("찬솔아 이거 해죠")
+                    //Parameter : email, password
+                    //return : ID type -> patient : 0
+                    //                    doctor : 1
+                    //        , name
+                } else if (type == 0)//patient
+                {
+                    val intent =
+                        Intent(this@LoginActivity.applicationContext, PHomeActivity::class.java)
+                    intent.putExtra("user_id", uid)
+                    Patient.setPatient(uid!!)
+                    startActivity(intent)
+                } else if (type == 1)//doctor
+                {
+                    Log.i("doctor", "doctor")
+                    val intent =
+                        Intent(this@LoginActivity.applicationContext, DHomeActivity::class.java)
+                    intent.putExtra("user_id", uid)
+                    Doctor.setDoctor(uid!!)
+                    startActivity(intent)
+                    startToast("doctor!")
+                } else {
+                    startToast("type error")
+                }
             }
-
-            while(!isCompleted) {
-
-            }
-            if(type == 2)//최초 로그인이 아닐 시
-            {
-                startToast("찬솔아 이거 해죠")
-                //Parameter : email, password
-                //return : ID type -> patient : 0
-                //                    doctor : 1
-                //        , name
-            }
-            else if(type == 0)//patient
-            {
-                Log.i("123", "123123")
-                val intent = Intent(this@LoginActivity.applicationContext, PHomeActivity::class.java)
-                intent.putExtra("name", name)
-                startActivity(intent)
-            }
-            else if(type == 1)//doctor
-            {
-                Log.i("doctor", "doctor")
-                val intent = Intent(this@LoginActivity.applicationContext, DHomeActivity::class.java)
-                intent.putExtra("name", name)
-                startActivity(intent)
-                startToast("doctor!")
-            }
-            else
-            {
-                startToast("type error")
-            }
-
         }
         btn_signup.setOnClickListener { // Go TypeActivity
-            val intent = Intent(applicationContext, PHomeActivity::class.java)
+            val intent = Intent(applicationContext, TypeActivity::class.java)
             startActivity(intent)
         }
     }

@@ -1,10 +1,8 @@
 package com.knu.medifree.functions
 
-import android.content.Context
 import android.util.Log
-import android.widget.Toast
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+
 
 class DBManager {
 
@@ -45,6 +43,22 @@ class DBManager {
             DB.collection(collection!!).document(id).set(obj)
         }
 
+        fun saveWithoutID(objectType:Int, obj:HashMap<String, Any?>): String? {
+            val collection = convertType(objectType)
+
+            val docRef = DB.collection(collection!!).document()
+            var task = docRef.set(obj)
+            while (!task.isComplete) {}
+            if(!task.isSuccessful) {
+                Log.e("DBManager.saveWithoutID", "문서 생성에 실패했습니다.")
+                return null
+            }
+            val id = docRef.id
+
+
+            return id
+        }
+
         fun load(objectType:Int, id:String): Map<String, Any>? {
             val collection = convertType(objectType)
 
@@ -72,6 +86,10 @@ class DBManager {
             val doc = load(objectType, id)
             try {
                 val newField = doc!![field] as MutableList<String>
+                for(i in newField) {
+                    if(i == new)
+                        return
+                }
                 newField.add(new)
                 DB.collection(collection!!).document(id)
                     .update(
@@ -79,9 +97,16 @@ class DBManager {
                     )
             }
             catch (e:Exception) {
-                Log.e("DBManager.add", "추가하려는 Field가 배열이 아닙니다.")
-                return
+                Log.e("DBManager.add", "추가하려는 Field가 배열이 아닙니다. Field를 새로 생성합니다.")
+
+                DB.collection(collection!!).document(id).update(field, listOf(new))
             }
+        }
+
+        fun delete(objectType:Int, id:String) {
+            val collection = convertType(objectType)
+
+            DB.collection(collection!!).document(id).delete()
         }
 
     }

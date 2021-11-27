@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
+import com.knu.medifree.functions.Patient
+
 //import com.knu.medifree.util.DBManager
 
 
@@ -22,8 +24,9 @@ class PHomeActivity : AppCompatActivity() {
 
         var intent = getIntent()
         Log.i("HEESUNG_DHOME", "Welcome" + intent.getStringExtra("user_id"))
-
-        var name : String = "조성민"
+        val uid = intent.getStringExtra("user_id")!!
+        Patient.setPatient(uid)
+        val name = Patient.patient["name"] as String
 
         // 객체 할당
         btn_app = findViewById<ImageButton>(R.id.p_appoint)
@@ -51,6 +54,7 @@ class PHomeActivity : AppCompatActivity() {
             // 예약확인 버튼을 눌렀을 때
             // 현재 상황 :PConfirm로 이동
             val intent = Intent(applicationContext, PConfirmActivity::class.java)
+            intent.putExtra("name",name)
             startActivity(intent)
             //DBManager.startActivityWithReservationReading(this@DHomeActivity, intent)
             // TODO :

@@ -12,7 +12,7 @@ import android.view.Window
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
+import com.knu.medifree.functions.Patient
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -34,6 +34,7 @@ class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var currentdate: String
     lateinit var dialog: Dialog
     lateinit var user_data : TextView
+    lateinit var currenttime : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_p_sel_time)
@@ -42,14 +43,14 @@ class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
         var intent = getIntent()
         val user_name = intent.getStringExtra("name")
         patient_name = user_name!!
-        val major2 = intent.getStringExtra("major")
-        major = major2!!
+        val major2 = intent.getIntExtra("major",-1)
+        major = Patient.convertMajor(major2)!!
         val hos = intent.getStringExtra("hospital")
         hospital = hos!!
         val doc = intent.getStringExtra("doctor")
         doctor_name = doc!!
         user_data = findViewById<TextView>(R.id.p_time_data)
-        user_data.text = patient_name +" " + major + " " + hospital + " " + doctor_name
+        user_data.text = patient_name +">" + Patient.convertMajor(major2) + ">" + hospital + ">" + doctor_name
 //        textView.text = "none"
 //        Toast.makeText(this, intent.getStringExtra("doctor"), Toast.LENGTH_SHORT).show()
 //            intent.getStringExtra("hospital_name") + " " + intent.getStringExtra("name") + " is selected"
@@ -142,9 +143,21 @@ class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
             time
             -> db에 올리는 함수 필요함
             */
-            startToast(" 예약요청을 성공하였습니다. 요청이 완료되면 예약목록에 추가됩니다.")
-            val intent = Intent(applicationContext, PHomeActivity::class.java)
-            startActivity(intent)
+            if(currenttime.toInt() == 10)
+                currenttime = 0.toString()
+            else if(currenttime.toInt() == 11)
+                currenttime = 1.toString()
+            else if(currenttime.toInt() == 15)
+                currenttime = 2.toString()
+            else if(currenttime.toInt() == 16)
+                currenttime = 3.toString()
+
+            Toast.makeText(this,currenttime,Toast.LENGTH_LONG).show()
+            Patient.addNewReservation(doctor_name,currentdate, currenttime.toInt())
+
+//            startToast(" 예약요청을 성공하였습니다. 요청이 완료되면 예약목록에 추가됩니다.")
+//            val intent2 = Intent(applicationContext, PHomeActivity::class.java)
+//            startActivity(intent2)
         }
     }
 
@@ -159,15 +172,16 @@ class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
 //            DBManager.createReservation(res)
 //            //PHomeActivity로가면서 요청 기다리기
             startToast(" 예약요청을 성공하였습니다. 요청이 완료되면 예약목록에 추가됩니다.")
-            val intent2 = Intent(applicationContext, PHomeActivity::class.java)
-            startActivity(intent2)
+            val intent3 = Intent(applicationContext, PHomeActivity::class.java)
+            startActivity(intent3)
             finish()
         }
     }
 
     var RadioClick = View.OnClickListener { v ->
-        time = v.tag.toString()
-        startToast(time + " selected")
+        time = v.tag.toString().substring(0,2)
+        currenttime = time as String
+        startToast(currenttime + " selected")
     }
     var checkedChangeListener =
         RadioGroup.OnCheckedChangeListener { group, checkedId ->

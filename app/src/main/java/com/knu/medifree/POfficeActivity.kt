@@ -1,11 +1,17 @@
 package com.knu.medifree
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
 import android.widget.Button
 import android.widget.ListView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.knu.medifree.adapter.ReservationAdapter
+import com.knu.medifree.adapter.ReservationpAdapter
+import com.knu.medifree.functions.Patient
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -26,10 +32,10 @@ class POfficeActivity : AppCompatActivity() {
         val test = "${year}/${month+1}/${date}"
         Log.e("today", test)
 
-        val patient_name = "조성민"
-        val testdate = "20211126"
-        list_reservations = findres(patient_name, testdate)
-        var adapter : ReservationAdapter = ReservationAdapter(this, list_reservations)
+        var tmp = ArrayList<String>()
+        tmp = Patient.searchPatientReservationList() as ArrayList<String>
+
+        var adapter : ReservationpAdapter = ReservationpAdapter(this, tmp)
         listView = findViewById<ListView>(R.id.listview_p_office_patient)
         listView.adapter = adapter
 
@@ -41,9 +47,4 @@ class POfficeActivity : AppCompatActivity() {
     }
 
     //doctorname, date input -> reservations return
-    private fun findres (name : String, date : String) : ArrayList<String>  {
-        //test용
-        val reservations = arrayListOf("test1", "test2")
-        return reservations
-    }
 }

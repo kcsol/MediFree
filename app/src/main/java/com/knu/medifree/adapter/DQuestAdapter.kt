@@ -1,7 +1,6 @@
 package com.knu.medifree.adapter
 
 
-import android.app.DatePickerDialog
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,11 +10,9 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import com.knu.medifree.R
 import com.knu.medifree.functions.Doctor
-import com.knu.medifree.functions.Patient
-import java.util.ArrayList
 
 
-class ReservationAdapter(context: Context?, reservations: List<String>) :
+class DQuestAdapter(context: Context?, reservations: List<String>) :
     BaseAdapter() {
     var mContext: Context? = null
     var mLayoutInflater: LayoutInflater? = null
@@ -39,27 +36,26 @@ class ReservationAdapter(context: Context?, reservations: List<String>) :
 
         if (view == null) {
             convertview = LayoutInflater.from(parent?.context)
-                .inflate(R.layout.listview_office_untact, parent, false)
+                .inflate(R.layout.listview_quest_item, parent, false)
+
             holder = ViewHolder()
-            holder.name = convertview!!.findViewById<TextView>(R.id.office_untact_patient)
-            holder.time = convertview.findViewById<TextView>(R.id.office_untact_time)
-            holder.type = convertview.findViewById<TextView>(R.id.office_diag_type)
+            holder.name = convertview!!.findViewById<TextView>(R.id.listview_quest_item_name)
+            holder.date = convertview.findViewById<TextView>(R.id.listview_quest_item_date)
+            holder.time = convertview.findViewById<TextView>(R.id.listview_quest_item_time)
             convertview.tag = holder
         }
 
         else {
-            holder = view?.tag as ViewHolder
+            holder = view?.tag as DQuestAdapter.ViewHolder
             convertview = view
             return convertview
         }
 
-        //DB에서 각 reservation에 대한 환자이름, 시간 load
         val reservation : Map<String, Any?>
-
         reservation = Doctor.searchReservationInfo(sample[position])!!
 
         Log.e("환자이름", reservation["patient_name"].toString())
-        holder.name?.text = reservation["patient_name"].toString()
+        holder.name?.text = "환자명 : " + reservation["patient_name"].toString()
         when(reservation["diagnosis_time"].toString()) {
             "0" -> holder.time?.text = "10:00"
             "1" -> holder.time?.text = "11:00"
@@ -67,20 +63,13 @@ class ReservationAdapter(context: Context?, reservations: List<String>) :
             "3" -> holder.time?.text = "16:00"
         }
 
-        when(reservation["diagnosis_type"].toString()) {
-            "1" -> holder.type?.setText("대면")
-            "2" -> holder.type?.setText("비대면")
-            else -> holder.type?.setText("미결정")
-        }
-
-
         return convertview
     }
 
     private class ViewHolder {
         var name : TextView? = null
         var time : TextView? = null
-        var type : TextView? = null
+        var date : TextView? = null
     }
 
     init {

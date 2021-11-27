@@ -81,7 +81,7 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="#0070C0"
-                android:text="진료요청 목록"
+                android:text="예약 목록"
                 android:textColor="#FFFFFF"
                 android:textSize="28sp"
                 android:textStyle="bold" />

@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,10 +16,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.knu.medifree.adapter.Quest
 import com.knu.medifree.adapter.QuestAdapter
 import com.knu.medifree.adapter.QuestionnaireAdapter
+import com.knu.medifree.functions.Patient
 
 class PQuestActivity : AppCompatActivity() {
-    lateinit var list_quest : ArrayList<Quest>
-    lateinit var question : String
+    lateinit var question : ArrayList<String>
     lateinit var tv_quest1 : TextView
     lateinit var et_quest1 : EditText
     lateinit var tv_quest2 : TextView
@@ -42,11 +43,19 @@ class PQuestActivity : AppCompatActivity() {
         et_quest4=findViewById<EditText>(R.id.et_quest_item4)
         btn_submit = findViewById<Button>(R.id.p_quest_submit_btn)
 
-        tv_quest1.setText("질문1")
-        tv_quest2.setText("질문2")
-        tv_quest3.setText("질문3")
-        tv_quest4.setText("질문4")
-        var questArray : Array<String>
+
+
+        val intent = getIntent()
+        val res = intent.getStringExtra("res")
+        val test : Map<String, Any?>
+        test = Patient.searchReservationInfo(res!!)!!
+        Log.e("환자이름", test["patient_name"].toString())
+        val quest_list : ArrayList<String> = test["질문"] as ArrayList<String>
+        val doc_name : String = test["doctor_name"] as String
+        tv_quest1.setText(quest_list[0])
+        tv_quest2.setText(quest_list[1])
+        tv_quest3.setText(quest_list[2])
+        tv_quest4.setText(quest_list[3])
         /*questArray에 문진표 받아오기
         *
         * for(i in 0 받아온 갯수)
@@ -66,8 +75,13 @@ class PQuestActivity : AppCompatActivity() {
                     dialog.dismiss()
                     Toast.makeText(this, "예", Toast.LENGTH_SHORT).show()
                     /*edit Text 내용을 db에 업로드 하는 함수*/
-                    val intent = Intent(applicationContext, PHomeActivity::class.java)
-                    startActivity(intent)
+                    question.add(et_quest1.text.toString())
+                    question.add(et_quest2.text.toString())
+                    question.add(et_quest3.text.toString())
+                    question.add(et_quest4.text.toString())
+                    Patient.addAnswer(res,doc_name,question)
+//                    val intent = Intent(applicationContext, PHomeActivity::class.java)
+//                    startActivity(intent)
                 }
                 .setNegativeButton("아니오") { dialog, _ ->
                     dialog.dismiss()
