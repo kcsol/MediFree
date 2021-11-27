@@ -35,7 +35,7 @@ class Account {
             val uid = createuserTask.result!!.user!!.uid
             
             val user = hashMapOf<String, Any?>(
-                "userType" to PATIENT,
+                "userType" to userType,
                 "name" to name,
                 "phone" to phone,
                 "address" to address,
