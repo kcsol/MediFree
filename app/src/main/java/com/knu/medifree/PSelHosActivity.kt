@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.ListView
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -23,10 +24,20 @@ class PSelhospActivity : Activity() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var hospital_name: String
     private lateinit var major_name: String
+    lateinit var user_data : TextView
+    lateinit var tv : TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_p_sel_major)
+        setContentView(R.layout.activity_p_sel_hos)
 
+
+        var intent = getIntent()
+        val user_name = intent.getStringExtra("name")
+        val major = intent.getStringExtra("major")
+        user_data = findViewById<TextView>(R.id.p_hos_data)
+        user_data.text = user_name +" " + major
+//        var intent = getIntent()
+//        Toast.makeText(this, intent.getStringExtra("major"), Toast.LENGTH_SHORT).show()
         /* PSelmajorActivity 설명
      *       - activity_p_sel_doc.xml 참조.
      *       - PSelhospaActivity에서 hospital name을 선택해서 희성이가 구현한 startmajor~~~로 major Arraylist를 가져왔음.
@@ -40,9 +51,9 @@ class PSelhospActivity : Activity() {
 //            Log.e("hos name :", hospital_name!!)
 
         // 현재 uid 가져오기.
-        mAuth = FirebaseAuth.getInstance()
-        var intent = getIntent()
-        val major_name = intent.getStringExtra("major")
+//        mAuth = FirebaseAuth.getInstance()
+//        major_name = intent.getStringExtra("major")!!
+
 
 
         // Major_list
@@ -63,7 +74,6 @@ class PSelhospActivity : Activity() {
         tmp.add("병원5")
         // dunp majors 만들어서 사용하는 부분임.
 
-
 //        tmp.add("123");
 //        tmp.add("123");tmp.add("123");tmp.add("123");tmp.add("123");tmp.add("123");
         // tmp부분 지우고 넣으면 됨
@@ -71,15 +81,18 @@ class PSelhospActivity : Activity() {
 
         // Attach the adapter to a ListView
         // Attach the adapter to a ListView
-        val listView = findViewById<ListView>(R.id.listView_hos)
+        val listView = findViewById<ListView>(R.id.listview_hospital)
         listView.adapter = adapter
         listView.onItemClickListener =
             OnItemClickListener { parent: AdapterView<*>?, view: View?, position: Int, id: Long ->
                 hospital_name = adapter.getItem(position).toString()
 //                Log.d("TAG", "onCreate: majorname $major_name")
-                val intent = Intent(applicationContext, PSelDocActivity::class.java)
-                intent.putExtra("major", major_name)
-                startActivity(intent)
+
+                var intent2 = Intent(applicationContext, PSeldocActivity::class.java)
+                intent2.putExtra("name", user_name)
+                intent2.putExtra("major", major)
+                intent2.putExtra("hospital", hospital_name)
+                startActivity(intent2)
             }
     }
 }

@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F3F3F3"
-    tools:context=".DResCheckActivity">
+    tools:context=".PConfirmActivity">
 
 
     <LinearLayout
-        android:id="@+id/linearLayout1"
+        android:id="@+id/linearLayout_p_rcheck"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
         <ImageButton
-            android:id="@+id/backtodhome"
+            android:id="@+id/backtophome"
             android:layout_width="39dp"
             android:layout_height="52dp"
             android:layout_gravity="center"
@@ -64,10 +64,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout1">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout_p_rcheck">
 
         <LinearLayout
-            android:id="@+id/linearLayout2"
+            android:id="@+id/linearLayout_p_rcheck2"
             android:layout_width="360dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -76,7 +76,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <Button
-                android:id="@+id/d_req_first"
+                android:id="@+id/p_req_first"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -86,20 +86,20 @@
                 android:textSize="28sp"
                 android:textStyle="bold" />
 
-<!--            <Button-->
-<!--                android:id="@+id/d_req_origin"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="50dp"-->
-<!--                android:layout_weight="1"-->
-<!--                android:textColor="#616161"-->
-<!--                android:background="#d6d6d6"-->
-<!--                android:text="기존환자"-->
-<!--                android:textSize="28sp"/>-->
+            <!--            <Button-->
+            <!--                android:id="@+id/d_req_origin"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="50dp"-->
+            <!--                android:layout_weight="1"-->
+            <!--                android:textColor="#616161"-->
+            <!--                android:background="#d6d6d6"-->
+            <!--                android:text="기존환자"-->
+            <!--                android:textSize="28sp"/>-->
 
         </LinearLayout>
         <ListView
 
-            android:id="@+id/listview_patientrequest"
+            android:id="@+id/listview_myrequest"
             android:layout_gravity="center_horizontal"
             android:layout_width="360dp"
             android:layout_height="wrap_content">

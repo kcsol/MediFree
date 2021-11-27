@@ -22,7 +22,6 @@
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -43,17 +42,23 @@
             android:theme="@style/Theme.FullScreen"/>
         <activity android:name=".SignupPatientActivity" />
         <activity android:name=".SignupDoctor2Activity" />
-        <activity android:name=".ResCheckActivity" />
         <activity android:name=".PSelmajorActivity" />
         <activity android:name=".PSelhospActivity" />
+        <activity android:name=".PSeldocActivity"/>
+        <activity android:name=".PSeltimeActivity"/>
         <activity android:name=".PHomeActivity" />
         <activity android:name=".TypeActivity" />
-        <activity android:name=".PQuestActivity" />
+        <activity android:name=".PQuestionnaireActivity" />
+        <activity android:name=".PQuestActivity"
+            android:windowSoftInputMode="adjustPan"
+            >
+        </activity>
         <activity android:name=".LoadingActivity" />
         <activity android:name=".DQuestActivity" />
         <activity android:name=".DOfficeActivity" />
         <activity android:name=".DHomeActivity" />
         <activity android:name=".DAppActivity" />
+        <activity android:name=".PConfirmActivity"/>
+        <activity android:name=".POfficeActivity"/>
     </application>
-
 </manifest>

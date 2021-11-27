@@ -19,17 +19,17 @@ class DHomeActivity : AppCompatActivity() {
         btn_office = findViewById<ImageButton>(R.id.d_office)
 
         btn_app.setOnClickListener() {
-            var intent = Intent(applicationContext, DAppActivity::class.java)
+            val intent = Intent(applicationContext, DAppActivity::class.java)
             startActivity(intent)
         }
 
         btn_quest.setOnClickListener() {
-            var intent = Intent(applicationContext, DQuestActivity::class.java)
+            val intent = Intent(applicationContext, DQuestActivity::class.java)
             startActivity(intent)
         }
 
         btn_office.setOnClickListener() {
-            var intent = Intent(applicationContext, DOfficeActivity::class.java)
+            val intent = Intent(applicationContext, DOfficeActivity::class.java)
             startActivity(intent)
         }
 

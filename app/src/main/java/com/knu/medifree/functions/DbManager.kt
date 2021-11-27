@@ -6,60 +6,83 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-class DbManager(val context: Context) {
+class DBManager {
+
     companion object {
-        val TYPE_PATIENT = 0
-        val TYPE_DOCTOR = 1
-    }
+
+        val PROFILE = 0
+        val HOSPITAL = 1
+        val DOCTOR = 2
+        val MAJOR = 3
+        val RESERVATION = 4
+        // 필요한 Data Type 추가
+
+        val DB = FirebaseFirestore.getInstance()
 
 
-    val mAuth = FirebaseAuth.getInstance()
-    val db = FirebaseFirestore.getInstance()
+        fun convertType(objectType:Int): String? {
+            var collection:String
+            when(objectType) {
+                PROFILE -> collection = "Profile"
+                HOSPITAL -> collection = "hospital"
+                DOCTOR -> collection = "doctor"
+                MAJOR -> collection = "Major"
+                RESERVATION -> collection = "Reservation"
+                // 필요한 Data Type 추가
 
-
-    /*
-     * account.signUp(emailString, passwordString)
-     * firebase상에 중복된 email이 존재하면 null을 return합니다.
-     * email 혹은 password가 양식이 잘못되면 null을 return합니다.
-     */
-    fun signUp(type:Int, email:String, password:String, name:String, phone:String): String? {
-
-        var uid:String? = null
-        // Firebase 계정 생성
-        mAuth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener {
-                    task->
-                if(task.isSuccessful) {
-                    Toast.makeText(context, "회원가입에 성공했습니다.", Toast.LENGTH_SHORT).show()
-                    Log.i("register", "성공")
-
-                    // DB 저장
-                    uid = mAuth.currentUser!!.uid
-                    var user = hashMapOf<String, Any>(
-                        "userType" to type,
-                        "name" to name,
-                        "phone" to phone
-                    )
-
-                    Log.i("uid", uid.toString())
-                    db.collection("Profile").document(uid.toString()).set(user)
-                        .addOnSuccessListener {
-                            Log.i("DB", "계정 저장 성공")
-                        }
-                        .addOnFailureListener {
-                            Log.i("DB", "계정 저장 실패")
-                        }
-                }
-                else {
-                    Toast.makeText(context, "회원가입에 실패했습니다.", Toast.LENGTH_SHORT).show()
-                    Log.i("register", "실패")
+                else -> {
+                    Log.e("DBManager.load", "잘못된 type이 전달되었습니다.")
+                    return null
                 }
             }
 
-        return uid
+            return collection
+        }
+
+        fun save(objectType:Int, id:String, obj:HashMap<String, Any?>) {
+            val collection = convertType(objectType)
+
+            DB.collection(collection!!).document(id).set(obj)
+        }
+
+        fun load(objectType:Int, id:String): Map<String, Any>? {
+            val collection = convertType(objectType)
+
+            val docRef = DB.collection(collection!!).document(id)
+            val task = docRef.get()
+            while(!task.isComplete) {}
+            val doc = task.result!!.data
+
+
+            return doc
+        }
+
+        fun update(objectType:Int, id:String, field:String, new:Any) {
+            val collection = convertType(objectType)
+
+            DB.collection(collection!!).document(id)
+                .update(
+                    field, new
+                )
+        }
+
+        fun add(objectType:Int, id:String, field:String, new:String) {
+            val collection = convertType(objectType)
+
+            val doc = load(objectType, id)
+            try {
+                val newField = doc!![field] as MutableList<String>
+                newField.add(new)
+                DB.collection(collection!!).document(id)
+                    .update(
+                        field, newField
+                    )
+            }
+            catch (e:Exception) {
+                Log.e("DBManager.add", "추가하려는 Field가 배열이 아닙니다.")
+                return
+            }
+        }
+
     }
-
-
-
-
 }

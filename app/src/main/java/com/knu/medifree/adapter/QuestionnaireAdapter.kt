@@ -11,7 +11,7 @@ import com.knu.medifree.R
 import java.util.ArrayList
 
 
-class HospitalAdapter(context: Context?, data: ArrayList<String>) :
+class QuestionnaireAdapter(context: Context?, data: ArrayList<String>) :
     BaseAdapter() {
     var mContext: Context? = null
     var mLayoutInflater: LayoutInflater? = null
@@ -29,9 +29,9 @@ class HospitalAdapter(context: Context?, data: ArrayList<String>) :
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val view: View = mLayoutInflater!!.inflate(R.layout.hos_item, null)
-        val hospital = view.findViewById<TextView>(R.id.hospital_name)
-        hospital.text = sample[position]
+        val view: View = mLayoutInflater!!.inflate(R.layout.questionnaire_item, null)
+        val major = view.findViewById<TextView>(R.id.questionnaire)
+        major.text = sample[position]
         return view
     }
 

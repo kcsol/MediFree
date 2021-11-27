@@ -69,9 +69,9 @@ class SignupDoctor2Activity<database> : AppCompatActivity() {
             major = majorSpinner.selectedItem.toString()
             val uid = intent.getStringExtra("uid")
 
-            //병원정보 저장 함수 need
+            //병원정보 저장 해야함
             Log.i("병원 정보저장 성공", hospital_name + ", " + major)
-            val intent = Intent(applicationContext, DHomeActivity::class.java)
+            val intent = Intent(applicationContext, LoginActivity::class.java)
             startActivity(intent)
         }
 

@@ -20,6 +20,9 @@ class PSelmajorActivity : Activity() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var hospital_name: String
     private lateinit var major_name: String
+    lateinit var use_name : TextView
+
+    lateinit var btn_test : Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_p_sel_major)
@@ -40,7 +43,8 @@ class PSelmajorActivity : Activity() {
         mAuth = FirebaseAuth.getInstance()
         var intent = getIntent()
         val user_name = intent.getStringExtra("name")
-
+        use_name = findViewById<TextView>(R.id.p_major_data)
+        use_name.text = user_name
 
         // Major_list
         //16:48 Major_list 어떻게 할건지 모르겠음 일단 넘어감.
@@ -74,9 +78,10 @@ class PSelmajorActivity : Activity() {
             OnItemClickListener { parent: AdapterView<*>?, view: View?, position: Int, id: Long ->
                 major_name = adapter.getItem(position).toString()
 //                Log.d("TAG", "onCreate: majorname $major_name")
-                val intent = Intent(applicationContext, PSelhospActivity::class.java)
-                intent.putExtra("major", major_name)
-                startActivity(intent)
+                val intent2 = Intent(applicationContext, PSelhospActivity::class.java)
+                intent2.putExtra("name", user_name)
+                intent2.putExtra("major", major_name)
+                startActivity(intent2)
             }
 
         /*

@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="#F3F3F3">
 
+
     <LinearLayout
         android:id="@+id/select_doctor_titlebar_linearlayout"
         android:layout_width="match_parent"
@@ -31,6 +32,7 @@
 
     </LinearLayout>
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -50,7 +52,7 @@
 <!--            android:paddingStart="40dp"-->
 <!--            android:textSize="18sp" />-->
 
-]    <LinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
@@ -60,11 +62,11 @@
         tools:ignore="MissingConstraints">
 
         <TextView
-            android:id="@+id/p_sel_doc_name"
+            android:id="@+id/p_major_data"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="115dp"
-            android:text="병원 is selected"
+            android:text="null"
             android:layout_marginBottom="25dp"
             android:paddingStart="40dp"
             android:textSize="18sp" />
@@ -80,6 +82,8 @@
     </LinearLayout>
 
 
+
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
