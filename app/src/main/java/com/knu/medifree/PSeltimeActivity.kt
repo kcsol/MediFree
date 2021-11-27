@@ -28,16 +28,28 @@ class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var date: String
     lateinit var doctor_name: String
     lateinit var patient_name: String
+    lateinit var hospital : String
+    lateinit var major : String
     lateinit var checkdate: String
     lateinit var currentdate: String
     lateinit var dialog: Dialog
+    lateinit var user_data : TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_p_sel_time)
         check1 = false
         check2 = false
-        val intent = getIntent()
-        val textView = findViewById<TextView>(R.id.p_time_data)
+        var intent = getIntent()
+        val user_name = intent.getStringExtra("name")
+        patient_name = user_name!!
+        val major2 = intent.getStringExtra("major")
+        major = major2!!
+        val hos = intent.getStringExtra("hospital")
+        hospital = hos!!
+        val doc = intent.getStringExtra("doctor")
+        doctor_name = doc!!
+        user_data = findViewById<TextView>(R.id.p_time_data)
+        user_data.text = patient_name +" " + major + " " + hospital + " " + doctor_name
 //        textView.text = "none"
 //        Toast.makeText(this, intent.getStringExtra("doctor"), Toast.LENGTH_SHORT).show()
 //            intent.getStringExtra("hospital_name") + " " + intent.getStringExtra("name") + " is selected"
@@ -122,6 +134,15 @@ class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
 //        Reservation res = new Reservation(cur_uid, doctor_id, date,false);
         p_sel_time_btn_diag = findViewById<Button>(R.id.p_sel_time_btn_diag)
         p_sel_time_btn_diag.setOnClickListener { // Go TypeActivity
+            /*
+            patient_name
+            major
+            hospital
+            doctor_name
+            time
+            -> db에 올리는 함수 필요함
+            */
+            startToast(" 예약요청을 성공하였습니다. 요청이 완료되면 예약목록에 추가됩니다.")
             val intent = Intent(applicationContext, PHomeActivity::class.java)
             startActivity(intent)
         }
@@ -147,9 +168,6 @@ class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
     var RadioClick = View.OnClickListener { v ->
         time = v.tag.toString()
         startToast(time + " selected")
-//        time = v.tag.toString()
-//        check2 = true
-//        Log.d("TAG", "onClick: " + time)
     }
     var checkedChangeListener =
         RadioGroup.OnCheckedChangeListener { group, checkedId ->

@@ -33,20 +33,6 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/p_sel_doctor_again_btn_diag"
-        android:layout_width="match_parent"
-        android:layout_height="67dp"
-        android:layout_weight="1"
-        android:background="#0070C0"
-        android:text="예약 시간 설정"
-        android:textColor="#FFFFFF"
-        android:textSize="28sp"
-
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 
     <LinearLayout
@@ -69,7 +55,7 @@
             tools:ignore="MissingConstraints">
 
             <TextView
-                android:id="@+id/p_sel_doc_name"
+                android:id="@+id/p_sel_doc_data"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="115dp"

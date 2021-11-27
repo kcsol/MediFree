@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.ListView
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -27,6 +28,7 @@ class PSeldocActivity : Activity() {
     lateinit var mAuth: FirebaseAuth
     lateinit var Major : String
     lateinit var list_doctors: ArrayList<String>
+    lateinit var user_data : TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_p_sel_doc)
@@ -47,6 +49,13 @@ class PSeldocActivity : Activity() {
 //        for (i in list_doctors.indices) {
 //            Log.e("Doctor list :", list_doctors[i].getName()) // method, model.Doctor 참조.
 //        }
+
+        var intent = getIntent()
+        val user_name = intent.getStringExtra("name")
+        val major = intent.getStringExtra("major")
+        val hos = intent.getStringExtra("hospital")
+        user_data = findViewById<TextView>(R.id.p_sel_doc_data)
+        user_data.text = user_name +" " + major + " " + hos
 
         val tmp = java.util.ArrayList<String>()
         tmp.add("의사1")
@@ -86,7 +95,9 @@ class PSeldocActivity : Activity() {
                  Doctor_name = adapter.getItem(position).toString()
 //                Log.d("TAG", "onCreate: majorname $major_name")
                 val intent2 = Intent(applicationContext, PSeltimeActivity::class.java)
-//                intent2.putExtra("major", major_name)
+                intent2.putExtra("name",user_name)
+                intent2.putExtra("major", major)
+                intent2.putExtra("hospital", hos)
                 intent2.putExtra("doctor", Doctor_name)
                 startActivity(intent2)
             }

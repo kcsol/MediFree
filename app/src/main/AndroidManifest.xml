@@ -58,5 +58,7 @@
         <activity android:name=".DOfficeActivity" />
         <activity android:name=".DHomeActivity" />
         <activity android:name=".DAppActivity" />
+        <activity android:name=".PConfirmActivity"/>
+        <activity android:name=".POfficeActivity"/>
     </application>
 </manifest>

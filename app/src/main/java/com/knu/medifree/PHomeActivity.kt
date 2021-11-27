@@ -23,6 +23,8 @@ class PHomeActivity : AppCompatActivity() {
         var intent = getIntent()
         Log.i("HEESUNG_DHOME", "Welcome" + intent.getStringExtra("user_id"))
 
+        var name : String = "조성민"
+
         // 객체 할당
         btn_app = findViewById<ImageButton>(R.id.p_appoint)
         btn_quest = findViewById<ImageButton>(R.id.p_quest)
@@ -33,6 +35,7 @@ class PHomeActivity : AppCompatActivity() {
             // 예약하기 버튼을 눌렀을 때
             // 현재 상황 : PReserveActivity로 이동
             val intent = Intent(applicationContext, PSelmajorActivity::class.java)
+            intent.putExtra("name",name)
             startActivity(intent)
             //finish(); 일단 뒤로 버튼을 눌러서 의사 홈으로 돌아올 수 있게 해둠.
         }
@@ -48,13 +51,15 @@ class PHomeActivity : AppCompatActivity() {
             // 예약확인 버튼을 눌렀을 때
             // 현재 상황 :PConfirm로 이동
             val intent = Intent(applicationContext, PConfirmActivity::class.java)
+            startActivity(intent)
             //DBManager.startActivityWithReservationReading(this@DHomeActivity, intent)
             // TODO :
         }
         btn_treat.setOnClickListener {
             // PTreat 버튼을 눌렀을 때
             // 현재 상황 :Office로 이동
-            val intent = Intent(applicationContext, RTCActivity::class.java)
+            val intent = Intent(applicationContext, POfficeActivity::class.java)
+            startActivity(intent)
             //DBManager.startActivityWithReservationReading(this@DHomeActivity, intent)
             // TODO :
         }

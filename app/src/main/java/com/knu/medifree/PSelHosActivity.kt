@@ -24,11 +24,18 @@ class PSelhospActivity : Activity() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var hospital_name: String
     private lateinit var major_name: String
+    lateinit var user_data : TextView
     lateinit var tv : TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_p_sel_hos)
 
+
+        var intent = getIntent()
+        val user_name = intent.getStringExtra("name")
+        val major = intent.getStringExtra("major")
+        user_data = findViewById<TextView>(R.id.p_hos_data)
+        user_data.text = user_name +" " + major
 //        var intent = getIntent()
 //        Toast.makeText(this, intent.getStringExtra("major"), Toast.LENGTH_SHORT).show()
         /* PSelmajorActivity 설명
@@ -82,8 +89,9 @@ class PSelhospActivity : Activity() {
 //                Log.d("TAG", "onCreate: majorname $major_name")
 
                 var intent2 = Intent(applicationContext, PSeldocActivity::class.java)
-//                intent2.putExtra("major", major_name)
-//                intent2.putExtra("hospital", hospital_name)
+                intent2.putExtra("name", user_name)
+                intent2.putExtra("major", major)
+                intent2.putExtra("hospital", hospital_name)
                 startActivity(intent2)
             }
     }

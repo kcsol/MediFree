@@ -19,6 +19,7 @@ class PQuestionnaireActivity : AppCompatActivity() {
         tmp.add("문진표2")
         tmp.add("문진표3")
 
+
         val adapter = QuestionnaireAdapter(this, tmp) //tmp에 list_majors넣으면 됨
         val listView = findViewById<ListView>(R.id.listview_questionnaire)
         listView.adapter = adapter
@@ -26,7 +27,7 @@ class PQuestionnaireActivity : AppCompatActivity() {
             AdapterView.OnItemClickListener { parent: AdapterView<*>?, view: View?, position: Int, id: Long ->
                 question = adapter.getItem(position).toString()
 //                Log.d("TAG", "onCreate: majorname $major_name")
-                val intent2 = Intent(applicationContext, PSeltimeActivity::class.java)
+                val intent2 = Intent(applicationContext, PQuestActivity::class.java)
 ////                intent2.putExtra("major", major_name)
                 startActivity(intent2)
             }
