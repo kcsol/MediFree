@@ -101,7 +101,7 @@ class LoginActivity : AppCompatActivity() {
 
         }
         btn_signup.setOnClickListener { // Go TypeActivity
-            val intent = Intent(applicationContext, PHomeActivity::class.java)
+            val intent = Intent(applicationContext, TypeActivity::class.java)
             startActivity(intent)
         }
     }

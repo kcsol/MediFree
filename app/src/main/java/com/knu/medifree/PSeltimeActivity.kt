@@ -49,7 +49,7 @@ class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
         val doc = intent.getStringExtra("doctor")
         doctor_name = doc!!
         user_data = findViewById<TextView>(R.id.p_time_data)
-        user_data.text = patient_name +" " + major + " " + hospital + " " + doctor_name
+        user_data.text = patient_name +">" + major + ">" + hospital + ">" + doctor_name
 //        textView.text = "none"
 //        Toast.makeText(this, intent.getStringExtra("doctor"), Toast.LENGTH_SHORT).show()
 //            intent.getStringExtra("hospital_name") + " " + intent.getStringExtra("name") + " is selected"

@@ -55,7 +55,7 @@ class PSeldocActivity : Activity() {
         val major = intent.getStringExtra("major")
         val hos = intent.getStringExtra("hospital")
         user_data = findViewById<TextView>(R.id.p_sel_doc_data)
-        user_data.text = user_name +" " + major + " " + hos
+        user_data.text = user_name +">" + major + ">" + hos
 
         val tmp = java.util.ArrayList<String>()
         tmp.add("의사1")

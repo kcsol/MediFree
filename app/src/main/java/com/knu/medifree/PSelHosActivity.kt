@@ -35,7 +35,7 @@ class PSelhospActivity : Activity() {
         val user_name = intent.getStringExtra("name")
         val major = intent.getStringExtra("major")
         user_data = findViewById<TextView>(R.id.p_hos_data)
-        user_data.text = user_name +" " + major
+        user_data.text = user_name +">" + major
 //        var intent = getIntent()
 //        Toast.makeText(this, intent.getStringExtra("major"), Toast.LENGTH_SHORT).show()
         /* PSelmajorActivity 설명
