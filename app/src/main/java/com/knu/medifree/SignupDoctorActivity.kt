@@ -55,14 +55,10 @@ class SignupDoctorActivity : AppCompatActivity() /*, View.OnClickListener*/ {
         et_tel = findViewById<EditText>(R.id.signup_doctor_tel)
 
         // 클릭 리스너 할당
+
+
         btn_next.setOnClickListener {
-            var uid:String? = null
-            CoroutineScope(Dispatchers.IO).launch {
-                val signUpMethod = async { uid = Account.signUp(Account.TYPE_DOCTOR, et_email.text.toString(),
-                    et_password.text.toString(), et_name.text.toString(), et_tel.text.toString(), "") }
-                signUpMethod.await()
-                Log.i("signUp", uid.toString())
-            }
+            val uid = Account.signUp(Account.DOCTOR, et_email.text.toString(), et_password.text.toString(), et_name.text.toString(), et_tel.text.toString(), "")
             val intent = Intent(applicationContext, SignupDoctor2Activity::class.java)
             intent.putExtra("user_id", uid)
             startActivity(intent)

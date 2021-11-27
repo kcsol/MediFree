@@ -43,7 +43,7 @@ class ReservationAdapter(context: Context?, reservations: ArrayList<String>) :
 //        val patient = Patient("qzngwoSZNafRWnnH4QaCy9nz3ft1") // -> reservation으로 변경해야함
 //        Log.e("laod", "DBLoad")
 //        test = patient.searchReservationInfo(sample[position])!!
-        test = Patient("test").searchReservationInfo(sample[position])!!
+        test = Patient.searchReservationInfo(sample[position])!!
 
         Log.e("환자이름", test["patient_name"].toString())
         name.text = test["patient_name"].toString()
