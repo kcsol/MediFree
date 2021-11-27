@@ -9,6 +9,8 @@ import android.widget.ImageButton
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.knu.medifree.functions.Account
+import com.knu.medifree.functions.Doctor.Companion.doctor
 import java.lang.Exception
 import java.util.ArrayList
 import java.util.HashMap
@@ -52,12 +54,14 @@ class SignupDoctor2Activity: AppCompatActivity() {
             hospital_name = hospitalNameSpinner.selectedItem.toString()
             major = majorSpinner.selectedItem.toString()
 
-            //병원정보 저장 해야함
-
+            //병원정보 저장 후 로그인화면으로 이동
+            val intent = getIntent()
+            var dname = intent.getStringExtra("name")
+            Account.signUpDoctor(dname.toString(), hospital_name, major)
             Log.i("병원 정보저장 성공", hospital_name + ", " + major)
             Toast.makeText(this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show()
-            val intent = Intent(applicationContext, LoginActivity::class.java)
-            startActivity(intent)
+            val intent2 = Intent(applicationContext, LoginActivity::class.java)
+            startActivity(intent2)
         }
     }
 }
