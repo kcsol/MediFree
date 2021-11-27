@@ -39,7 +39,6 @@ class Account {
                 "name" to name,
                 "phone" to phone,
                 "address" to address,
-                "예약번호" to listOf("")
             )
             DBManager.save(DBManager.PROFILE, uid, user)
 
@@ -47,11 +46,7 @@ class Account {
             return uid
         }
         fun signUpDoctor(name:String, hospital:String, major:String) {
-            val doctor = hashMapOf<String, Any?>(
-                "예약할것" to listOf(""),
-                "작성할것" to listOf("")
-            )
-            DBManager.save(DBManager.DOCTOR, name, doctor)
+            DBManager.save(DBManager.DOCTOR, name, hashMapOf())
 
             DBManager.add(DBManager.HOSPITAL, hospital, major, name)
             DBManager.add(DBManager.MAJOR, major, "병원명", hospital)

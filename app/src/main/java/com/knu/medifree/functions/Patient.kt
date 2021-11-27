@@ -67,8 +67,12 @@ class Patient {
             return selectable
         }
 
-        fun searchPatientReservationList(): List<String>? {
-            return patient!!["예약번호"] as List<String>
+        fun searchPatientReservationList(): List<String> {
+            try {
+                return patient!!["예약번호"] as List<String>
+            } catch(e:Exception) {
+                return listOf<String>()
+            }
         }
 
         fun addNewReservation(doctorName:String, date:String, time:Int) {

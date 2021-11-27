@@ -86,6 +86,10 @@ class DBManager {
             val doc = load(objectType, id)
             try {
                 val newField = doc!![field] as MutableList<String>
+                for(i in newField) {
+                    if(i == new)
+                        return
+                }
                 newField.add(new)
                 DB.collection(collection!!).document(id)
                     .update(
@@ -93,8 +97,9 @@ class DBManager {
                     )
             }
             catch (e:Exception) {
-                Log.e("DBManager.add", "추가하려는 Field가 배열이 아닙니다.")
-                return
+                Log.e("DBManager.add", "추가하려는 Field가 배열이 아닙니다. Field를 새로 생성합니다.")
+
+                DB.collection(collection!!).document(id).update(field, listOf(new))
             }
         }
 
