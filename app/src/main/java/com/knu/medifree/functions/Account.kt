@@ -8,8 +8,8 @@ class Account {
 
     companion object {
 
-        val PATIENT = 0
-        val DOCTOR = 1
+        val TYPE_PATIENT = 0
+        val TYPE_DOCTOR = 1
 
         val mAuth = FirebaseAuth.getInstance()
 
@@ -25,7 +25,7 @@ class Account {
          */
         fun signUp(userType:Int, email:String, password:String, name:String, phone:String, address:String): String? {
 
-            if(userType == PATIENT && address == "") {
+            if(userType == TYPE_PATIENT && address == "") {
                 Log.w("Account.signUp", "Patient 정보에 Address가 빈 값입니다.")
                 return null
             }

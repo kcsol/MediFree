@@ -1,8 +1,10 @@
 package com.knu.medifree.functions
 
+import android.content.Context
 import android.util.Log
+import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-
 
 class DBManager {
 
@@ -80,12 +82,6 @@ class DBManager {
                 Log.e("DBManager.add", "추가하려는 Field가 배열이 아닙니다.")
                 return
             }
-        }
-
-        fun delete(objectType:Int, id:String) {
-            val collection = convertType(objectType)
-
-            DB.collection(collection!!).document(id).delete()
         }
 
     }

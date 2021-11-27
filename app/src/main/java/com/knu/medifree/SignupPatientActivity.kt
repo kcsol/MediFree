@@ -45,7 +45,7 @@ class SignupPatientActivity : AppCompatActivity() {
             CoroutineScope(Dispatchers.IO).launch {
                 var uid:String? = null
                 val signUpMethod = async {
-                    uid = Account.signUp(Account.PATIENT,
+                    uid = Account.signUp(Account.TYPE_PATIENT,
                         et_email.text.toString(), et_password.text.toString(),
                         et_name.text.toString(), et_tel.text.toString(), et_address.text.toString())
                 }
