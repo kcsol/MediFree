@@ -1,8 +1,10 @@
 package com.knu.medifree
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
+import com.knu.medifree.functions.Doctor.Companion.doctor
 import android.content.Intent as Intent
 
 class DHomeActivity : AppCompatActivity() {
@@ -18,6 +20,7 @@ class DHomeActivity : AppCompatActivity() {
         btn_quest = findViewById<ImageButton>(R.id.d_quest)
         btn_office = findViewById<ImageButton>(R.id.d_office)
 
+        Log.e("home doctor", doctor["name"].toString())
         btn_app.setOnClickListener() {
             val intent = Intent(applicationContext, DAppActivity::class.java)
             startActivity(intent)

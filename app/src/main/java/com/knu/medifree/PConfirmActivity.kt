@@ -5,7 +5,6 @@ import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.knu.medifree.adapter.ConfAdapter
-import com.knu.medifree.adapter.PatientAdapter
 import com.knu.medifree.adapter.ReservationAdapter
 import com.knu.medifree.functions.Patient
 import java.util.*

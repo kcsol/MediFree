@@ -16,35 +16,17 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
-
-//import com.google.android.gms.tasks.OnCompleteListener
-//import com.google.android.gms.tasks.OnFailureListener
-//import com.google.android.gms.tasks.OnSuccessListener
-//import com.google.android.gms.tasks.Task
-//import com.google.firebase.auth.AuthResult
-//import com.google.firebase.auth.FirebaseAuth
-//import com.google.firebase.auth.FirebaseUser
-//import com.google.firebase.firestore.FirebaseFirestore
-//import com.knu.medifree.util.DBManager
-
 class SignupDoctorActivity : AppCompatActivity() /*, View.OnClickListener*/ {
     lateinit var btn_next: ImageButton
-    //private var mAuth: FirebaseAuth? = null
     private lateinit var et_email: EditText
     private lateinit var et_password: EditText
     private lateinit var et_password_again: EditText
     private lateinit var et_name: EditText
     private lateinit var et_tel: EditText
 
-
-//    private lateinit var emailEditView: EditText
-//    private lateinit var passwordEditView: EditText
-//    private lateinit var pwChkEditView: EditText
-//    private lateinit var hospitalNameEditView: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup_doctor)
-        //mAuth = FirebaseAuth.getInstance()
 
         // 객체 할당
         btn_next = findViewById<ImageButton>(R.id.next_step)
@@ -55,12 +37,10 @@ class SignupDoctorActivity : AppCompatActivity() /*, View.OnClickListener*/ {
         et_tel = findViewById<EditText>(R.id.signup_doctor_tel)
 
         // 클릭 리스너 할당
-
-
         btn_next.setOnClickListener {
             val uid = Account.signUp(Account.DOCTOR, et_email.text.toString(), et_password.text.toString(), et_name.text.toString(), et_tel.text.toString(), "")
+            Log.e("doctor signup" , uid.toString())
             val intent = Intent(applicationContext, SignupDoctor2Activity::class.java)
-            intent.putExtra("user_id", uid)
             startActivity(intent)
         }
     }
