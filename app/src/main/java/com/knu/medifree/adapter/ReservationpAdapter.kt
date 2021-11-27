@@ -35,9 +35,9 @@ class ReservationpAdapter(context: Context?, reservations: ArrayList<String>) :
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val view: View = mLayoutInflater!!.inflate(R.layout.res_check_item, null)
-        val name = view.findViewById<TextView>(R.id.office_p_untact_patient)
+        val doc_name = view.findViewById<TextView>(R.id.office_p_doctor)
         val time = view.findViewById<TextView>(R.id.office_p_untact_time)
-        val type = view.findViewById<TextView>(R.id.office_p_diag_type)
+        val date = view.findViewById<TextView>(R.id.office_p_untact_date)
         val btn = view.findViewById<Button>(R.id.btn_on)
         btn.setOnClickListener {
             Toast.makeText(mContext, "ok", Toast.LENGTH_SHORT).show()
@@ -50,13 +50,31 @@ class ReservationpAdapter(context: Context?, reservations: ArrayList<String>) :
         test = Patient.searchReservationInfo(sample[position])!!
 
         Log.e("환자이름", test["patient_name"].toString())
-        name.text = test["patient_name"].toString()
-        time.text = test["diagnosis_time"].toString()
-        btn.text = "활성화"
-        when(test["diagnosis_type"].toString()) {
-            "1" -> type.setText("대면")
-            "2" -> type.setText("비대면")
-            else -> type.setText("미결정")
+        doc_name.text = test["doctor_name"].toString()
+        var contime = test["diagnosis_time"].toString()
+        if(contime.toInt() == 0)
+        {
+            contime = "10:00"
+        }
+        else if(contime.toInt() == 1)
+        {
+            contime = "11:00"
+        }
+        else if(contime.toInt() == 2)
+        {
+            contime = "15:00"
+        }
+        else if(contime.toInt() == 3)
+        {
+            contime = "16:00"
+        }
+        time.text = contime
+        date.text = test["diagnosis_date"].toString()
+        val room_open : Int
+        when(test["room_open"].toString())
+        {
+            "0" -> btn.text = "Closed"
+            "1" -> btn.text = "Opened"
         }
 
 

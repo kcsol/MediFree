@@ -75,6 +75,8 @@ class Patient {
             }
         }
 
+
+
         fun addNewReservation(doctorName:String, date:String, time:Int) {
             val reservation = hashMapOf(
                 "diagnosis_date" to date,

@@ -54,6 +54,7 @@ class PHomeActivity : AppCompatActivity() {
             // 예약확인 버튼을 눌렀을 때
             // 현재 상황 :PConfirm로 이동
             val intent = Intent(applicationContext, PConfirmActivity::class.java)
+            intent.putExtra("name",name)
             startActivity(intent)
             //DBManager.startActivityWithReservationReading(this@DHomeActivity, intent)
             // TODO :
