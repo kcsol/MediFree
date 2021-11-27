@@ -24,9 +24,11 @@ class Doctor {
         }
 
         fun searchDoctorSchedule(date:String): List<String>? {
-            val schedule = DBManager.load(DBManager.DOCTOR, doctor["name"].toString())!![date] as List<String>
-
-            return schedule
+            val schedule = DBManager.load(DBManager.DOCTOR, doctor["name"].toString())!!
+            if(schedule.contains(date))
+                return schedule[date] as List<String>
+            else
+                return emptyList()
         }
 
         fun searchReservationInfo(reservNum:String): Map<String, Any?>? {
