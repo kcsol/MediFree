@@ -24,6 +24,7 @@ android {
     buildTypes {
         debug{
             //코드 난독화 추가
+            //디버깅 할 때, minifyenabled 부분만 false 로 바꾸시면 됩니다.
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

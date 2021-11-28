@@ -74,6 +74,7 @@ class DOfficeActivity : AppCompatActivity() {
                         val intent = Intent(this@DOfficeActivity, RTCActivity::class.java)
                         intent.putExtra("meetingID",resnum)
                         intent.putExtra("isJoin",false)
+                        intent.putExtra("type", RTCActivity.DOCTOR)
                         startActivity(intent)
 
                     }

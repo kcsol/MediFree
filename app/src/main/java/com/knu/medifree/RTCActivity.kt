@@ -27,6 +27,9 @@ class RTCActivity : AppCompatActivity() {
         private const val CAMERA_AUDIO_PERMISSION_REQUEST_CODE = 1
         private const val CAMERA_PERMISSION = Manifest.permission.CAMERA
         private const val AUDIO_PERMISSION = Manifest.permission.RECORD_AUDIO
+
+        val DOCTOR = "Doctor"
+        val PATIENT = "Patient"
     }
 
     private lateinit var rtcClient: RTCClient
@@ -35,6 +38,8 @@ class RTCActivity : AppCompatActivity() {
     private val audioManager by lazy { RTCAudioManager.create(this) }
 
     val TAG = "MainActivity"
+
+    private var type : String = ""
 
     private var meetingID : String = "test-call"
 
@@ -63,6 +68,8 @@ class RTCActivity : AppCompatActivity() {
             meetingID = intent.getStringExtra("meetingID")!!
         if (intent.hasExtra("isJoin"))
             isJoin = intent.getBooleanExtra("isJoin",false)
+        if (intent.hasExtra("type"))
+            type = intent.getStringExtra("type")!!
 
         checkCameraAndAudioPermission()
         var switch_camera_button = findViewById<ImageView>(R.id.switch_camera_button)
@@ -119,7 +126,10 @@ class RTCActivity : AppCompatActivity() {
             remote_view.isGone = false
             Constants.isCallEnded = true
             finish()
-            startActivity(Intent(this@RTCActivity, MainActivity::class.java))
+            if (type == PATIENT)
+                startActivity(Intent(this@RTCActivity, PHomeActivity::class.java))
+            else if (type == DOCTOR)
+                startActivity(Intent(this@RTCActivity, DHomeActivity::class.java))
         }
     }
 
