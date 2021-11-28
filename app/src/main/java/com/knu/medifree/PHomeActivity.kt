@@ -21,11 +21,11 @@ class PHomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_p_home)
 
-
+        /*
         var intent = getIntent()
         Log.i("HEESUNG_DHOME", "Welcome" + intent.getStringExtra("user_id"))
         val uid = intent.getStringExtra("user_id")!!
-        Patient.setPatient(uid)
+        Patient.setPatient(uid) */
         val name = Patient.patient["name"] as String
 
         // 객체 할당
