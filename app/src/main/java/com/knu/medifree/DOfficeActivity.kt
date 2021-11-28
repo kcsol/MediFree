@@ -26,7 +26,7 @@ class DOfficeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_d_office)
 
-        reservations_listview = findViewById(R.id.listview_office_patient)
+        reservations_listview = findViewById(R.id.d_office_list_reservation)
         office_btn = findViewById<Button>(R.id.d_office_btn)
 
         //오늘 날짜 가져오기

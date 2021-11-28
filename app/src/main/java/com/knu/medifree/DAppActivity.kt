@@ -14,7 +14,6 @@ import com.knu.medifree.functions.Doctor.Companion.setDoctor
 import java.util.*
 
 class DAppActivity : AppCompatActivity() {
-    private lateinit var btn_refresh: ImageButton
     private lateinit var btn_date_select : Button
     private lateinit var reservations_listview : ListView
     private lateinit var reservations : List<String>
@@ -25,7 +24,6 @@ class DAppActivity : AppCompatActivity() {
         setContentView(R.layout.activity_d_appoint)
 
         // 객체 할당
-        btn_refresh = findViewById<ImageButton>(R.id.d_home_btn_refresh)
         btn_date_select = findViewById<Button>(R.id.d_appoint_btn_selectdate)
         reservations_listview = findViewById<ListView>(R.id.d_appoint_list_reservations)
 
@@ -59,17 +57,5 @@ class DAppActivity : AppCompatActivity() {
             dlg.show()
 
         }
-
-        btn_refresh!!.setOnClickListener {
-            // 새로고침 버튼을 눌렀을 때
-            // 현재 상황 :
-            // TODO :
-        }
-    }
-
-    private fun findres (name : String, date : String) : ArrayList<String>  {
-        //test용
-        val reservations = arrayListOf("test1", "test2")
-        return reservations
     }
 }

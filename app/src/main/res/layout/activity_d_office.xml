@@ -7,8 +7,6 @@
     android:background="#F3F3F3"
     tools:context=".PHomeActivity">
 
-    <!--    absolute 코드 나중에 다 연결해서 지우기-->
-
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
@@ -60,11 +58,11 @@
 
     </LinearLayout>
 
-    <!--    예약리스트 띄우기   -->
 
+    <!--    예약리스트 띄우기   -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="643dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
@@ -74,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout1">
 
         <ListView
-            android:id="@+id/listview_office_patient"
+            android:id="@+id/d_office_list_reservation"
             android:layout_width="330dp"
             android:layout_height="wrap_content"/>
 

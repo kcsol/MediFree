@@ -42,7 +42,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="40dp"
             android:backgroundTint="#00FFFFFF"
-            android:src="@drawable/sign_up_button"
+            android:src="@drawable/sign_up_btn"
             />
 
     </LinearLayout>

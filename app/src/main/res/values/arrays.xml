@@ -17,24 +17,23 @@
     <string-array name="spinner_hospital">
         <item>서울대병원</item>
         <item>경북대병원</item>
-        <item>영남대병원</item>
-        <item>동산병원</item>
-        <item>연세세브란스병원</item>
+        <item>세브란스병원</item>
+        <item>울산대병원</item>
         <item>아산병원</item>
+        <item>안암병원</item>
+        <item>부산대병원</item>
         <item>삼성병원</item>
-        <item>성모병원</item>
-        <item>보건대병원</item>
+        <item>서울성모병원</item>
     </string-array>
 
     <string-array name="spinner_major">
-        <item>피부과</item>
-        <item>산부인과</item>
-        <item>정형외과</item>
         <item>내과</item>
         <item>비뇨기과</item>
-        <item>신경외과</item>
         <item>안과</item>
+        <item>이비인후과</item>
+        <item>정신과</item>
         <item>치과</item>
+        <item>피부과</item>
 
     </string-array>
 

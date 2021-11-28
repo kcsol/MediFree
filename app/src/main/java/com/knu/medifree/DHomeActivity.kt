@@ -16,9 +16,9 @@ class DHomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_d_home)
 
-        btn_app = findViewById<ImageButton>(R.id.d_appoint)
-        btn_quest = findViewById<ImageButton>(R.id.d_quest)
-        btn_office = findViewById<ImageButton>(R.id.d_office)
+        btn_app = findViewById<ImageButton>(R.id.d_home_appoint)
+        btn_quest = findViewById<ImageButton>(R.id.d_home_quest)
+        btn_office = findViewById<ImageButton>(R.id.d_home_office)
 
         Log.e("home doctor", doctor["name"].toString())
         btn_app.setOnClickListener() {

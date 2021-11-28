@@ -38,9 +38,9 @@ class ReservationAdapter(context: Context?, reservations: List<String>) :
             convertview = LayoutInflater.from(parent?.context)
                 .inflate(R.layout.listview_reservation, parent, false)
             holder = ViewHolder()
-            holder.name = convertview!!.findViewById<TextView>(R.id.office_untact_patient)
-            holder.time = convertview.findViewById<TextView>(R.id.office_untact_time)
-            holder.type = convertview.findViewById<TextView>(R.id.office_diag_type)
+            holder.name = convertview!!.findViewById<TextView>(R.id.listview_res_name)
+            holder.time = convertview.findViewById<TextView>(R.id.listview_res_time)
+            holder.type = convertview.findViewById<TextView>(R.id.listview_res_diag_type)
             convertview.tag = holder
         }
 

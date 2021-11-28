@@ -8,7 +8,7 @@
     tools:context=".DHomeActivity">
 
     <LinearLayout
-        android:id="@+id/doctor_titlebar"
+        android:id="@+id/d_home_titlebar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
@@ -44,18 +44,18 @@
 
 
         <ImageButton
-            android:id="@+id/d_appoint"
+            android:id="@+id/d_home_appoint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="87dp"
             android:background="#FFFFFF"
             android:backgroundTint="#00FFFFFF"
-            android:src="@drawable/appointment_btn"
+            android:src="@drawable/confirm_btn"
             />
 
         <ImageButton
-            android:id="@+id/d_quest"
+            android:id="@+id/d_home_quest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -65,7 +65,7 @@
             android:src="@drawable/questionnaire_btn" />
 
         <ImageButton
-            android:id="@+id/d_office"
+            android:id="@+id/d_home_office"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

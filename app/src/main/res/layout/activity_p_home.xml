@@ -75,14 +75,14 @@
             android:src="@drawable/confirm_btn" />
 
         <ImageButton
-            android:id="@+id/p_treat"
+            android:id="@+id/p_office"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="40dp"
             android:background="#FFFFFF"
             android:backgroundTint="#00FFFFFF"
-            android:src="@drawable/treat_room_btn" />
+            android:src="@drawable/office_btn" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -44,7 +44,6 @@ class DQuestWriteActivity : AppCompatActivity() {
 
             AlertDialog.Builder(this)
                 .setTitle("제출 하겠습니까?")
-                .setMessage("제출 하시겠습니까?")
                 .setPositiveButton("예") { dialog, _ ->
                     dialog.dismiss()
                     Toast.makeText(this, "문진표 작성이 완료되었습니다.", Toast.LENGTH_SHORT).show()

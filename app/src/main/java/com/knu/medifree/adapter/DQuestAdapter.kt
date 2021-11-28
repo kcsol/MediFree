@@ -39,9 +39,9 @@ class DQuestAdapter(context: Context?, reservations: List<String>) :
                 .inflate(R.layout.listview_quest_item, parent, false)
 
             holder = ViewHolder()
-            holder.name = convertview!!.findViewById<TextView>(R.id.listview_quest_item_name)
-            holder.date = convertview.findViewById<TextView>(R.id.listview_quest_item_date)
-            holder.time = convertview.findViewById<TextView>(R.id.listview_quest_item_time)
+            holder.name = convertview!!.findViewById<TextView>(R.id.listview_quest_name)
+            holder.date = convertview.findViewById<TextView>(R.id.listview_quest_date)
+            holder.time = convertview.findViewById<TextView>(R.id.listview_quest_time)
             convertview.tag = holder
         }
 

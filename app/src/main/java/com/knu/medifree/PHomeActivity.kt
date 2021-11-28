@@ -14,7 +14,7 @@ class PHomeActivity : AppCompatActivity() {
     lateinit var btn_app: ImageButton
     lateinit var btn_quest: ImageButton
     lateinit var btn_con: ImageButton
-    lateinit var btn_treat: ImageButton
+    lateinit var btn_office: ImageButton
     //lateinit var intent: Intent
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +32,7 @@ class PHomeActivity : AppCompatActivity() {
         btn_app = findViewById<ImageButton>(R.id.p_appoint)
         btn_quest = findViewById<ImageButton>(R.id.p_quest)
         btn_con = findViewById<ImageButton>(R.id.p_con)
-        btn_treat = findViewById<ImageButton>(R.id.p_treat)
+        btn_office = findViewById<ImageButton>(R.id.p_office)
         // 클릭 리스너 할당
         btn_app.setOnClickListener {
             // 예약하기 버튼을 눌렀을 때
@@ -59,7 +59,7 @@ class PHomeActivity : AppCompatActivity() {
             //DBManager.startActivityWithReservationReading(this@DHomeActivity, intent)
             // TODO :
         }
-        btn_treat.setOnClickListener {
+        btn_office.setOnClickListener {
             // PTreat 버튼을 눌렀을 때
             // 현재 상황 :Office로 이동
             val intent = Intent(applicationContext, POfficeActivity::class.java)
