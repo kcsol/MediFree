@@ -15,6 +15,7 @@
 박승현: db설계, 프로젝트 기획,설계, webrtc, 보안(난독화 및 리버스 엔지니어링)
 
 
+
 for mobile app program project
 
 compileSdk 31
@@ -22,6 +23,7 @@ compileSdk 31
 minSdk 25
 
 targetSdk 31
+
 
 // id 명
 -front 담당(태훈,성민)관련 협의해서 규칙 적시 해줄 것
