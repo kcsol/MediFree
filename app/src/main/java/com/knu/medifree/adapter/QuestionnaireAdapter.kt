@@ -45,7 +45,7 @@ class QuestionnaireAdapter(context: Context?, data: ArrayList<String>) :
         doctor.text = test["doctor_name"].toString()
         date.text = test["diagnosis_date"].toString()
         var contime = test["diagnosis_time"].toString()
-        val is_complete = test["is_completed"]
+        val is_complete = test["is_completed"].toString()
         if(is_complete == "0")
         {
             complete.text = "의사가 문진표를 작성하지 않았습니다."
@@ -61,6 +61,9 @@ class QuestionnaireAdapter(context: Context?, data: ArrayList<String>) :
         else if(is_complete == "3")
         {
             complete.text = "의사가 확인을 완료했습니다."
+        }
+        else{
+            complete.text = "왜안됨?"
         }
         if(contime.toInt() == 0)
         {
