@@ -10,6 +10,9 @@ class Patient {
         val MAJOR_EARNOSE = 1
         val MAJOR_MENTAL = 2
         val MAJOR_SKIN = 3
+        val MAJOR_HOLE = 4
+        val MAJOR_TOOTH = 5
+        val MAJOR_EYES = 6
         // 필요한 MAJOR 추가, naming
 
         var ReservationNum :String = ""
@@ -29,6 +32,9 @@ class Patient {
                 MAJOR_EARNOSE -> major = "이비인후과"
                 MAJOR_MENTAL -> major = "정신과"
                 MAJOR_SKIN -> major = "피부과"
+                MAJOR_HOLE -> major = "비뇨기과"
+                MAJOR_TOOTH -> major = "치과"
+                MAJOR_EYES -> major = "안과"
                 // 필요한 MAJOR 추가, naming
 
                 else -> {
