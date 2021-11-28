@@ -42,10 +42,7 @@ class POfficeActivity : AppCompatActivity() {
         var adapter : ReservationpAdapter = ReservationpAdapter(this, tmp)
         listView = findViewById<ListView>(R.id.listview_p_office_patient)
         listView.adapter = adapter
-        listView.onItemClickListener =
-            AdapterView.OnItemClickListener { parent: AdapterView<*>?, view: View?, position: Int, id: Long ->
-                reservationnum = adapter.getItem(position).toString()
-            }
+
 
 
         office_btn = findViewById<Button>(R.id.p_office_btn)
@@ -55,8 +52,9 @@ class POfficeActivity : AppCompatActivity() {
         //진료실 버튼
         office_btn.setOnClickListener {
             //webrtc 진료 시작
+            Toast.makeText(this,Patient.ReservationNum,Toast.LENGTH_LONG).show()
             val intent = Intent(this@POfficeActivity, RTCActivity::class.java)
-            intent.putExtra("meetingID",reservationnum)// string type의 reservationnum
+            intent.putExtra("meetingID",Patient.ReservationNum)// string type의 reservationnum
             intent.putExtra("isJoin",true)
             intent.putExtra("type", RTCActivity.PATIENT)
             startActivity(intent)

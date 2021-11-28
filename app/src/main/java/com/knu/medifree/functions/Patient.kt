@@ -12,6 +12,7 @@ class Patient {
         val MAJOR_SKIN = 3
         // 필요한 MAJOR 추가, naming
 
+        var ReservationNum :String = ""
 
         lateinit var uid:String
         lateinit var patient:Map<String, Any>

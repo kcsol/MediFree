@@ -13,6 +13,7 @@ import android.widget.Toast
 import com.knu.medifree.POfficeActivity
 import com.knu.medifree.R
 import com.knu.medifree.functions.Patient
+import com.knu.medifree.functions.Patient.Companion.ReservationNum
 import java.util.ArrayList
 
 class ReservationpAdapter(context: Context?, reservations: ArrayList<String>) :
@@ -39,9 +40,6 @@ class ReservationpAdapter(context: Context?, reservations: ArrayList<String>) :
         val time = view.findViewById<TextView>(R.id.office_p_untact_time)
         val date = view.findViewById<TextView>(R.id.office_p_untact_date)
         val btn = view.findViewById<Button>(R.id.btn_on)
-        btn.setOnClickListener {
-            Toast.makeText(mContext, "ok", Toast.LENGTH_SHORT).show()
-        }
         //DB에서 각 reservation에 대한 환자이름, 시간 load
         val test : Map<String, Any?>
 //        val patient = Patient("qzngwoSZNafRWnnH4QaCy9nz3ft1") // -> reservation으로 변경해야함
@@ -71,12 +69,18 @@ class ReservationpAdapter(context: Context?, reservations: ArrayList<String>) :
         time.text = contime
         date.text = test["diagnosis_date"].toString()
         val room_open : Int
-        when(test["room_open"].toString())
+        if(test["room_open"].toString() == "0")
         {
-            "0" -> btn.text = "Closed"
-            "1" -> btn.text = "Opened"
+            btn.text = "Closed"
+            btn.setEnabled(false)
         }
-
+        else if(test["room_open"].toString() == "1")
+        {
+            btn.text = "Opened"
+        }
+        btn.setOnClickListener {
+            ReservationNum = sample[position]
+        }
 
         return view
     }
