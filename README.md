@@ -26,7 +26,9 @@ targetSdk 31
 
 
 // id 명
+
 patient -> p_ 
+
 doctor -> d_ 들어가도록
 
 기본적으로 user(ex. p_) + kt(ex. quest) + type(ex.btn) 양식으로
