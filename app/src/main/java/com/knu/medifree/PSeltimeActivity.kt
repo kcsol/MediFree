@@ -16,6 +16,7 @@ import com.knu.medifree.functions.Patient
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
@@ -35,6 +36,7 @@ class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var dialog: Dialog
     lateinit var user_data : TextView
     lateinit var currenttime : String
+    var docSchedule : List<Boolean> = listOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_p_sel_time)
@@ -51,6 +53,13 @@ class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
         doctor_name = doc!!
         user_data = findViewById<TextView>(R.id.p_time_data)
         user_data.text = patient_name +">" + Patient.convertMajor(major2) + ">" + hospital + ">" + doctor_name
+
+
+        val group = findViewById<RadioGroup>(R.id.time_list)
+        val time10 = findViewById<RadioButton>(R.id.ten_oclock)
+        val time11 = findViewById<RadioButton>(R.id.eleven_oclock)
+        val time15 = findViewById<RadioButton>(R.id.fifteen_oclock)
+        val time16 = findViewById<RadioButton>(R.id.sixteen_oclock)
 //        textView.text = "none"
 //        Toast.makeText(this, intent.getStringExtra("doctor"), Toast.LENGTH_SHORT).show()
 //            intent.getStringExtra("hospital_name") + " " + intent.getStringExtra("name") + " is selected"
@@ -79,6 +88,35 @@ class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
             val currentTime = Calendar.getInstance().time
             currentdate =
                 SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(currentTime)
+            docSchedule = Patient.searchDoctorSchedule(doctor_name, currentdate)!!
+            if(!docSchedule!![0])
+            {
+                time10.setEnabled(false)
+                var time_text :String = time10.text as String
+                time_text = time_text + " is Disable"
+                time10.text = time_text
+            }
+            else if(docSchedule!![1] == false)
+            {
+                time11.setEnabled(false)
+                var time_text :String = time10.text as String
+                time_text = time_text + " is Disable"
+                time11.text = time_text
+            }
+            else if(docSchedule!![2] == false)
+            {
+                time15.setEnabled(false)
+                var time_text :String = time15.text as String
+                time_text = time_text + " is Disable"
+                time15.text = time_text
+            }
+            else if(docSchedule!![3] == false)
+            {
+                time16.setEnabled(false)
+                var time_text :String = time16.text as String
+                time_text = time_text + " is Disable"
+                time16.text = time_text
+            }
             val st = StringTokenizer(currentdate, "-")
 //            Log.d("TAG", "onClick: $currentdate")
             val dialog = DatePickerDialog(
@@ -89,11 +127,8 @@ class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         //라디오 그룹 부분
-        val group = findViewById<RadioGroup>(R.id.time_list)
-        val time10 = findViewById<RadioButton>(R.id.ten_oclock)
-        val time11 = findViewById<RadioButton>(R.id.eleven_oclock)
-        val time15 = findViewById<RadioButton>(R.id.fifteen_oclock)
-        val time16 = findViewById<RadioButton>(R.id.sixteen_oclock)
+
+
         time10.setOnClickListener(RadioClick)
         time11.setOnClickListener(RadioClick)
         time15.setOnClickListener(RadioClick)
@@ -135,14 +170,8 @@ class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
 //        Reservation res = new Reservation(cur_uid, doctor_id, date,false);
         p_sel_time_btn_diag = findViewById<Button>(R.id.p_sel_time_btn_diag)
         p_sel_time_btn_diag.setOnClickListener { // Go TypeActivity
-            /*
-            patient_name
-            major
-            hospital
-            doctor_name
-            time
-            -> db에 올리는 함수 필요함
-            */
+
+            docSchedule = Patient.searchDoctorSchedule(doctor_name, currentdate)!!
             if(currenttime.toInt() == 10)
                 currenttime = 0.toString()
             else if(currenttime.toInt() == 11)
@@ -152,12 +181,11 @@ class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
             else if(currenttime.toInt() == 16)
                 currenttime = 3.toString()
 
-            Toast.makeText(this,currenttime,Toast.LENGTH_LONG).show()
             Patient.addNewReservation(doctor_name,currentdate, currenttime.toInt())
 
-//            startToast(" 예약요청을 성공하였습니다. 요청이 완료되면 예약목록에 추가됩니다.")
-//            val intent2 = Intent(applicationContext, PHomeActivity::class.java)
-//            startActivity(intent2)
+            startToast(" 예약요청을 성공하였습니다. 요청이 완료되면 예약목록에 추가됩니다.")
+            val intent2 = Intent(applicationContext, PHomeActivity::class.java)
+            startActivity(intent2)
         }
     }
 

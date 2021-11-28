@@ -21,6 +21,7 @@ class POfficeActivity : AppCompatActivity() {
     private lateinit var office_btn : Button
     private lateinit var list_reservations : ArrayList<String>
     private lateinit var listView : ListView
+    lateinit var reservationnum : String
     val db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +42,11 @@ class POfficeActivity : AppCompatActivity() {
         var adapter : ReservationpAdapter = ReservationpAdapter(this, tmp)
         listView = findViewById<ListView>(R.id.listview_p_office_patient)
         listView.adapter = adapter
+        listView.onItemClickListener =
+            AdapterView.OnItemClickListener { parent: AdapterView<*>?, view: View?, position: Int, id: Long ->
+                reservationnum = adapter.getItem(position).toString()
+            }
+
 
         office_btn = findViewById<Button>(R.id.p_office_btn)
 

@@ -58,9 +58,12 @@ class Patient {
 
             // 몇 개로 나눌건지에 따라 list 길이랑 for문 반복수 늘리기
             var selectable = mutableListOf(false, false, false, false)
-            val schedule = schedules!![date] as List<String>
+            val schedule = schedules!![date] as List<String>?
+            if(schedule == null) {
+                return listOf(true,true, true, true)
+            }
             for (i in 0..3) {
-                if(schedule[i] == null)
+                if(schedule[i].isEmpty())
                     selectable[i] = true
             }
 
