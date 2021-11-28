@@ -62,6 +62,9 @@ class PSelmajorActivity : Activity() {
         tmp.add(Patient.convertMajor(1)!!)
         tmp.add(Patient.convertMajor(2)!!)
         tmp.add(Patient.convertMajor(3)!!)
+        tmp.add(Patient.convertMajor(4)!!)
+        tmp.add(Patient.convertMajor(5)!!)
+        tmp.add(Patient.convertMajor(6)!!)
         // dunp majors 만들어서 사용하는 부분임.
 
 
@@ -94,6 +97,18 @@ class PSelmajorActivity : Activity() {
                 else if(major_name == "피부과")
                 {
                     major_type = Patient.MAJOR_SKIN
+                }
+                else if(major_name == "비뇨기과")
+                {
+                    major_type = Patient.MAJOR_HOLE
+                }
+                else if(major_name == "치과")
+                {
+                    major_type = Patient.MAJOR_TOOTH
+                }
+                else if(major_name == "안과")
+                {
+                    major_type = Patient.MAJOR_EYES
                 }
                 val intent2 = Intent(applicationContext, PSelhospActivity::class.java)
                 intent2.putExtra("name", user_name)

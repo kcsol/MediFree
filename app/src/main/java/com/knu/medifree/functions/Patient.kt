@@ -55,9 +55,16 @@ class Patient {
 
         fun searchDoctorInHospital(hospital:String, majorType:Int): List<String>? {
             val major = convertMajor(majorType)
-            val doctors = DBManager.load(DBManager.HOSPITAL, hospital)!![major] as List<String>
-
-            return doctors
+            val doctors = DBManager.load(DBManager.HOSPITAL, hospital)
+            if(doctors == null)
+            {
+                return arrayListOf()
+            }
+            if(doctors.contains(major))
+            {
+                return doctors[major] as List<String>?
+            }
+            return arrayListOf()
         }
 
         fun searchDoctorSchedule(doctor:String, date:String): List<Boolean>? {
@@ -78,11 +85,21 @@ class Patient {
         }
 
         fun searchPatientReservationList(): List<String> {
-            try {
-                return DBManager.load(DBManager.PROFILE, uid)!!["예약번호"] as List<String>
-            } catch(e:Exception) {
-                return listOf<String>()
+//            try {
+//                return DBManager.load(DBManager.PROFILE, uid)!!["예약번호"] as List<String>
+//            } catch(e:Exception) {
+//                return listOf<String>()
+//            }
+            val res = DBManager.load(DBManager.PROFILE, uid)
+            if(res == null)
+            {
+                return arrayListOf()
             }
+            if(res.contains("예약번호"))
+            {
+                return (res["예약번호"] as List<String>?)!!
+            }
+            return arrayListOf()
         }
 
 

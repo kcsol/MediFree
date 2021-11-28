@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="200dp"
-                android:text="null"
+                android:text="문진표 목록"
                 android:layout_marginBottom="25dp"
                 android:paddingStart="40dp"
                 android:textSize="18sp" />

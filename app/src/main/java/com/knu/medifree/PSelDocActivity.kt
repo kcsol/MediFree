@@ -58,8 +58,12 @@ class PSeldocActivity : Activity() {
         user_data = findViewById<TextView>(R.id.p_sel_doc_data)
         user_data.text = user_name +">" + Patient.convertMajor(major) + ">" + hos
 
-        var tmp = ArrayList<String>()
-        tmp = Patient.searchDoctorInHospital(hos!!,major) as ArrayList<String>
+        var tmp : ArrayList<String>?
+        tmp = Patient.searchDoctorInHospital(hos!!,major) as ArrayList<String>?
+        if(tmp == null)
+        {
+            tmp = arrayListOf()
+        }
 //        Log.e("", Patient.searchDoctorInHospital(hos!!, major).toString())
 //        Toast.makeText(this, tmp[0], Toast.LENGTH_SHORT).show()
 //        var intent = getIntent()

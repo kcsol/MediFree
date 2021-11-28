@@ -13,29 +13,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
-        android:elevation="20dp"
         android:gravity="center_vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-        <ImageButton
-            android:id="@+id/backtophome"
-            android:layout_width="39dp"
-            android:layout_height="52dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="80dp"
-            android:background="#FFFFFF"
-            android:baselineAligned="false"
-            android:src="@drawable/leftarrow" />
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginStart="-20dp"
             android:layout_marginBottom="18dp"
             android:baselineAligned="false"
             android:layout_gravity="center"
@@ -71,6 +59,7 @@
             android:layout_width="360dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
