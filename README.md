@@ -26,7 +26,11 @@ targetSdk 31
 
 
 // id 명
--front 담당(태훈,성민)관련 협의해서 규칙 적시 해줄 것
+patient -> p_ 
+doctor -> d_ 들어가도록
+
+기본적으로 user(ex. p_) + kt(ex. quest) + type(ex.btn) 양식으로
+
 
 
 // 변수명
