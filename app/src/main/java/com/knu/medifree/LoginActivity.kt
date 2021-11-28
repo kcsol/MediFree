@@ -21,12 +21,19 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var btn_signin: ImageButton
     private lateinit var btn_signup: Button
 
+    companion object {
+        var loading = 0
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        intent = Intent(applicationContext, LoadingActivity::class.java)
-        startActivity(intent)
+        if (loading == 0) {
+            loading = 1
+            intent = Intent(applicationContext, LoadingActivity::class.java)
+            startActivity(intent)
+        }
 
 
         // Loading
