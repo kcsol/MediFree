@@ -12,7 +12,7 @@ class Doctor {
 
 
         fun searchDoctorToWrite(): List<String>?{
-            val toWrite = DBManager.load(DBManager.DOCTOR, doctor["name"].toString())!!["작성할것"] as MutableList<String>
+            val toWrite = DBManager.load(DBManager.DOCTOR, doctor["name"].toString())!!["작성할것"] as MutableList<String>?
             if (toWrite == null)
                 return listOf()
             for (i in 0.. toWrite.size - 1) {
@@ -23,7 +23,7 @@ class Doctor {
         }
 
         fun searchDoctorToConfirm(): List<String>? {
-            val toConfirm = DBManager.load(DBManager.DOCTOR, doctor["name"].toString())!!["확인할것"] as MutableList<String>
+            val toConfirm = DBManager.load(DBManager.DOCTOR, doctor["name"].toString())!!["확인할것"] as MutableList<String>?
             if (toConfirm == null)
                 return listOf()
             for (i in 0..toConfirm.size -1) {

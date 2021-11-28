@@ -14,6 +14,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
+import com.knu.medifree.functions.DBManager
+import com.knu.medifree.functions.Patient
 //import kotlinx.android.synthetic.main.activity_main.*
 //import kotlinx.android.synthetic.main.activity_start.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -126,10 +128,16 @@ class RTCActivity : AppCompatActivity() {
             remote_view.isGone = false
             Constants.isCallEnded = true
             finish()
-            if (type == PATIENT)
+            DBManager.delete(DBManager.RESERVATION, meetingID)
+            if (type == PATIENT) {
+                var new_reservations = Patient.searchPatientReservationList() as MutableList<String>
+                new_reservations.remove(meetingID)
+                DBManager.update(DBManager.PROFILE, Patient.uid, "예약번호", new_reservations)
                 startActivity(Intent(this@RTCActivity, PHomeActivity::class.java))
-            else if (type == DOCTOR)
+            }
+            else if (type == DOCTOR) {
                 startActivity(Intent(this@RTCActivity, DHomeActivity::class.java))
+            }
         }
     }
 
