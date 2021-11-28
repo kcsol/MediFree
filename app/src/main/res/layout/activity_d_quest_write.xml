@@ -60,6 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="작성내역"
+                android:textColorHint="#848484"
                 android:textColor="@color/black"
                 android:textSize="15dp" />
         </LinearLayout>
@@ -93,6 +94,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:hint="작성내역"
+                android:textColorHint="#848484"
                 android:textSize="15dp" />
         </LinearLayout>
 
@@ -124,6 +126,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="작성내역"
+                android:textColorHint="#848484"
                 android:textColor="@color/black"
                 android:textSize="15dp" />
         </LinearLayout>
@@ -156,6 +159,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="작성내역"
+                android:textColorHint="#848484"
                 android:textColor="@color/black"
                 android:textSize="15dp" />
         </LinearLayout>

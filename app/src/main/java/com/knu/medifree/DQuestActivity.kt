@@ -17,8 +17,8 @@ class DQuestActivity : AppCompatActivity() {
     private lateinit var btn_conf : Button
     private lateinit var listview_write : ListView
     private lateinit var listview_conf : ListView
-    private lateinit var reservations_write : List<String>
-    private lateinit var reservations_conf : List<String>
+    private var reservations_write : List<String>? = emptyList()
+    private var reservations_conf : List<String>? = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,11 +31,11 @@ class DQuestActivity : AppCompatActivity() {
         listview_conf = findViewById<ListView>(R.id.d_quest_conf_list)
 
         //작성, 확인해야 할 예약들 가져오기
-        reservations_write = Doctor.searchDoctorToWrite()!!
-        reservations_conf = Doctor.searchDoctorToConfirm()!!
+        reservations_write = Doctor.searchDoctorToWrite()
+        reservations_conf = Doctor.searchDoctorToConfirm()
 
-        if (!reservations_write.isEmpty()) {
-            var adapter_write: DQuestAdapter = DQuestAdapter(this, reservations_write)
+        if (!(reservations_write == null)) {
+            var adapter_write: DQuestAdapter = DQuestAdapter(this, reservations_write!!)
             listview_write.adapter = adapter_write
             var reservation_write : String = ""
 
@@ -59,8 +59,8 @@ class DQuestActivity : AppCompatActivity() {
         }
 
 
-        if (!reservations_conf.isEmpty()) {
-            var adapter_conf: DQuestAdapter = DQuestAdapter(this, reservations_conf)
+        if (!(reservations_conf == null)) {
+            var adapter_conf: DQuestAdapter = DQuestAdapter(this, reservations_conf!!)
             listview_conf.adapter = adapter_conf
             var reservation_conf : String = ""
 
@@ -81,13 +81,5 @@ class DQuestActivity : AppCompatActivity() {
                 }
             }
         }
-
-
-
-
-
-
-
-
-        }
     }
+}

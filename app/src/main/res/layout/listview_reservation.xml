@@ -13,31 +13,34 @@
         >
 
         <TextView
-            android:id="@+id/office_diag_type"
-            android:layout_width="60dp"
+            android:id="@+id/listview_res_diag_type"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
             android:text="비대면"
             android:textColor="#0070C0"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:gravity="center_horizontal"/>
 
 
         <TextView
-            android:id="@+id/office_untact_patient"
-            android:layout_width="140dp"
+            android:id="@+id/listview_res_name"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="20dp"
+            android:gravity="center_horizontal"
             android:text="Kim Chulsu"
             android:textColor="#000000"
             android:textSize="20dp"
             android:textStyle="bold"></TextView>
 
         <TextView
-            android:id="@+id/office_untact_time"
-            android:layout_width="wrap_content"
+            android:id="@+id/listview_res_time"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:gravity="center"
             android:text="14:00"
             android:textColor="@color/black"
             android:textSize="20dp"/>

@@ -110,7 +110,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
             android:backgroundTint="#00FFFFFF"
-            android:src="@drawable/next_step_button"
+            android:src="@drawable/next_step_btn"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

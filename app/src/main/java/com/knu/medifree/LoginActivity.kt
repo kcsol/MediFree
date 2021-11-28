@@ -36,22 +36,11 @@ class LoginActivity : AppCompatActivity() {
         }
 
 
-        // Loading
-        //val intent = Intent(this, TypeActivity::class.java)
-        //startActivity(intent)
-
-
-        //DB
-//        val mAuth: FirebaseAuth? = null
-
-
         // Assigninge
         btn_signin = findViewById<ImageButton>(R.id.login_btn_signin)
         btn_signup = findViewById<Button>(R.id.login_btn_signup)
         et_email = findViewById<EditText>(R.id.login_et_email)
         et_password = findViewById<EditText>(R.id.login_et_password)
-
-        // Listeners
 
 
         // Listeners
@@ -83,16 +72,17 @@ class LoginActivity : AppCompatActivity() {
                     startActivity(intent)
                 } else if (type == 1)//doctor
                 {
-                    Log.i("doctor", "doctor")
                     val intent =
                         Intent(this@LoginActivity.applicationContext, DHomeActivity::class.java)
                     intent.putExtra("user_id", uid)
                     Doctor.setDoctor(uid!!)
                     startActivity(intent)
-                    startToast("doctor!")
                 } else {
                     startToast("type error")
                 }
+            }
+            else {
+                Toast.makeText(this, "로그인 정보가 올바르지 않습니다.", Toast.LENGTH_SHORT).show()
             }
         }
         btn_signup.setOnClickListener { // Go TypeActivity

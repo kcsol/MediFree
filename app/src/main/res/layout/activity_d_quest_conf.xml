@@ -68,6 +68,7 @@
                 android:id="@+id/d_conf_answer_item1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="답변1"
                 android:textColor="@color/black"
                 android:textSize="20dp" />
         </LinearLayout>
@@ -100,6 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:text="답변2"
                 android:textSize="20dp" />
         </LinearLayout>
 
@@ -130,6 +132,7 @@
                 android:id="@+id/d_conf_answer_item3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="답변3"
                 android:textColor="@color/black"
                 android:textSize="20dp" />
         </LinearLayout>
@@ -162,6 +165,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:text="답변4"
                 android:textSize="20dp" />
         </LinearLayout>
 

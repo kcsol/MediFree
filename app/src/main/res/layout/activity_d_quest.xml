@@ -91,6 +91,7 @@
                 android:text="작성할 문진표 목록"
                 android:textColor="@color/black"
                 android:textSize="20dp"
+                android:textStyle="bold"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"/>
 
@@ -114,6 +115,7 @@
                 android:text="확인할 문진표 목록"
                 android:textColor="@color/black"
                 android:textSize="20dp"
+                android:textStyle="bold"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"/>
 

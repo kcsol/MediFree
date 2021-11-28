@@ -8,12 +8,13 @@
     tools:context=".DAppActivity">
 
     <LinearLayout
-        android:id="@+id/appointment_titlebar"
+        android:id="@+id/d_appoint_titlebar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:background="#FFFFFF"
         android:elevation="20dp"
         android:orientation="horizontal"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,8 +23,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="89dp"
-            android:layout_marginTop="23dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="12dp"
             android:layout_marginBottom="15dp"
             android:baselineAligned="false"
@@ -35,18 +35,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:id="@+id/d_home_btn_refresh"
-            android:layout_width="39dp"
-            android:layout_height="52dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginBottom="12dp"
-            android:background="#FFFFFF"
-            android:baselineAligned="false"
-            android:src="@drawable/refresh" />
 
     </LinearLayout>
 
@@ -64,7 +52,7 @@
 
         <Button
             android:id="@+id/d_appoint_btn_selectdate"
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:background="#0070C0"
             android:text="날짜 선택"

@@ -58,7 +58,6 @@ class SignupDoctor2Activity: AppCompatActivity() {
             val intent = getIntent()
             var dname = intent.getStringExtra("name")
             Account.signUpDoctor(dname.toString(), hospital_name, major)
-            Log.i("병원 정보저장 성공", hospital_name + ", " + major)
             Toast.makeText(this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show()
             val intent2 = Intent(applicationContext, LoginActivity::class.java)
             startActivity(intent2)
