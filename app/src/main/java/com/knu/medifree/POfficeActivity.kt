@@ -13,6 +13,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.knu.medifree.adapter.ReservationAdapter
 import com.knu.medifree.adapter.ReservationpAdapter
+import com.knu.medifree.functions.DBManager
 import com.knu.medifree.functions.Patient
 import java.util.*
 import kotlin.collections.ArrayList
@@ -53,6 +54,9 @@ class POfficeActivity : AppCompatActivity() {
         office_btn.setOnClickListener {
             //webrtc 진료 시작
             Toast.makeText(this,Patient.ReservationNum,Toast.LENGTH_LONG).show()
+            var new_reservations = Patient.searchPatientReservationList() as MutableList<String>
+            new_reservations.remove(reservationnum)
+            DBManager.update(DBManager.PROFILE, Patient.uid, "예약번호", new_reservations)
             val intent = Intent(this@POfficeActivity, RTCActivity::class.java)
             intent.putExtra("meetingID",Patient.ReservationNum)// string type의 reservationnum
             intent.putExtra("isJoin",true)

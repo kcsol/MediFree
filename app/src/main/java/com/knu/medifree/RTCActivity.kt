@@ -130,9 +130,6 @@ class RTCActivity : AppCompatActivity() {
             finish()
             DBManager.delete(DBManager.RESERVATION, meetingID)
             if (type == PATIENT) {
-                var new_reservations = Patient.searchPatientReservationList() as MutableList<String>
-                new_reservations.remove(meetingID)
-                DBManager.update(DBManager.PROFILE, Patient.uid, "예약번호", new_reservations)
                 startActivity(Intent(this@RTCActivity, PHomeActivity::class.java))
             }
             else if (type == DOCTOR) {
