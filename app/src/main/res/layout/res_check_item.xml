@@ -15,7 +15,7 @@
 
         <TextView
             android:id="@+id/office_p_doctor"
-            android:layout_width="70dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="20dp"
@@ -40,14 +40,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="14:00"
-            android:textSize="18dp"/>
+            android:textSize="15dp"/>
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="10dp"
             android:id="@+id/btn_on"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="10dp"
             android:text="비활성"
             android:textSize="10dp"
             />

@@ -45,9 +45,9 @@ class DQuestWriteActivity : AppCompatActivity() {
             AlertDialog.Builder(this)
                 .setTitle("제출 하겠습니까?")
                 .setMessage("제출 하시겠습니까?")
-                .setPositiveButton("문진표 작성이 완료되었습니다.") { dialog, _ ->
+                .setPositiveButton("예") { dialog, _ ->
                     dialog.dismiss()
-                    Toast.makeText(this, "예", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "문진표 작성이 완료되었습니다.", Toast.LENGTH_SHORT).show()
                     /*edit Text 내용을 db에 업로드 하는 함수*/
                     Doctor.addQuestion(resnum, doctor["name"].toString(), questions as List<String>)
                     val intent = Intent(applicationContext, DHomeActivity::class.java)
