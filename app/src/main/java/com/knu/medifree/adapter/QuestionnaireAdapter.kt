@@ -32,16 +32,36 @@ class QuestionnaireAdapter(context: Context?, data: ArrayList<String>) :
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val view: View = mLayoutInflater!!.inflate(R.layout.questionnaire_item, null)
-        val major = view.findViewById<TextView>(R.id.questionnaire)
+        val doctor = view.findViewById<TextView>(R.id.quest_p_doctor)
+        val time = view.findViewById<TextView>(R.id.quest_p_time)
+        val date = view.findViewById<TextView>(R.id.quest_p_date)
+        val complete = view.findViewById<TextView>(R.id.is_complete)
         val test : Map<String, Any?>
 //        val patient = Patient("qzngwoSZNafRWnnH4QaCy9nz3ft1") // -> reservation으로 변경해야함
 //        Log.e("laod", "DBLoad")
 //        test = patient.searchReservationInfo(sample[position])!!
         test = Patient.searchReservationInfo(sample[position])!!
-        var date : String
         Log.e("환자이름", test["patient_name"].toString())
-        date = test["diagnosis_date"].toString()
+        doctor.text = test["doctor_name"].toString()
+        date.text = test["diagnosis_date"].toString()
         var contime = test["diagnosis_time"].toString()
+        val is_complete = test["is_completed"]
+        if(is_complete == "0")
+        {
+            complete.text = "의사가 문진표를 작성하지 않았습니다."
+        }
+        else if(is_complete == "1")
+        {
+            complete.text = "문진표 작성하러 가기"
+        }
+        else if(is_complete == "2")
+        {
+            complete.text = "의사가 확인하지 않았습니다."
+        }
+        else if(is_complete == "3")
+        {
+            complete.text = "의사가 확인을 완료했습니다."
+        }
         if(contime.toInt() == 0)
         {
             contime = "10:00"
@@ -58,8 +78,7 @@ class QuestionnaireAdapter(context: Context?, data: ArrayList<String>) :
         {
             contime = "16:00"
         }
-
-        major.text = date + " / " + contime
+        time.text = contime
         return view
     }
 

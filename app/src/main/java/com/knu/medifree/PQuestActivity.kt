@@ -19,7 +19,7 @@ import com.knu.medifree.adapter.QuestionnaireAdapter
 import com.knu.medifree.functions.Patient
 
 class PQuestActivity : AppCompatActivity() {
-    lateinit var question : ArrayList<String>
+    var question : ArrayList<String> = arrayListOf()
     lateinit var tv_quest1 : TextView
     lateinit var et_quest1 : EditText
     lateinit var tv_quest2 : TextView
