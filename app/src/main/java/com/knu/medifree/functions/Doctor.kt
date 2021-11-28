@@ -12,13 +12,23 @@ class Doctor {
 
 
         fun searchDoctorToWrite(): List<String>?{
-            val toWrite = DBManager.load(DBManager.DOCTOR, doctor["name"].toString())!!["작성할것"] as List<String>
+            val toWrite = DBManager.load(DBManager.DOCTOR, doctor["name"].toString())!!["작성할것"] as MutableList<String>
+            if (toWrite == null)
+                return listOf()
+            for (i in 0.. toWrite.size - 1) {
+                toWrite.remove("")
+            }
 
             return toWrite
         }
 
         fun searchDoctorToConfirm(): List<String>? {
-            val toConfirm = DBManager.load(DBManager.DOCTOR, doctor["name"].toString())!!["확인할것"] as List<String>
+            val toConfirm = DBManager.load(DBManager.DOCTOR, doctor["name"].toString())!!["확인할것"] as MutableList<String>
+            if (toConfirm == null)
+                return listOf()
+            for (i in 0..toConfirm.size -1) {
+                toConfirm.remove("")
+            }
 
             return toConfirm
         }
@@ -54,6 +64,7 @@ class Doctor {
 
         fun addDiagnosisType(reservNum: String, diagnosisType: Int) {
             DBManager.update(DBManager.RESERVATION, reservNum, "diagnosis_type", diagnosisType)
+            DBManager.update(DBManager.RESERVATION, reservNum, "is_completed", 3)
 
             val toConfirm = searchDoctorToConfirm() as MutableList<String>
             toConfirm.remove(reservNum)

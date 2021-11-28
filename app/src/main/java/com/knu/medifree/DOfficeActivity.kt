@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.knu.medifree.adapter.ReservationAdapter
+import com.knu.medifree.functions.DBManager
 import com.knu.medifree.functions.Doctor
 import java.util.*
 import kotlin.collections.ArrayList
@@ -70,6 +71,7 @@ class DOfficeActivity : AppCompatActivity() {
                     .document(resnum)
                     .get()
                     .addOnSuccessListener {
+                        DBManager.update(DBManager.RESERVATION, resnum, "room_open", 1)
 
                         val intent = Intent(this@DOfficeActivity, RTCActivity::class.java)
                         intent.putExtra("meetingID",resnum)
