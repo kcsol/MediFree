@@ -254,9 +254,9 @@ class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
 
             Patient.addNewReservation(doctor_name,timedata, currenttime.toInt())
 
-//            startToast(" 예약요청을 성공하였습니다. 요청이 완료되면 예약목록에 추가됩니다.")
-//            val intent2 = Intent(applicationContext, PHomeActivity::class.java)
-//            startActivity(intent2)
+            startToast(" 예약요청을 성공하였습니다. 요청이 완료되면 예약목록에 추가됩니다.")
+            val intent2 = Intent(applicationContext, PHomeActivity::class.java)
+            startActivity(intent2)
         }
     }
 

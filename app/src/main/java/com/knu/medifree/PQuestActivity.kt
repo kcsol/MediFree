@@ -80,8 +80,8 @@ class PQuestActivity : AppCompatActivity() {
                     question.add(et_quest3.text.toString())
                     question.add(et_quest4.text.toString())
                     Patient.addAnswer(res,doc_name,question)
-//                    val intent = Intent(applicationContext, PHomeActivity::class.java)
-//                    startActivity(intent)
+                    val intent = Intent(applicationContext, PHomeActivity::class.java)
+                    startActivity(intent)
                 }
                 .setNegativeButton("아니오") { dialog, _ ->
                     dialog.dismiss()

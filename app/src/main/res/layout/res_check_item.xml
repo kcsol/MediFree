@@ -21,18 +21,18 @@
             android:layout_marginStart="20dp"
             android:text="Kim Chulsu"
             android:textColor="#000000"
-            android:textSize="20dp"
+            android:textSize="12dp"
             android:textStyle="bold"></TextView>
 
         <TextView
             android:id="@+id/office_p_untact_date"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="10dp"
             android:text="날짜"
             android:textColor="#000000"
-            android:textSize="15dp"
+            android:textSize="12dp"
             android:textStyle="bold"></TextView>
 
         <TextView
@@ -40,16 +40,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="14:00"
-            android:textSize="20dp"/>
+            android:textSize="18dp"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="5dp"
             android:id="@+id/btn_on"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="5dp"
             android:text="비활성"
-            android:textSize="12dp"
+            android:textSize="10dp"
             />
 
     </LinearLayout>

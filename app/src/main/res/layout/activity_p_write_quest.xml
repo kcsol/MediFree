@@ -170,7 +170,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="67dp"
                 android:background="#0070C0"
-                android:text="예약"
+                android:text="제출"
                 android:textColor="#FFFFFF"
                 android:textSize="28sp"
                 android:textStyle="bold"
