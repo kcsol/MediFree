@@ -54,6 +54,7 @@ class Doctor {
 
         fun addDiagnosisType(reservNum: String, diagnosisType: Int) {
             DBManager.update(DBManager.RESERVATION, reservNum, "diagnosis_type", diagnosisType)
+            DBManager.update(DBManager.RESERVATION, reservNum, "is_completed", 3)
 
             val toConfirm = searchDoctorToConfirm() as MutableList<String>
             toConfirm.remove(reservNum)
