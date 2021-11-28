@@ -52,9 +52,6 @@ class PQuestionnaireActivity : AppCompatActivity() {
                     Toast.makeText(this, "대면/비대면 진료가 확정되었습니다.", Toast.LENGTH_LONG).show()
                 }
 //                Log.d("TAG", "onCreate: majorname $major_name")
-                val intent2 = Intent(applicationContext, PQuestActivity::class.java)
-////                intent2.putExtra("major", major_name)
-                startActivity(intent2)
             }
     }
 }
