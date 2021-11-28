@@ -58,6 +58,7 @@ class POfficeActivity : AppCompatActivity() {
             val intent = Intent(this@POfficeActivity, RTCActivity::class.java)
             intent.putExtra("meetingID",reservationnum)// string type의 reservationnum
             intent.putExtra("isJoin",true)
+            intent.putExtra("type", RTCActivity.PATIENT)
             startActivity(intent)
             }
 

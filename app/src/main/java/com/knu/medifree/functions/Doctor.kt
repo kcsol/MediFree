@@ -25,8 +25,15 @@ class Doctor {
 
         fun searchDoctorSchedule(date:String): List<String>? {
             val schedule = DBManager.load(DBManager.DOCTOR, doctor["name"].toString())!!
-            if(schedule.contains(date))
-                return schedule[date] as List<String>
+            if(schedule.contains(date)) {
+                var schedule_ = schedule[date] as MutableList<String>
+                schedule_.remove("")
+                schedule_.remove("")
+                schedule_.remove("")
+                schedule_.remove("")
+
+                return schedule_
+            }
             else
                 return emptyList()
         }
