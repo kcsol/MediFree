@@ -71,12 +71,12 @@ class ReservationpAdapter(context: Context?, reservations: ArrayList<String>) :
         val room_open : Int
         if(test["room_open"].toString() == "0")
         {
-            btn.text = "Closed"
+            btn.text = "닫힘"
             btn.setEnabled(false)
         }
         else if(test["room_open"].toString() == "1")
         {
-            btn.text = "Opened"
+            btn.text = "열림"
         }
         btn.setOnClickListener {
             ReservationNum = sample[position]
