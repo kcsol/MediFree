@@ -1,5 +1,6 @@
 package com.knu.medifree
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -7,6 +8,8 @@ import android.widget.Button
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.knu.medifree.adapter.ReservationAdapter
 import com.knu.medifree.functions.Doctor
 import java.util.*
@@ -16,6 +19,7 @@ class DOfficeActivity : AppCompatActivity() {
     private lateinit var office_btn: Button
     private lateinit var reservations: List<String>
     private lateinit var reservations_listview: ListView
+    val db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,14 +56,34 @@ class DOfficeActivity : AppCompatActivity() {
 
         //진료 시작할 예약 리스트뷰에서 선택하기
         var resnum : String
-        reservations_listview.setOnItemClickListener { adapterView, view, position, id ->
+        Constants.isIntiatedNow = true
+        Constants.isCallEnded = true
+
+//
+
+          reservations_listview.setOnItemClickListener { adapterView, view, position, id ->
             resnum = adapter.getItem(position).toString()
             Log.e("진료 시작할 예약 num", resnum)
+            office_btn.setOnClickListener {
+                //webrtc 진료 시작
+                db.collection("calls")
+                    .document(resnum)
+                    .get()
+                    .addOnSuccessListener {
+
+                        val intent = Intent(this@DOfficeActivity, RTCActivity::class.java)
+                        intent.putExtra("meetingID",resnum)
+                        intent.putExtra("isJoin",false)
+                        startActivity(intent)
+
+                    }
+                    .addOnFailureListener {
+                        //meeting_id.error = "Please enter new meeting ID"
+                        Log.e("Please enter new meeting ID", resnum)
+                    }
+            }
         }
 
-        //진료실 버튼
-        office_btn.setOnClickListener {
-            //webrtc 진료 시작
-        }
+
     }
 }

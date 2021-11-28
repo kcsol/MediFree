@@ -9,6 +9,8 @@ import android.widget.Button
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.knu.medifree.adapter.ReservationAdapter
 import com.knu.medifree.adapter.ReservationpAdapter
 import com.knu.medifree.functions.Patient
@@ -19,6 +21,7 @@ class POfficeActivity : AppCompatActivity() {
     private lateinit var office_btn : Button
     private lateinit var list_reservations : ArrayList<String>
     private lateinit var listView : ListView
+    val db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,10 +43,18 @@ class POfficeActivity : AppCompatActivity() {
         listView.adapter = adapter
 
         office_btn = findViewById<Button>(R.id.p_office_btn)
+
+        Constants.isIntiatedNow = true
+        Constants.isCallEnded = true
         //진료실 버튼
         office_btn.setOnClickListener {
             //webrtc 진료 시작
-        }
+            val intent = Intent(this@POfficeActivity, RTCActivity::class.java)
+            intent.putExtra("meetingID",reservationnum)// string type의 reservationnum
+            intent.putExtra("isJoin",true)
+            startActivity(intent)
+            }
+
     }
 
     //doctorname, date input -> reservations return

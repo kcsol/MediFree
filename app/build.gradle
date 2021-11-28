@@ -24,14 +24,14 @@ android {
     buildTypes {
         debug{
             //코드 난독화 추가
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             proguardFile 'proguard-rules.pro'
             proguardFile 'proguard-debug.pro'
         }
         release {
             //코드 난독화 추가
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             proguardFile 'proguard-rules.pro'
         }
