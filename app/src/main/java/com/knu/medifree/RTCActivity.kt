@@ -128,7 +128,7 @@ class RTCActivity : AppCompatActivity() {
             remote_view.isGone = false
             Constants.isCallEnded = true
             finish()
-            DBManager.delete(DBManager.RESERVATION, meetingID)
+            //DBManager.delete(DBManager.RESERVATION, meetingID)
             if (type == PATIENT) {
                 startActivity(Intent(this@RTCActivity, PHomeActivity::class.java))
             }

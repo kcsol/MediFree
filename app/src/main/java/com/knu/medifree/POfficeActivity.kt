@@ -54,9 +54,9 @@ class POfficeActivity : AppCompatActivity() {
         office_btn.setOnClickListener {
             //webrtc 진료 시작
             Toast.makeText(this,Patient.ReservationNum,Toast.LENGTH_LONG).show()
-            var new_reservations = Patient.searchPatientReservationList() as MutableList<String>
-            new_reservations.remove(reservationnum)
-            DBManager.update(DBManager.PROFILE, Patient.uid, "예약번호", new_reservations)
+            //var new_reservations = Patient.searchPatientReservationList() as MutableList<String>
+            //new_reservations.remove(reservationnum)
+            //DBManager.update(DBManager.PROFILE, Patient.uid, "예약번호", new_reservations)
             val intent = Intent(this@POfficeActivity, RTCActivity::class.java)
             intent.putExtra("meetingID",Patient.ReservationNum)// string type의 reservationnum
             intent.putExtra("isJoin",true)

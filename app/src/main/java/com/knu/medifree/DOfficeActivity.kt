@@ -73,9 +73,9 @@ class DOfficeActivity : AppCompatActivity() {
                     .get()
                     .addOnSuccessListener {
                         DBManager.update(DBManager.RESERVATION, resnum, "room_open", 1)
-                        var new_reservations = Doctor.searchDoctorSchedule(day) as MutableList<String>
-                        new_reservations.remove(resnum)
-                        DBManager.update(DBManager.DOCTOR, Doctor.doctor["name"].toString(), day, new_reservations)
+                        //var new_reservations = Doctor.searchDoctorSchedule(day) as MutableList<String>
+                        //new_reservations.remove(resnum)
+                        //DBManager.update(DBManager.DOCTOR, Doctor.doctor["name"].toString(), day, new_reservations)
                         val intent = Intent(this@DOfficeActivity, RTCActivity::class.java)
                         intent.putExtra("meetingID",resnum)
                         intent.putExtra("isJoin",false)
