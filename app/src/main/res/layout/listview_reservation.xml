@@ -39,6 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:text="14:00"
+            android:textColor="@color/black"
             android:textSize="20dp"/>
 
     </LinearLayout>

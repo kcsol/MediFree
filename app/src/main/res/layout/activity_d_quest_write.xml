@@ -60,6 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="작성내역"
+                android:textColor="@color/black"
                 android:textSize="15dp" />
         </LinearLayout>
 
@@ -90,6 +91,7 @@
                 android:id="@+id/d_et_quest_item2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
                 android:hint="작성내역"
                 android:textSize="15dp" />
         </LinearLayout>
@@ -122,6 +124,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="작성내역"
+                android:textColor="@color/black"
                 android:textSize="15dp" />
         </LinearLayout>
 
@@ -153,6 +156,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="작성내역"
+                android:textColor="@color/black"
                 android:textSize="15dp" />
         </LinearLayout>
         <Button
