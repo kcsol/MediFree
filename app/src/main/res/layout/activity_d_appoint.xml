@@ -66,8 +66,12 @@
             android:id="@+id/d_appoint_btn_selectdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#0070C0"
             android:text="날짜 선택"
-            android:layout_margin="10dp"
+            android:textColor="#FFFFFF"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_margin="15dp"
             android:layout_gravity="left"/>
         <ListView
             android:id="@+id/d_appoint_list_reservations"

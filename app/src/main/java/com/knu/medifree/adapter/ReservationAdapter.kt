@@ -1,7 +1,6 @@
 package com.knu.medifree.adapter
 
 
-import android.app.DatePickerDialog
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,8 +10,6 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import com.knu.medifree.R
 import com.knu.medifree.functions.Doctor
-import com.knu.medifree.functions.Patient
-import java.util.ArrayList
 
 
 class ReservationAdapter(context: Context?, reservations: List<String>) :
@@ -39,7 +36,7 @@ class ReservationAdapter(context: Context?, reservations: List<String>) :
 
         if (view == null) {
             convertview = LayoutInflater.from(parent?.context)
-                .inflate(R.layout.listview_office_untact, parent, false)
+                .inflate(R.layout.listview_reservation, parent, false)
             holder = ViewHolder()
             holder.name = convertview!!.findViewById<TextView>(R.id.office_untact_patient)
             holder.time = convertview.findViewById<TextView>(R.id.office_untact_time)

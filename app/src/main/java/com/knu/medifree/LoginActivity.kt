@@ -25,6 +25,9 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        intent = Intent(applicationContext, LoadingActivity::class.java)
+        startActivity(intent)
+
 
         // Loading
         //val intent = Intent(this, TypeActivity::class.java)
@@ -91,72 +94,6 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-//    // completed
-//    private fun signin(email: String, password: String) {
-//        if (email.length > 0 && password.length > 0) {
-//            mAuth.signInWithEmailAndPassword(email, password)
-//                .addOnCompleteListener(this, object : OnCompleteListener<AuthResult?>() {
-//                    fun onComplete(task: Task<AuthResult?>) {
-//                        if (task.isSuccessful()) {
-//                            // 로그인 성공
-//                            val user: FirebaseUser = mAuth.getCurrentUser()
-//                            startToast("로그인 되었습니다.")
-//                            val uid: String = user.getUid()
-//
-//                            //Firestore db로 부터 uid를 사용하여 현재 user의 userType을 가져오는 함수.
-//                            val db: FirebaseFirestore = FirebaseFirestore.getInstance()
-//                            val docRef: DocumentReference = db.collection("Profile").document(uid)
-//                            docRef.get().addOnCompleteListener(object :
-//                                OnCompleteListener<DocumentSnapshot?>() {
-//                                fun onComplete(task: Task<DocumentSnapshot?>) {
-//                                    if (task.isSuccessful()) {
-//                                        val document: DocumentSnapshot = task.getResult()
-//                                        if (document.exists()) {
-//                                            val userType: String =
-//                                                document.getData().get("userType").toString()
-//                                            if (userType == "Patient") {
-//                                                //patient일때 patient 홈 화면으로 간다.
-//                                                val intent = Intent(
-//                                                    applicationContext,
-//                                                    PHomeActivity::class.java
-//                                                )
-//                                                DBManager.initDBManager(uid, User.TYPE_PATIENT)
-//                                                DBManager.startActivityWithReservationReading(
-//                                                    this@LoginActivity,
-//                                                    intent
-//                                                )
-//                                                // Auto Termination
-//                                            } else {
-//                                                //Doctor라면 Doctor홈화면으로 간다.
-//                                                val intent = Intent(
-//                                                    applicationContext,
-//                                                    DHomeActivity::class.java
-//                                                )
-//                                                DBManager.initDBManager(uid, User.TYPE_DOCTOR)
-//                                                startActivity(intent)
-//                                                finish()
-//                                                // Auto Termination
-//                                            }
-//                                        } else {
-//                                            startToast("document가 없습니다.")
-//                                        }
-//                                    } else {
-//                                        startToast("get failed with " + task.getException())
-//                                    }
-//                                }
-//                            })
-//                        } else {
-//                            // 로그인 실패=> 비밀번호 길이 및 아이디 중복 여부 등
-//                            if (task.getException() != null) {
-//                                startToast(task.getException().toString())
-//                            } else {
-//                                startToast("NULL value!")
-//                            }
-//                        }
-//                    }
-//                })
-//        } else startToast("이메일 또는 비밀번호를 입력해주세요.")
-//    } // End of Method
 
     private fun startToast(str: String) {
         Toast.makeText(this, str, Toast.LENGTH_SHORT).show()
