@@ -50,6 +50,21 @@ doctor -> d_ 들어가도록
  외부 라이브러리 사용 시, 난독화 때문에 문제가 생길 수 있습니다. 사용하는 외부 라이브러리 얘기해주세요.
  
 
+### functions 사용  
+DB 관련 작업은 **DBManager** 클래스 대신 **Account, Patient, Doctor** 클래스를 이용해주세요.  
+관련한 모든 클래스는 **static class**로 사용할 수 있도록 되어있습니다.
+함수 사용 실패 시 `null` 혹은 `Empty Array`를 반환하니 반환값에 null 혹은 empty 체크를 한 후에 사용해주세요.  
+필요한 기능이 있으면 **함수를 실행하는 주체, input, output과 함수명 규칙을 따른 함수명**을 전달해주세요, input은 필요에 따라 변경될 수 있습니다.  
+
+* #### Account  
+`PATIENT`, `DOCTOR` 전역 변수는 `userType` 인자에 사용됩니다.  
+
+* #### Patient  
+`MAJOR_**` 전역 변수는 `majorType` 인자에 사용됩니다.  
+사용 전 `Patient.setPatient(uid)` 함수로 환자를 설정해주세요.  
+
+* #### Doctor  
+사용 전 `Doctor.setDoctor(uid)` 함수로 의사를 설정해주세요.  
 
 
 
