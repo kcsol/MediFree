@@ -32,15 +32,6 @@
         tools:ignore="MissingConstraints">
 
 
-
-
-        <!--            <ListView-->
-        <!--                android:id="@+id/listview_question"-->
-        <!--                android:layout_width="330dp"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:descendantFocusability="beforeDescendants">-->
-        <!--            </ListView>-->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
