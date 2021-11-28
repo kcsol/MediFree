@@ -36,7 +36,8 @@ class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var dialog: Dialog
     lateinit var user_data : TextView
     lateinit var currenttime : String
-    var docSchedule : List<Boolean> = listOf()
+    var timedata : String = "2020-00-00"
+    var docSchedule : List<Boolean> = listOf(true, true, true, true)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_p_sel_time)
@@ -77,7 +78,58 @@ class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
             OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                 var monthOfYear = monthOfYear
                 monthOfYear += 1
-                patient_date.text = "$year/$monthOfYear/$dayOfMonth"
+                patient_date.text = "$year-$monthOfYear-$dayOfMonth"
+                timedata = patient_date.text.toString()
+                docSchedule = Patient.searchDoctorSchedule(doctor_name, timedata!!)!!
+        //        Toast.makeText(this,docSchedule[0].toString()+"/"+docSchedule[1].toString()+"/"+docSchedule[2].toString()+"/"+docSchedule[3].toString(), Toast.LENGTH_LONG).show()
+                if(docSchedule!![0] == false && time10.isEnabled())
+                {
+                    time10.setEnabled(false)
+                    var time_text :String = time10.text as String
+                    time_text = time_text + " is Disable"
+                    time10.text = time_text
+                }
+                else
+                {
+                    time10.setEnabled(true)
+                    time10.text = "10:00"
+                }
+                if(docSchedule!![1] == false&& time10.isEnabled())
+                {
+                    time11.setEnabled(false)
+                    var time_text :String = time10.text as String
+                    time_text = time_text + " is Disable"
+                    time11.text = time_text
+                }
+                else
+                {
+                    time11.setEnabled(true)
+                    time11.text = "11:00"
+                }
+                if(docSchedule!![2] == false&& time10.isEnabled())
+                {
+                    time15.setEnabled(false)
+                    var time_text :String = time15.text as String
+                    time_text = time_text + " is Disable"
+                    time15.text = time_text
+                }
+                else
+                {
+                    time11.setEnabled(true)
+                    time11.text = "11:00"
+                }
+                if(docSchedule!![3] == false&& time10.isEnabled())
+                {
+                    time16.setEnabled(false)
+                    var time_text :String = time16.text as String
+                    time_text = time_text + " is Disable"
+                    time16.text = time_text
+                }
+                else
+                {
+                    time11.setEnabled(true)
+                    time11.text = "11:00"
+                }
                 Companion.year = year
                 Companion.monthOfYear = monthOfYear
                 Companion.dayOfMonth = dayOfMonth
@@ -88,35 +140,55 @@ class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
             val currentTime = Calendar.getInstance().time
             currentdate =
                 SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(currentTime)
-            docSchedule = Patient.searchDoctorSchedule(doctor_name, currentdate)!!
-            if(!docSchedule!![0])
-            {
-                time10.setEnabled(false)
-                var time_text :String = time10.text as String
-                time_text = time_text + " is Disable"
-                time10.text = time_text
-            }
-            else if(docSchedule!![1] == false)
-            {
-                time11.setEnabled(false)
-                var time_text :String = time10.text as String
-                time_text = time_text + " is Disable"
-                time11.text = time_text
-            }
-            else if(docSchedule!![2] == false)
-            {
-                time15.setEnabled(false)
-                var time_text :String = time15.text as String
-                time_text = time_text + " is Disable"
-                time15.text = time_text
-            }
-            else if(docSchedule!![3] == false)
-            {
-                time16.setEnabled(false)
-                var time_text :String = time16.text as String
-                time_text = time_text + " is Disable"
-                time16.text = time_text
-            }
+            docSchedule = Patient.searchDoctorSchedule(doctor_name, timedata!!)!!
+//            if(docSchedule!![0] == true && time10.isEnabled())
+//            {
+//                time10.setEnabled(false)
+//                var time_text :String = time10.text as String
+//                time_text = time_text + " is Disable"
+//                time10.text = time_text
+//            }
+//            else
+//            {
+//                time10.setEnabled(true)
+//                time10.text = "10:00"
+//            }
+//            if(docSchedule!![1] == false&& time10.isEnabled())
+//            {
+//                time11.setEnabled(false)
+//                var time_text :String = time10.text as String
+//                time_text = time_text + " is Disable"
+//                time11.text = time_text
+//            }
+//            else
+//            {
+//                time11.setEnabled(true)
+//                time11.text = "11:00"
+//            }
+//            if(docSchedule!![2] == false&& time10.isEnabled())
+//            {
+//                time15.setEnabled(false)
+//                var time_text :String = time15.text as String
+//                time_text = time_text + " is Disable"
+//                time15.text = time_text
+//            }
+//            else
+//            {
+//                time11.setEnabled(true)
+//                time11.text = "11:00"
+//            }
+//            if(docSchedule!![3] == false&& time10.isEnabled())
+//            {
+//                time16.setEnabled(false)
+//                var time_text :String = time16.text as String
+//                time_text = time_text + " is Disable"
+//                time16.text = time_text
+//            }
+//            else
+//            {
+//                time11.setEnabled(true)
+//                time11.text = "11:00"
+//            }
             val st = StringTokenizer(currentdate, "-")
 //            Log.d("TAG", "onClick: $currentdate")
             val dialog = DatePickerDialog(
@@ -171,7 +243,6 @@ class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
         p_sel_time_btn_diag = findViewById<Button>(R.id.p_sel_time_btn_diag)
         p_sel_time_btn_diag.setOnClickListener { // Go TypeActivity
 
-            docSchedule = Patient.searchDoctorSchedule(doctor_name, currentdate)!!
             if(currenttime.toInt() == 10)
                 currenttime = 0.toString()
             else if(currenttime.toInt() == 11)
@@ -181,11 +252,11 @@ class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
             else if(currenttime.toInt() == 16)
                 currenttime = 3.toString()
 
-            Patient.addNewReservation(doctor_name,currentdate, currenttime.toInt())
+            Patient.addNewReservation(doctor_name,timedata, currenttime.toInt())
 
-            startToast(" 예약요청을 성공하였습니다. 요청이 완료되면 예약목록에 추가됩니다.")
-            val intent2 = Intent(applicationContext, PHomeActivity::class.java)
-            startActivity(intent2)
+//            startToast(" 예약요청을 성공하였습니다. 요청이 완료되면 예약목록에 추가됩니다.")
+//            val intent2 = Intent(applicationContext, PHomeActivity::class.java)
+//            startActivity(intent2)
         }
     }
 
