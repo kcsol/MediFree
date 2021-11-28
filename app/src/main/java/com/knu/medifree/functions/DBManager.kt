@@ -100,6 +100,9 @@ class DBManager {
                 Log.e("DBManager.add", "추가하려는 Field가 배열이 아닙니다. Field를 새로 생성합니다.")
 
                 DB.collection(collection!!).document(id).update(field, listOf(new))
+                    .addOnFailureListener {
+                        DB.collection(collection!!).document(id).set(hashMapOf(field to listOf(new)))
+                    }
             }
         }
 
