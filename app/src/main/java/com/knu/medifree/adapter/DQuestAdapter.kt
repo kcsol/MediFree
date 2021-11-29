@@ -56,6 +56,7 @@ class DQuestAdapter(context: Context?, reservations: List<String>) :
 
         Log.e("환자이름", reservation["patient_name"].toString())
         holder.name?.text = "환자명 : " + reservation["patient_name"].toString()
+        holder.date?.text = reservation["diagnosis_date"].toString()
         when(reservation["diagnosis_time"].toString()) {
             "0" -> holder.time?.text = "10:00"
             "1" -> holder.time?.text = "11:00"

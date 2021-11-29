@@ -30,26 +30,25 @@
 
             <TextView
                 android:id="@+id/listview_quest_name"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp"
                 android:text="환자명 : 조성민"
                 android:textColor="#000000"
                 android:textSize="20dp"
-                android:textStyle="bold"
-                android:layout_weight="1"/>
+                android:textStyle="bold"/>
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_marginLeft="15dp"
                 android:gravity="center">
 
                 <TextView
                     android:id="@+id/listview_quest_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="10/20"
+                    android:text="2021-10-20"
                     android:textSize="20dp"
                     android:textColor="@color/black"/>
 
