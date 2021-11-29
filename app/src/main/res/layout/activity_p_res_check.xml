@@ -27,7 +27,7 @@
             android:layout_marginBottom="18dp"
             android:baselineAligned="false"
             android:gravity="center"
-            android:text="Request"
+            android:text="예약 목록 확인"
             android:textColor="#0070C0"
             android:textSize="40sp"
             android:textStyle="bold"

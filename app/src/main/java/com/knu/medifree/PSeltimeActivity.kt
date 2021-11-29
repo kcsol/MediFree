@@ -94,10 +94,10 @@ class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
                     time10.setEnabled(true)
                     time10.text = "10:00"
                 }
-                if(docSchedule!![1] == false&& time10.isEnabled())
+                if(docSchedule!![1] == false&& time11.isEnabled())
                 {
                     time11.setEnabled(false)
-                    var time_text :String = time10.text as String
+                    var time_text :String = time11.text as String
                     time_text = time_text + " is Disable"
                     time11.text = time_text
                 }
@@ -106,7 +106,7 @@ class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
                     time11.setEnabled(true)
                     time11.text = "11:00"
                 }
-                if(docSchedule!![2] == false&& time10.isEnabled())
+                if(docSchedule!![2] == false&& time15.isEnabled())
                 {
                     time15.setEnabled(false)
                     var time_text :String = time15.text as String
@@ -115,10 +115,10 @@ class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
                 }
                 else
                 {
-                    time11.setEnabled(true)
-                    time11.text = "11:00"
+                    time15.setEnabled(true)
+                    time15.text = "11:00"
                 }
-                if(docSchedule!![3] == false&& time10.isEnabled())
+                if(docSchedule!![3] == false&& time16.isEnabled())
                 {
                     time16.setEnabled(false)
                     var time_text :String = time16.text as String
@@ -127,8 +127,8 @@ class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
                 }
                 else
                 {
-                    time11.setEnabled(true)
-                    time11.text = "11:00"
+                    time16.setEnabled(true)
+                    time16.text = "11:00"
                 }
                 Companion.year = year
                 Companion.monthOfYear = monthOfYear
