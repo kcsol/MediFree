@@ -116,7 +116,7 @@ class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
                 else
                 {
                     time15.setEnabled(true)
-                    time15.text = "11:00"
+                    time15.text = "15:00"
                 }
                 if(docSchedule!![3] == false&& time16.isEnabled())
                 {
@@ -128,7 +128,7 @@ class PSeltimeActivity : AppCompatActivity(), View.OnClickListener {
                 else
                 {
                     time16.setEnabled(true)
-                    time16.text = "11:00"
+                    time16.text = "16:00"
                 }
                 Companion.year = year
                 Companion.monthOfYear = monthOfYear
