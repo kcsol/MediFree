@@ -15,6 +15,11 @@
 박승현: db설계 ,플젝 설계 ,data modeling , 기획, 영상 진료(webrtc), 보안(난독화,리버스 엔지니어링) , 영상제작
 
 
+https://user-images.githubusercontent.com/62735681/143963509-932d8a41-8f1d-4f79-8854-1ce03a32cfe8.mp4
+
+
+
+
 
 for mobile app program project
 
