@@ -23,13 +23,14 @@ android {
 
     buildTypes {
         debug{
-            //코드 난독화 추가
+            //코드 난독화 및 앱 최적화 
             //디버깅 할 때, minifyenabled 부분만 false 로 바꾸시면 됩니다.
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         release {
-            //코드 난독화 추가
+            //코드 난독화 및 앱 최적화
+            // minifyenabled 부분만 false로 바꿔주시면 됩니다
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -65,8 +66,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation('org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9')
 
-    implementation 'org.webrtc:google-webrtc:1.0.32006'
     //webrtc 관련 새로 추가된 부분
+    implementation 'org.webrtc:google-webrtc:1.0.32006'
     implementation 'com.google.android.material:material:1.4.0'
     implementation("io.ktor:ktor-client-android:$ktor_version")
     implementation("io.ktor:ktor-client-websocket:$ktor_version")
