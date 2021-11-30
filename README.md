@@ -1,10 +1,10 @@
 # MediFree
 
-비대면 원격 의료 프로젝트
+< 비대면 원격 의료 프로젝트 >
 
 대면 진료와 비교했을 때, 비대면 진료 환경의 한계점을 극복하고, 장점을 극대화 할 수 있는 로직.
 
-역할
+< 역할 >
 
 유태훈 (doctor) Frontside & Design : - 회원 가입, 예약 관리, 문진표, 진료실 , ppt 제작
 
@@ -14,14 +14,14 @@
 
 박승현 project manager- DB 설계 ,플젝 설계 ,data modeling , 기획, 영상 진료(webrtc), 보안(난독화,리버스 엔지니어링) , 영상제작
 
-
+< 기능 소개 영상 >
 https://user-images.githubusercontent.com/62735681/143963509-932d8a41-8f1d-4f79-8854-1ce03a32cfe8.mp4
 
 
 
 
 
-for mobile app program project
+< for mobile app program project >
 
 compileSdk 31
 
