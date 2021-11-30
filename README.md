@@ -29,6 +29,9 @@ minSdk 25
 
 targetSdk 31
 
+JavaVersion.VERSION_1_8
+
+compileSdk 31
 
 ### id 명
 
