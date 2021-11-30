@@ -6,13 +6,13 @@
 
 역할
 
-유태훈: (doctor) 프론트 & 디자인 - 회원 가입, 예약 관리, 문진표, 진료실 , ppt 제작
+유태훈 (doctor) Frontside & Design : - 회원 가입, 예약 관리, 문진표, 진료실 , ppt 제작
 
-조성민: (patient) 프론트 & 디자인 - 회원 가입, 예약 조회, 추가, 문진표, 진료실 , 회의록 관리
+조성민 (patient) Frontside & Design : - 회원 가입, 예약 조회, 추가, 문진표, 진료실 , 회의록 관리
 
-김찬솔: 백엔드 - Database 관리 함수 (검색,추가,삭제), 함수 적용, 어플리케이션 최적화
+김찬솔 Backend - Database management - (search, add ,delete,create), 함수 적용, 어플리케이션 optimization
 
-박승현: db설계 ,플젝 설계 ,data modeling , 기획, 영상 진료(webrtc), 보안(난독화,리버스 엔지니어링) , 영상제작
+박승현 project manager- DB 설계 ,플젝 설계 ,data modeling , 기획, 영상 진료(webrtc), 보안(난독화,리버스 엔지니어링) , 영상제작
 
 
 https://user-images.githubusercontent.com/62735681/143963509-932d8a41-8f1d-4f79-8854-1ce03a32cfe8.mp4
