@@ -18,6 +18,12 @@
 https://user-images.githubusercontent.com/62735681/143963509-932d8a41-8f1d-4f79-8854-1ce03a32cfe8.mp4
 
 
+### 사용 시나리오 영상
+
+
+
+https://user-images.githubusercontent.com/62735681/144154474-0c8dc68d-edbc-41ad-9d70-e4b963e8efb0.mp4
+
 
 
 
